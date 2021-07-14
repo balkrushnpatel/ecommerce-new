@@ -1,0 +1,15 @@
+.required{color:red;}
+.font-size-70{font-size: 70px;}
+.select2-container,.form-control[readonly]{width:100% !important;}
+.switch.switch-outline.switch-success input:empty ~ span:after {
+    background-color: #ce6f92;
+}
+.switch.switch-outline.switch-success input:empty ~ span:before {
+    border: 2px solid #ce6f92; 
+}	
+.switch.switch-outline.switch-success input:checked ~ span:after {
+    background-color: #1BC5BD;
+}
+.switch.switch-outline.switch-success input:checked ~ span:before {
+    border: 2px solid #1BC5BD; 
+}	

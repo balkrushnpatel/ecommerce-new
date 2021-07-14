@@ -1,0 +1,27 @@
+<?php
+
+return [ 
+	'Dashboard'=>'Dashboard', 
+	'Category'=>'Category',
+	'SubCategory'=>'SubCategory',
+	'Brand'=>'Brand',
+	'Product'=>'Product',
+	'Code'=>'Code', 
+	'Listing'=>'Listing', 
+	'Name'=>'Name', 
+	'Description'=>'Description', 
+	'Managed'=>'Managed', 
+	'Add & Edit'=>'Add &amp; Edit', 
+	'Back'=>'Back', 
+	'Save'=>'Save', 
+	'Update'=>'Update', 
+	'Cancel'=>'Cancel', 
+	'Status'=>'Status', 
+	'Active'=>'Active', 
+	'DeActive'=>'DeActive',
+	'Add'=>'Add', 
+	'CouponCode' =>'CouponCode',
+	'ProductStock' =>'ProductStock',
+	'Package'=>'Package',
+	'Slider'=>'Slider',
+];
