@@ -18477,3 +18477,4 @@ aside .sp-sidebar-banner span {
 
 a:hover,a:focus,.btn:hover,.menu > li:hover{text-decoration: none;}
 .btn,.btn:hover,.btn:focus,a,a:hover,a:focus,.menu > li:hover{transition: 0.5s ease-in;}
+.filter-items a.active {color: #336699;}

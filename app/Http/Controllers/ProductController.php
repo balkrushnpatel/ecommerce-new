@@ -42,7 +42,11 @@ class ProductController extends Controller
       try {  
           DB::beginTransaction();
           $filter = $request->filter;
+          $category_id = $request->category_id;
           $getProducts = Product::where('status',1);
+          if(!empty($category_id)){
+            $getProducts = $getProducts->where('cat_id',$category_id);
+          }
           if($filter == 'popularity'){
             $getProducts = $getProducts->orderByRaw('RAND()'); 
           }else if($filter == 'date'){
