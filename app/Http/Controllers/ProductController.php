@@ -43,9 +43,18 @@ class ProductController extends Controller
           DB::beginTransaction();
           $filter = $request->filter;
           $category_id = $request->category_id;
+          $price = $request->price;
           $getProducts = Product::where('status',1);
           if(!empty($category_id)){
             $getProducts = $getProducts->where('cat_id',$category_id);
+          }
+          if(!empty($price)){
+            $expPrice = explode('-',$price); 
+            if(empty($expPrice[1])){ 
+              $getProducts = $getProducts->where('price','>=',$price);
+            }else{ 
+              $getProducts = $getProducts->where('price','>=',$expPrice[0])->where('price','<=',$expPrice[1]);
+            }
           }
           if($filter == 'popularity'){
             $getProducts = $getProducts->orderByRaw('RAND()'); 
