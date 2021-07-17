@@ -36,33 +36,45 @@
 					<div class="row"> 
 					    <div class="col-sm-12 col-md-12"> 
 					    	<div class="form-group row">
-								<div class="col-lg-12">
+								<div class="col-lg-4 col-sm-12">
 									<label for="cat_id" class="col-form-label">  Category <span class="required">*</span></label>
 									<select class="form-control select2" name="cat_id" id="cat_id"> 
 										<option value=""> Select  Category</option> 
 										@foreach(getCategory() as $key => $category)
-											@if(isset($subcategory->cat_id) && ($subcategory->cat_id == $key))
-												<option selected value="{{ $key }}"> {{ $category }}</option>
+											@if(isset($subcategory->cat_id) && ($subcategory->cat_id ==$category['id']))
+												<option selected value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 											@else
-												<option value="{{ $key }}"> {{ $category }}</option>
+												<option value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 											@endif
 										@endforeach  
 									</select>
 									<div class="fv-plugins-message-container"></div>
-								</div>
-							</div>
-					    	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="subcategory-name" class="col-form-label"> Sub Category Name <span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="name" value="{{ (isset($subcategory)) ? $subcategory->name : '' }}" name="name">
-						      	<div class="fv-plugins-message-container"></div>
+								</div> 
+								<div class="col-lg-4 col-sm-12">
+									<label for="brand" class="col-form-label">  Brand <span class="required">*</span></label>
+									<select class="form-control select2" name="brand[]" id="brand" multiple> 
+										<option value=""> Select  Brand</option> 
+										@foreach(getBrand() as $key => $brand)
+											@if(isset($subcategory->brand) && (in_array($key,json_decode($subcategory->brand))))
+												<option selected value="{{ $key }}"> {{ $brand }}</option>
+											@else
+												<option value="{{ $key }}"> {{ $brand }}</option>
+											@endif
+										@endforeach  
+									</select>
+									<div class="fv-plugins-message-container"></div>
+								</div> 
+					        	<div class="col-lg-4 col-sm-12">
+							    	<label for="subcategory-name" class="col-form-label"> Sub Category Name <span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="name" value="{{ (isset($subcategory)) ? $subcategory->name : '' }}" name="name">
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
                              <div class="form-group row">
 					        	<div class="col-lg-12">
-						    	<label for="subcategory-description" class="col-form-label">  Description </label> 
-						      	<input type="text" class="form-control" id="subcategory-description" value="{{ (isset($subcategory)) ? $subcategory->description : '' }}" name="description">
-						      	<div class="fv-plugins-message-container"></div>
+							    	<label for="subcategory-description" class="col-form-label">  Description </label> 
+							    	<textarea class="form-control"  id="subcategory-description" name="description">{{ (isset($subcategory)) ? $subcategory->description : '' }}</textarea> 
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>  
 						  	 <div class="form-group row">

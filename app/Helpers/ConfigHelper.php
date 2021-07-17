@@ -3,6 +3,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\Language;
 
 if (! function_exists('getCategory')) {
   function getCategory() {
@@ -56,6 +57,20 @@ if (! function_exists('getCategory')) {
       return $category;
   }
 } 
+
+if (! function_exists('getBlogCategory')) {
+    function getBlogCategory() {
+        $blogcat = BlogCat::where('status', 1)->pluck('name','id');
+        return $blogcat;
+    }
+}
+
+if (! function_exists('getLanguage')) {
+    function getLanguage() {
+        $language = Language::where('status', 1)->pluck('name','id');
+        return $language;
+    }
+}
 
 if (! function_exists('getBrand')) {
     function getBrand() {

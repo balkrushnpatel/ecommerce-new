@@ -2,7 +2,7 @@
 <script>
 	var HOST_URL = "/";
 	var APP_URL = "{{ url('/') }}"; 
-    window.addEventListener('load',function() {
+    window.addEventListener('load',function() {         
         setTimeout(function() {
            $('#alert-message').fadeOut('slow');
         }, 3000);
@@ -18,6 +18,13 @@
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/select2.js')}}"></script>
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}"></script> 
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>  
+<script src="{{ asset('assets/js/pages/features/miscellaneous/toastr.js?v=7.2.8')}}"></script>  
 <script src="{{ asset('assets/js/custom.js')}}"></script> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.js"></script>
+ <script src="{{ asset('assets/js/pages/custom/wizard/wizard-3.js')}}"></script>
+ <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+ <script src="{{ asset('assets/js/pages/crud/forms/editors/ckeditor-classic.js')}}"></script>
+ <script src="{{ asset('assets/js/pages/crud/forms/widgets/tagify.js')}}"></script>
+ <script src="{{ asset('assets/js/pages/widgets.js')}}"></script>
+ <script src="{{ asset('assets/js/pages/custom/profile/profile.js')}}"></script>
 <!--end::Global Theme Bundle--> 

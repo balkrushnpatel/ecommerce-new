@@ -19,7 +19,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			serverSide: true,
 			columns: dataObject[0].COLUMNS,
 			ajax: {
-				url: APP_URL + '/product_ajax_list',
+				url: APP_URL + '/admin/product_ajax_list',
 				type: 'GET', 
 			}, 
 		});
@@ -34,9 +34,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 
 	};
 
-}();  
-
-// Class definition
+}();   
 var KTFormControls = function () {
 	// Private functions
 	var _initProductForm = function () {
@@ -98,7 +96,7 @@ $( document ).delegate( ".is_fectured", "change", function() {
 		var isFecture = '1';
 	}
 	$.ajax({
-        url: APP_URL + '/product/set-fecture',
+        url: APP_URL + '/admin/product/set-fecture',
         data: { 
         	'id':id,
         	'isFecture':isFecture                
@@ -106,6 +104,46 @@ $( document ).delegate( ".is_fectured", "change", function() {
         beforeSend: function() {                 
         },
         success: function(res) {  
+        	handleResponse(res);
+        }
+    });
+});
+
+$( document ).delegate( ".is_status", "change", function() {
+	var id = $(this).val(); 
+	var isPublic = '0';
+	if($(this).prop("checked") == true){
+		var isPublic = '1';
+	}
+	$.ajax({
+        url: APP_URL + '/admin/product/set-public',
+        data: { 
+        	'id':id,
+        	'isPublic':isPublic                
+        },
+        beforeSend: function() {                 
+        },
+        success: function(res) {  
+        	handleResponse(res);
+        }
+    });
+});
+$( document ).delegate( ".today_deal", "change", function() {
+	var id = $(this).val(); 
+	var todayDeal = '0';
+	if($(this).prop("checked") == true){
+		var todayDeal = '1';
+	}
+	$.ajax({
+        url: APP_URL + '/admin/product/set-today_deal',
+        data: { 
+        	'id':id,
+        	'today_deal':todayDeal                
+        },
+        beforeSend: function() {                 
+        },
+        success: function(res) {  
+        	handleResponse(res);
         }
     });
 });
@@ -118,7 +156,7 @@ $('#addInput').click(function(){
      var rowIndex =  $('#addition-input-wrap').find('.row-item').length;
      i = (+rowIndex + +1);
      console.log('row-item ::'+i);
-	html +='<div class="form-group row row-item" id="row'+i+'">';
+	html +='<div class="form-group row row-item pt-5" id="row'+i+'">';
 		html +='<div class="col-lg-5">';
 			html +='<input type="text" placeholder="Input Title" class="form-control" name="input_title[]">';
 		html +='</div> ';
@@ -142,39 +180,35 @@ $('#addInput').click(function(){
 	$('#addition-input-wrap').append(html);
 });  
 $( document ).delegate( ".btn_remove", "click", function() {
-
 	var button_id = $(this).attr("id");   
-        // console.log(button_id);
-         $('#row'+button_id).remove();
+    $('#row'+button_id).remove();
 });  
-
 $( document ).delegate( ".choice-title", "change", function() {
 	var choice = $(this).val(); 
 	var i = $(this).attr('data-row'); 
-		var html = '';
-		$('#chiled-row-'+i).html('');
-		if(choice != 'text'){ 
- 	       html +='<div class="form-group row pt-5" id="row'+i+'">';
-	           html +='<div class="col-lg-6">';
-	    	   html += '<input type="text" placeholder="Add option name by comma seperated" class="form-control" name="option[]">';
-	    	   html +='</div>'; 
-           html +='</div>';            	
-         }
-       $('#chiled-row-'+i).append(html); 
+	var html = '';
+	$('#chiled-row-'+i).html('');
+	if(choice != 'text'){ 
+	       html +='<div class="form-group row pt-5" id="row'+i+'">';
+           html +='<div class="col-lg-6">';
+    	   html += '<input type="text" placeholder="Add option name by comma seperated" class="form-control" name="option[]">';
+    	   html +='</div>'; 
+       html +='</div>';            	
+    }
+   	$('#chiled-row-'+i).append(html); 
 }); 
 
 $( document ).delegate( "#datasave", "click", function() {
       var formdata = $("#addmore").serialize();
       $.ajax({
-        url   : APP_URL + '/product',
+        url   : APP_URL + '/admin/product',
         type  :"POST",
         data  :{
                  "_token": "{{ csrf_token() }}",
         	     formdata,
         	    },
         cache :false,
-        success:function(result){
-          alert(result);
+        success:function(result){ 
           $("#addmore")[0].reset();
         }
       });
@@ -212,4 +246,71 @@ $( document ).delegate( ".colorpicker-component", "click", function(e) {
     }) 
 });
 
+$( document ).delegate( "#cat_id", "change", function() {
+	var catId = $(this).val();
+	//console.log(catId);
+	$.ajax({
+            url: APP_URL + '/admin/get-sub-categories',
+            data: { 
+            'cat_id':catId                
+            },
+            beforeSend: function() {                 
+            },
+            success: function(res) {  
+            	var html = '';
+            	
+            	html += '<option value="0">Select Subcategory</option>';
+            	if(res.success){
+            		$.each( res.data, function( key, value ) {
+				        html += '<option value="'+key+'">'+value+'</option>';
+				    });
+            	}
+            	$('#subcat_id').html('');
+            	$('#subcat_id').append(html);
+            }
+        });
+
+});
+
+$( document ).delegate( "#subcat_id", "change", function() {
+	var subcat_id = $(this).val();
+	var catId = $('#cat_id').val();
+	/*membership-positions/edit*/
+	$.ajax({
+            url: APP_URL + '/admin/get-brand',
+            data: { 
+	            'cat_id':catId,            
+	            'subcat_id':subcat_id                
+            },
+            beforeSend: function() {                 
+            },
+            success: function(res) {  
+            	var html = '';
+            	
+            	html += '<option value="0">Select Brand</option>';
+            	if(res.success){
+            		$.each( res.data, function( key, value ) {
+				        html += '<option value="'+key+'">'+value+'</option>';
+				    });
+            	}
+            	$('#brand_id').html('');
+            	$('#brand_id').append(html);
+            }
+        });
+});
  
+
+var KTBootstrapSwitch = function() { 
+	var demos = function() { 
+	 	$('[data-switch=true]').bootstrapSwitch();
+	}; 
+	return { 
+		init: function() {
+		 	demos();
+		},
+	};
+}();
+
+jQuery(document).ready(function() {
+	KTBootstrapSwitch.init();
+});

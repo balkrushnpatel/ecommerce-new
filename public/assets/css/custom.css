@@ -13,3 +13,4 @@
 .switch.switch-outline.switch-success input:checked ~ span:before {
     border: 2px solid #1BC5BD; 
 }	
+.tagify--empty{padding: 10px;}

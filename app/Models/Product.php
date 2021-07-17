@@ -11,9 +11,13 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category','cat_id');
     }
 
-    public function proBrand()
+    public function brand()
     {
         return $this->belongsTo('App\Models\Brand','brand_id');
+    }
+    public function createdBy()
+    {
+        return $this->belongsTo('App\User','created_by');
     }
 
     public function stockPro()

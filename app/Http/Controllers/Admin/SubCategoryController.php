@@ -47,10 +47,11 @@ class SubCategoryController extends Controller
                 return back()
                     ->withErrors($validator)
                     ->withInput();
-            }
+            } 
 
             $subcategory                       = new SubCategory();
             $subcategory->cat_id               = $request->input('cat_id');
+            $subcategory->brand                = ($request->input('brand') ? json_encode($request->input('brand')) : null);
             $subcategory->name                 = $request->input('name');
             $subcategory->description          = $request->input('description');
             $subcategory->status               = $request->input('status'); 
@@ -86,6 +87,7 @@ class SubCategoryController extends Controller
          try {
             DB::beginTransaction();
             $subcategory = SubCategory::find(decrypt($id)); 
+            
             DB::commit();
             return view('admin.subcategory.edit',compact('subcategory'));
         }catch (\Exception $e) {
@@ -107,6 +109,7 @@ class SubCategoryController extends Controller
             DB::beginTransaction();
             $subcategory = SubCategory::findOrFail(decrypt($id));
             $subcategory->cat_id            = $request->input('cat_id');
+            $subcategory->brand             = ($request->input('brand') ? json_encode($request->input('brand')) : null);
             $subcategory->name              = $request->input('name');
             $subcategory->description       = $request->input('description');
             $subcategory->status            = $request->input('status'); 

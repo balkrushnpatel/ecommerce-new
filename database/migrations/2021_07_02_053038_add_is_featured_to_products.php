@@ -14,7 +14,14 @@ class AddIsFeaturedToProducts extends Migration
     public function up()
     {
         Schema::table('Products', function (Blueprint $table) {
-           $table->tinyInteger('is_featured')->default(0)->after('image'); 
+            $table->unsignedBigInteger('created_by')->default('1')->after('id');
+            $table->tinyInteger('today_deal')->default(0)->after('image'); 
+            $table->tinyInteger('is_featured')->default(0)->after('image'); 
+
+
+            $table->foreign('created_by')
+             ->references('id')->on('users')
+             ->onDelete('cascade'); 
         });
     }
 

@@ -2,7 +2,7 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="{{ url('/') }}" class="brand-logo">
+						<a href="{{ url('/admin') }}" class="brand-logo">
 			         <img alt="{{ config('app.name') }}" src="{{ asset('assets/media/logos/logo-dark.png')}} "/>
 		               </a>
 						<!--end::Logo-->
@@ -29,81 +29,76 @@
 						<div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
 							<!--begin::Menu Nav-->
 							<ul class="menu-nav">
-								<li class="menu-item  @if(Request::is('admin')) menu-item-active @endif" aria-haspopup="true">
+								<li class="menu-item  @if(Request::is('/admin')) menu-item-active @endif" aria-haspopup="true">
 									<a href="{{ url('/admin') }}" class="menu-link">
 										<i class="menu-icon flaticon-home"></i>
 										<span class="menu-text">@lang('ecommerce.Dashboard')</span>
 									</a>
-								</li>
-				
+								</li> 
 							@php
 								$categoryActive = '';
-								if(Request::is('categires')){
+								if(Request::is('admin/categires') || Request::is('admin/subcategory')|| Request::is('admin/brand')){
 									$categoryActive = 'menu-item-open';
 								}
 							@endphp
-							<li class="menu-item menu-item-submenu {{ $categoryActive }}">
-								<a href="{{ url('categires') }}" class="menu-link">
+							<li class="menu-item menu-item-submenu {{ $categoryActive }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="javascript:;" class="menu-link menu-toggle  {{ $categoryActive }} " >
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16"></rect>
-												<path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"></path>
+												<rect x="0" y="0" width="24" height="24" />
+												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
+												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
 											</g>
-										</svg> 
+										</svg>
+										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-text">@lang('ecommerce.Category')</span> 
-								</a> 
-							</li>
-				            @php
-								$subcategoryActive = '';
-								if(Request::is('subcategory')){
-									$subcategoryActive = 'menu-item-open';
-								}
-							@endphp
-							<li class="menu-item menu-item-submenu {{ $subcategoryActive }}">
-								<a href="{{ url('subcategory') }}" class="menu-link">
-									<span class="svg-icon menu-icon"> 
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16"></rect>
-												<path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"></path>
-											</g>
-										</svg> 
-									</span>
-									<span class="menu-text">@lang('ecommerce.SubCategory')</span> 
-								</a> 
-							</li>
-							@php
-								$brandActive = '';
-								if(Request::is('brand')){
-									$brandActive = 'menu-item-open';
-								}
-							@endphp
-							<li class="menu-item menu-item-submenu {{ $brandActive }}">
-								<a href="{{ url('brand') }}" class="menu-link">
-									<span class="svg-icon menu-icon"> 
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16"></rect>
-												<path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"></path>
-											</g>
-										</svg> 
-									</span>
-									<span class="menu-text">@lang('ecommerce.Brand')</span> 
-								</a> 
-							</li>
+									<span class="menu-text">@lang('ecommerce.Master')</span>
+									<i class="menu-arrow"></i>
+								</a>
+								<div class="menu-submenu">
+									<i class="menu-arrow"></i>
+									<ul class="menu-subnav">
+										<li class="menu-item menu-item-parent" aria-haspopup="true">
+											<span class="menu-link">
+												<span class="menu-text">@lang('ecommerce.Blog')</span>
+											</span>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/categires'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{url('admin/categires')}}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Category')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/subcategory'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{url('admin/subcategory')}}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.SubCategory')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/brand'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{url('admin/brand')}}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Brand')</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>    
 							@php
 								$productActive = '';
-								if(Request::is('product')){
+								if(Request::is('admin/product')){
 									$productActive = 'menu-item-open';
 								}
 							@endphp
 							<li class="menu-item menu-item-submenu {{ $productActive }}">
-								<a href="{{ url('product') }}" class="menu-link">
+								<a href="{{ url('admin/product') }}" class="menu-link">
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -118,12 +113,12 @@
 							</li>
 							@php
 								$couponcodeActive = '';
-								if(Request::is('couponcode')){
+								if(Request::is('admin/couponcode')){
 									$couponcodeActive = 'menu-item-open';
 								}
 							@endphp
 							<li class="menu-item menu-item-submenu {{ $couponcodeActive }}">
-								<a href="{{ url('couponcode') }}" class="menu-link">
+								<a href="{{ url('admin/couponcode') }}" class="menu-link">
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -138,12 +133,12 @@
 							</li>
 							@php
 								$productstockActive = '';
-								if(Request::is('productstock')){
+								if(Request::is('admin/productstock')){
 									$productstockActive = 'menu-item-open';
 								}
 							@endphp
 							<li class="menu-item menu-item-submenu {{ $productstockActive }}">
-								<a href="{{ url('productstock') }}" class="menu-link">
+								<a href="{{ url('admin/productstock') }}" class="menu-link">
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -158,12 +153,12 @@
 							</li>
 							@php
 								$packageActive = '';
-								if(Request::is('package')){
+								if(Request::is('admin/package')){
 									$packageActive = 'menu-item-open';
 								}
 							@endphp
 							<li class="menu-item menu-item-submenu {{ $packageActive }}">
-								<a href="{{ url('package') }}" class="menu-link">
+								<a href="{{ url('admin/package') }}" class="menu-link">
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -178,12 +173,12 @@
 							</li>
 							@php
 								$sliderActive = '';
-								if(Request::is('slider')){
+								if(Request::is('admin/slider')){
 									$sliderActive = 'menu-item-open';
 								}
 							@endphp
 							<li class="menu-item menu-item-submenu {{ $sliderActive }}">
-								<a href="{{ url('slider') }}" class="menu-link">
+								<a href="{{ url('admin/slider') }}" class="menu-link">
 									<span class="svg-icon menu-icon"> 
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -196,10 +191,158 @@
 									<span class="menu-text">@lang('ecommerce.Slider')</span> 
 								</a> 
 							</li>
-							</ul>
-							<!--end::Menu Nav-->
-						</div>
-						<!--end::Menu Container-->
+							@php
+								$languageActive = '';
+								if(Request::is('admin/language')){
+									$languageActive = 'menu-item-open';
+								}
+							@endphp
+							<li class="menu-item menu-item-submenu {{ $languageActive }}">
+								<a href="{{ url('admin/language') }}" class="menu-link">
+									<span class="svg-icon menu-icon"> 
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24"></rect>
+												<rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16"></rect>
+												<path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"></path>
+											</g>
+										</svg> 
+									</span>
+									<span class="menu-text">@lang('ecommerce.Language')</span> 
+								</a> 
+							</li>
+							@php
+								$blogActive = '';
+								if(Request::is('admin/blogcategory') || Request::is('blog')){
+									$blogActive = 'menu-item-open';
+								}
+							@endphp
+							<li class="menu-item menu-item-submenu {{ $blogActive }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="javascript:;" class="menu-link menu-toggle  {{ $blogActive }} " >
+									<span class="svg-icon menu-icon"> 
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
+												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
+											</g>
+										</svg>
+										<!--end::Svg Icon-->
+									</span>
+									<span class="menu-text">@lang('ecommerce.Blog')</span>
+									<i class="menu-arrow"></i>
+								</a>
+								<div class="menu-submenu">
+									<i class="menu-arrow"></i>
+									<ul class="menu-subnav">
+										<li class="menu-item menu-item-parent" aria-haspopup="true">
+											<span class="menu-link">
+												<span class="menu-text">@lang('ecommerce.Blog')</span>
+											</span>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/blogcategory'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{url('admin/blogcategory')}}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">Blog Category</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/blog'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{url('admin/blog')}}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">All Blog</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							 @php
+								$settingActive = '';
+								if(Request::is('admin/setting') || Request::is('admin/contactsetting')){
+									$settingActive = 'menu-item-open';
+								}
+							@endphp
+							<li class="menu-item menu-item-submenu {{ $settingActive }}" aria-haspopup="true" data-menu-toggle="hover">
+								<a href="javascript:;" class="menu-link menu-toggle" >
+									<span class="svg-icon menu-icon"> 
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)" />
+												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3" />
+											</g>
+										</svg>
+										<!--end::Svg Icon-->
+									</span>
+									<span class="menu-text">@lang('ecommerce.Setting')</span>
+									<i class="menu-arrow"></i>
+								</a>
+								<div class="menu-submenu">
+									<i class="menu-arrow"></i>
+									<ul class="menu-subnav">
+										<li class="menu-item menu-item-parent" aria-haspopup="true">
+											<span class="menu-link">
+												<span class="menu-text">@lang('ecommerce.Setting')</span>
+											</span>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/setting'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('setting') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Home Page')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/contsetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('admin.contact') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Contact Page')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/footsetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('admin.footer') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Footer')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/favisetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('admin.favicon') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Favicon')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/logo'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('admin.logo') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.Logo')</span>
+											</a>
+										</li>
+										<li class="menu-item {{ (Request::is('admin/general-setting'))?'menu-item-open':'' }}" aria-haspopup="true">
+											<a href="{{ route('admin.general') }}" class="menu-link">
+												<i class="menu-bullet menu-bullet-dot">
+													<span></span>
+												</i>
+												<span class="menu-text">@lang('ecommerce.General Setting')</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li> 
+						</ul>
+						<!--end::Menu Nav-->
 					</div>
-					<!--end::Aside Menu-->
+					<!--end::Menu Container-->
 				</div>
+				<!--end::Aside Menu-->
+			</div>

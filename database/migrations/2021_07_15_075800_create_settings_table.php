@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColorToProducts extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddColorToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('Products', function (Blueprint $table) {
-                 $table->string('input_color')->nullable()->after('size');
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('type')->nullable();
+            $table->longText('value')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddColorToProducts extends Migration
      */
     public function down()
     {
-        Schema::table('Products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('settings');
     }
 }

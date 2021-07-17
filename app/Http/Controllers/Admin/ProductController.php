@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\SubCategory;
+use App\Models\Brand;
 use Validator;
 use DB;
 class ProductController extends Controller
@@ -14,9 +16,6 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-       
-    }
     public function index()
     {
          return view('admin.product.index');
@@ -53,55 +52,54 @@ class ProductController extends Controller
             }
             $option = [];
             $color =[];
-            if(!empty($request->input('input_title')))
-            {
-
-            foreach($request->input('input_title') as $key=>$title){
+            if(!empty($request->input('input_title'))){
+              foreach($request->input('input_title') as $key=>$title){
                 $option[] = array(
                   'title'=>$title,
                   'choice'=>$request->input('title_choice')[$key],
                   'option'=>$request->input('option')[$key],
                 );
-            } 
+              } 
             }
            
            if(!empty($request->input('input_color'))){
-            foreach ($request->input('input_color') as $key => $clr) {
-              if(!empty($clr)){
-             $color[] = array(
-
-                  'color'=>$clr,
-                );
-             }
+              foreach ($request->input('input_color') as $key => $clr) {
+                if(!empty($clr)){
+                  $color[] = array(
+                    'color'=>$clr,
+                  );
+                }
+              }
             }
-            }
-            $product   = new Product();
-            $size = NULL;
-            if(!empty($request->input('size'))){
-              $size = json_encode($product->size); 
-            }
+            $product   = new Product(); 
             
-            $product->cat_id                   = $request->input('cat_id');
-            $product->subcat_id                = $request->input('subcat_id');
-            $product->brand_id                 = $request->input('brand_id');
-            $product->name                     = $request->input('name');
-            $product->size                     = $size;
-            $product->title_choice             = json_encode($option);
-            $product->input_color            = json_encode($color);
-            $product->description              = $request->input('description');
-            $product->price                    = $request->input('price');
-            $product->qty                      = $request->input('qty');
-            $product->discount                 = $request->input('discount');
-            $product->status                   = $request->input('status'); 
-          // dd($product);
+            $product->cat_id          = $request->input('cat_id');
+            $product->subcat_id       = $request->input('subcat_id');
+            $product->brand_id        = $request->input('brand_id');
+            $product->name            = $request->input('name'); 
+            $product->title_choice    = json_encode($option);
+            $product->input_color     = json_encode($color);
+            $product->description     = $request->input('description');
+            $product->price           = $request->input('price');
+            $product->qty             = $request->input('qty');
+            $product->discount        = $request->input('discount');
+            $product->status          = '0'; 
+            $product->unit            = $request->input('unit');
+            $product->tags            = $request->input('tags');
+            $product->purchase_price  = $request->input('purchase_price');
+            $product->shipping_cost   = $request->input('shipping_cost');
+            $product->tax             = $request->input('tax');
             $product->save();
-              if ($request->hasFile('image')) {
-                    $image = $request->file('image');
-                    $name = time().'.'.$image->getClientOriginalExtension();
-                    $destinationPath = public_path('/uploads/product/'.$product->id);
-                    $image->move($destinationPath, $name); 
-                    $product->image= $name; 
-                    $product->save();
+            if ($request->hasFile('image')) {
+              $image = $request->file('image');
+              foreach($image as $img){
+                $name = time().'.'.$img->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/product/'.$product->id);
+                $img->move($destinationPath, $name); 
+                $data[]=$name;
+                $product->image= json_encode($data); 
+                $product->save();
+              }    
             } 
             DB::commit();
             return redirect()->route('product.index')->with('success',' Product create successfully!');
@@ -132,13 +130,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         try {
-            DB::beginTransaction();
-            $product = Product::find(decrypt($id)); 
-            DB::commit();
-            return view('admin.product.edit',compact('product'));
+          DB::beginTransaction();
+          $product = Product::find(decrypt($id)); 
+          DB::commit();
+          return view('admin.product.edit',compact('product'));
         }catch (\Exception $e) {
-            DB::rollback();
-            dd($e->getMessage());
+          DB::rollback();
+          dd($e->getMessage());
         }
     }
 
@@ -157,25 +155,23 @@ class ProductController extends Controller
             $option = [];
             $color =[];
             if(!empty($request->input('input_title')))
-            {
-
-            foreach($request->input('input_title') as $key=>$title){
+            { 
+              foreach($request->input('input_title') as $key=>$title){
                 $option[] = array(
                   'title'=>$title,
                   'choice'=>$request->input('title_choice')[$key],
                   'option'=>$request->input('option')[$key],
                 );
-            } 
+              } 
             }
-           if(!empty($request->input('input_color'))){
-            foreach ($request->input('input_color') as $key => $clr) {
+            if(!empty($request->input('input_color'))){
+              foreach ($request->input('input_color') as $key => $clr) {
                 if(!empty($clr)){
-             $color[] = array(
-
-                  'color'=>$clr,
-                );
+                  $color[] = array( 
+                    'color'=>$clr,
+                  );
                 }
-            }
+              }
             }
             $product = Product::findOrFail(decrypt($id));  
             $product->cat_id                   = $request->input('cat_id');
@@ -186,20 +182,24 @@ class ProductController extends Controller
             $product->description              = $request->input('description');
             $product->price                    = $request->input('price');
             $product->qty                      = $request->input('qty');
-            $product->discount                 = $request->input('discount');
-            $product->status                   = $request->input('status'); 
+            $product->discount                 = $request->input('discount'); 
+            $product->unit                    = $request->input('unit');
+            $product->tags                    = $request->input('tags');
+            $product->purchase_price                    = $request->input('purchase_price');
+            $product->shipping_cost                    = $request->input('shipping_cost');
+            $product->tax                    = $request->input('tax');
             $product->title_choice             = json_encode($option);
             $product->input_color            = json_encode($color);
             $product->save(); 
             DB::commit();
               if ($request->hasFile('image')) {
                 if(!empty($request->file('image'))){
-                    $image = $request->file('image');
-                    $name = time().'.'.$image->getClientOriginalExtension();
-                    $destinationPath = public_path('/uploads/product/'.$product->id);
-                    $image->move($destinationPath, $name); 
-                    $product->image = $name; 
-                    $product->save();
+                  $image = $request->file('image');
+                  $name = time().'.'.$image->getClientOriginalExtension();
+                  $destinationPath = public_path('/uploads/product/'.$product->id);
+                  $image->move($destinationPath, $name); 
+                  $product->image = $name; 
+                  $product->save();
                 }
             } 
             return redirect()->route('product.index')->with('success','Product update Successfully.');
@@ -217,115 +217,239 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-         try {
-            DB::beginTransaction();
-            $product = Product::findOrFail($id);
-            $destinationPath = public_path('/uploads/product/'.$product->id.'/').$product->image;
+      try {
+        DB::beginTransaction();
+        $product = Product::findOrFail($id);
+        $destinationPath = public_path('/uploads/product/'.$product->id.'/').$product->image;
 
-                 if (file_exists($destinationPath)) {
-
-                        @unlink($destinationPath);
-
-                   } 
-            $product->status = 0; 
-            $product->save(); 
-            DB::commit();
-            return redirect()->route('product.index')->with('success','Product  De Active successfully.');
-        }catch (\Exception $e) {
-            DB::rollback();
-            dd($e->getMessage());
+        if (file_exists($destinationPath)) { 
+          @unlink($destinationPath); 
         } 
+        $product->status = 0; 
+        $product->save(); 
+        DB::commit();
+        return redirect()->route('product.index')->with('success','Product  De Active successfully.');
+      }catch (\Exception $e) {
+        DB::rollback();
+        dd($e->getMessage());
+      } 
     }
 
     public function productAjaxList(\App\Http\Requests\DataTableRequest $request){
-        if($request->ajax()){
-            try {  
-                DB::beginTransaction();
-                $recordSet = Product::orderBy('name','ASC');
-                if ($request->search['value'] != '') {
-                    $recordSet->where('name','LIKE',$request->search['value']."%");
+      if($request->ajax()){
+        try {  
+            DB::beginTransaction();
+            $recordSet = Product::orderBy('name','ASC');
+            if ($request->search['value'] != '') {
+                $recordSet->where('name','LIKE',$request->search['value']."%");
+            }
+            $recordsTotal = $recordSet->count();
+            $products = $recordSet->offset($request->start)->limit($request->length)->orderBy('id', 'desc')->get();
+            $data = [];
+            foreach ($products as $key => $product) {
+                $encryptproductId = encrypt($product->id);
+                $action = '';
+
+                $action .='<a href="'.route('product.edit',$encryptproductId).'" class="btn btn-sm btn-icon btn-info mr-2" title="Edit details"> <i class="la la-edit"></i></a>';
+
+                $action .= '<form action="'.route("product.destroy", $product->id).'" method="post" style="display:inline-block; vertical-align: middle; margin: 0;" id="'.$product->id.'">
+                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                    <input type="hidden" name="_method" value="DELETE">';
+                $action .='<a href="javascript:;" data-toggle="modal" data-target="#confirmDelete" data-title="Delete" data-message="Are you sure you want to delete this service ?" class="btn btn-sm btn-icon btn-danger" title="Delete"><i class="la la-trash"></i></a>';
+                $action .='</form>';
+
+                $schecked = '';
+                if($product->status == '1'){
+                    $schecked = 'checked';
+                } 
+                $status= '<span class="switch switch-outline switch-icon switch-primary">
+                     <label>
+                     <input type="checkbox" '.$schecked.' value="'.$product->id.'" class="is_status"/>
+                     <span></span>
+                    </label>
+                  </span>';
+                $checked = ''; 
+                if($product->is_featured == '1'){
+                  $checked = 'checked';
                 }
-                $recordsTotal = $recordSet->count();
-                $products = $recordSet->offset($request->start)->limit($request->length)->orderBy('id', 'desc')->get();
-                $data = [];
-                foreach ($products as $key => $product) {
-                    $encryptproductId = encrypt($product->id);
-                    $action = '';
+                $featured= '<span class="switch switch-outline switch-icon switch-success">
+                     <label>
+                     <input type="checkbox" '.$checked.' value="'.$product->id.'" class="is_fectured"/>
+                     <span></span>
+                    </label>
+                  </span>'; 
 
-                    $action .='<a href="'.route('product.edit',$encryptproductId).'" class="btn btn-sm btn-icon btn-info mr-2" title="Edit details"> <i class="la la-edit"></i></a>';
-
-                    $action .= '<form action="'.route("product.destroy", $product->id).'" method="post" style="display:inline-block; vertical-align: middle; margin: 0;" id="'.$product->id.'">
-                        <input type="hidden" name="_token" value="'.csrf_token().'">
-                        <input type="hidden" name="_method" value="DELETE">';
-                    $action .='<a href="javascript:;" data-toggle="modal" data-target="#confirmDelete" data-title="Delete" data-message="Are you sure you want to delete this service ?" class="btn btn-sm btn-icon btn-danger" title="Delete"><i class="la la-trash"></i></a>';
-                    $action .='</form>';
-
-                    $status = '<span class="badge badge-danger">DEACTIVE</span>';
-                    if($product->status == '1'){
-                        $status = '<span class="badge badge-success">ACTIVE</span>';
-                        $status = '<i class="fas fa-check text-success"></i>';
-                    }
-                    $checked = '';
-                    if($product->is_featured == '1'){
-                      $checked = 'checked';
-                    }
-                    $featured= '<span class="switch switch-outline switch-icon switch-success">
-                                   <label>
-                                   <input type="checkbox" '.$checked.' name="select" value="'.$product->id.'" class="is_fectured"/>
-                                   <span></span>
-                                  </label>
-                                </span>';
-                    $data[] = [
-                        str_replace(" ","",tableHeader(0)) =>  $key + 1,
-                        str_replace(" ","",tableHeader(7)) => $product->proCategory->name,
-                        str_replace(" ","",tableHeader(12))=> $product->proBrand->name,
-                        str_replace(" ","",tableHeader(1)) => $product->name,
-                         str_replace(" ","",tableHeader(23)) => $product->size,
-                        str_replace(" ","",tableHeader(5)) => $product->description,
-                        str_replace(" ","",tableHeader(10))=> $product->qty,
-                        str_replace(" ","",tableHeader(6)) => $product->price,
-                        str_replace(" ","",tableHeader(13))=> $product->discount,
-                        str_replace(" ","",tableHeader(22))=> $featured,
-                        str_replace(" ","",tableHeader(2)) => $product->created_at->format('d-m-Y h:i A'),
-                        str_replace(" ","",tableHeader(3)) => $status,
-                        str_replace(" ","",tableHeader(4)) =>  $action,
-                    ];
+                $tDchecked = '';
+                if($product->today_deal == '1'){
+                  $tDchecked = 'checked';
                 }
-                DB::commit();
-                return response()->json([
-                    'draw' => $request->draw,
-                    'recordsTotal' => $recordsTotal,
-                    'recordsFiltered' => $recordsTotal,
-                    'data' => $data,
-                ]);
-            }catch (\Exception $e) {
-                DB::rollback(); 
-                return response()->json($e->getMessage());
-            } 
-        }else{
-            return abort(404);
-        }
+                $todayDeal= '<span class="switch switch-outline switch-icon switch-info">
+                     <label>
+                     <input type="checkbox" '.$tDchecked.' value="'.$product->id.'" class="today_deal"/>
+                     <span></span>
+                    </label>
+                  </span>'; 
+
+                $data[] = [
+                    str_replace(" ","",tableHeader(0)) =>  $key + 1,
+                    str_replace(" ","",tableHeader(24)) => $product->createdBy->name, 
+                    str_replace(" ","",tableHeader(1)) => $product->name, 
+                    str_replace(" ","",tableHeader(10))=> $product->qty, 
+                    str_replace(" ","",tableHeader(26))=> $todayDeal, 
+                    str_replace(" ","",tableHeader(22))=> $featured, 
+                    str_replace(" ","",tableHeader(25)) => $status,
+                    str_replace(" ","",tableHeader(4)) =>  $action,
+                ];
+            }
+            DB::commit();
+            return response()->json([
+                'draw' => $request->draw,
+                'recordsTotal' => $recordsTotal,
+                'recordsFiltered' => $recordsTotal,
+                'data' => $data,
+            ]);
+          }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+          } 
+      }else{
+          return abort(404);
+      }
     }
     function setFectured(Request $request){
       if($request->ajax()){
-            try {  
-                DB::beginTransaction();
-                $id = $request->id;
-                $isFecture = $request->isFecture;
+        try {  
+            DB::beginTransaction();
+            $id = $request->id;
+            $isFecture = $request->isFecture;
 
-                $product = Product::findOrFail($id);  
-                $product->is_featured = $isFecture;
-                $product->save();
-                DB::commit();
-                return response()->json([ 
-                  'success'=>true
-                ]);
-            }catch (\Exception $e) {
-                DB::rollback(); 
-                return response()->json($e->getMessage());
-            } 
-        }else{
-            return abort(404);
-        }
+            $product = Product::findOrFail($id);  
+            $product->is_featured = $isFecture;
+            $product->save();
+            DB::commit();
+            $featured = 'un featured';
+            $status = 3;
+            if($public == 1){
+              $status = 2;
+              $featured = 'featured';
+            }
+            return response()->json([ 
+              'status'=>$status ,
+              'message'=>'Product '.$featured,
+            ]);
+        }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+    function setPublic(Request $request){
+      if($request->ajax()){
+        try {  
+            DB::beginTransaction();
+            $id = $request->id;
+            $isPublic = $request->isPublic;
+
+            $product = Product::findOrFail($id);  
+            $product->status = $isPublic;
+            $product->save();
+            DB::commit();
+            $public = 'un public';
+           $status = 3;
+            if($isPublic == 1){
+              $public = 'public';
+              $status = 2;
+            }
+            return response()->json([ 
+              'status'=>$status,
+              'message'=>'Product '.$public.' successfully',
+            ]);
+        }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+    function setTodayDeal(Request $request){
+      if($request->ajax()){
+        try {  
+            DB::beginTransaction();
+            $id = $request->id;
+            $isTodayDeal = $request->today_deal; 
+            $product = Product::findOrFail($id);  
+            $product->today_deal = $isTodayDeal;
+            $product->save();
+            DB::commit();
+
+            $todayDeal = 'Product remove from today deal';
+            $status = 3;
+            if($isTodayDeal == 1){
+              $status = 2;
+              $todayDeal = 'Product add in today deal';
+            }
+            return response()->json([ 
+              'status'=>$status,
+              'message'=>$todayDeal,
+            ]);
+        }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+    public function getSubcategories(Request $request){
+      if($request->ajax()){
+        try {  
+          DB::beginTransaction();
+          $catId = $request->cat_id;
+          $subcategories = SubCategory::where('cat_id',$catId)->get()->pluck('name','id'); 
+          
+          if($subcategories){
+              $response['success'] = true;
+              $response['data'] = $subcategories;
+          }else{
+              $response['success'] = false;
+          }
+          return response()->json($response);
+        }catch (\Exception $e) {
+          DB::rollback(); 
+          return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+    public function getBrand(Request $request){
+      if($request->ajax()){
+        try {  
+          DB::beginTransaction();
+          $catId = $request->cat_id;
+          $scatId = $request->subcat_id;
+          
+          $brands = SubCategory::where('id',$scatId)->first()->brand;
+         
+          $brand=json_decode($brands);
+          $products = Brand::whereIn('id',$brand)->get()->pluck('name','id');
+         
+          if($products){
+              $response['success'] = true;
+              $response['data'] = $products;
+          }else{
+              $response['success'] = false;
+          }
+          return response()->json($response);
+        }catch (\Exception $e) {
+          DB::rollback(); 
+          return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
     }
 }

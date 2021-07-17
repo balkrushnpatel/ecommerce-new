@@ -1,6 +1,7 @@
 <?php
 
 return [ 
+	'Master'=>'Master', 
 	'Dashboard'=>'Dashboard', 
 	'Category'=>'Category',
 	'SubCategory'=>'SubCategory',
@@ -24,4 +25,14 @@ return [
 	'ProductStock' =>'ProductStock',
 	'Package'=>'Package',
 	'Slider'=>'Slider',
+	'Slider'=>'Slider',
+    'Blog' =>'Blog',
+    'Setting'=>'Setting',
+    'Home Page'=>'Home Page',
+    'Contact Page'=>'Contact Page',
+    'Footer' =>'Footer',
+    'Favicon'=>'Favicon',
+    'Logo'=>'Logo',
+    'Language'=>'Language',
+    'General Setting'=>'General Setting',
 ];

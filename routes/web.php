@@ -22,8 +22,8 @@ Auth::routes();
 Route::get('/', 'UserHomeController@index')->name('home');
 
 
+Route::get('/admin', 'HomeController@index')->name('admin.dashboard')->middleware('verified');
 Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], function () { 
-	Route::get('/admin', 'HomeController@index')->name('admin.dashboard')->middleware('verified');
 	$admin_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'admin-route' . DIRECTORY_SEPARATOR; 
 	include_once($admin_real_path . 'category.php'); 
 	include_once($admin_real_path . 'subcategory.php');  
@@ -32,7 +32,11 @@ Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], funct
 	include_once($admin_real_path . 'couponcode.php');
 	include_once($admin_real_path . 'productstock.php');
 	include_once($admin_real_path . 'package.php');
-	include_once($admin_real_path . 'slider.php');      
+	include_once($admin_real_path . 'slider.php');
+	include_once($admin_real_path . 'blogcategory.php'); 
+	include_once($admin_real_path . 'blog.php');
+	include_once($admin_real_path . 'setting.php');
+	include_once($admin_real_path . 'language.php');
 });
 
 $web_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'web-route' . DIRECTORY_SEPARATOR; 

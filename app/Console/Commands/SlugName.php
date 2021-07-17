@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Brand; 
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Product;
 
 class SlugName extends Command
 {
@@ -48,6 +49,7 @@ class SlugName extends Command
 
             $bransup = Brand::findOrFail($brand->id);
             $bransup->slug = $slugName;
+            $bransup->created_at = date('Y-m-d h:i:s');
             $bransup->save();
         }
         $allSubCategory = SubCategory::get();
@@ -57,7 +59,8 @@ class SlugName extends Command
             $slugName =  $slug;
 
             $subcategori = SubCategory::findOrFail($subcat->id);
-            $subcategori->slug = $slugName;
+            $subcategori->slug = $slugName; 
+            $subcategori->created_at =date('Y-m-d h:i:s');
             $subcategori->save();
         }
         $allCategory = Category::get();
@@ -68,7 +71,16 @@ class SlugName extends Command
 
             $categori = Category::findOrFail($subcat->id);
             $categori->slug = $slugName;
+            $categori->created_at =date('Y-m-d h:i:s');
             $categori->save();
+        }
+        $allProduct = Product::get();
+        foreach($allProduct as $item){ 
+            $slug = \Str::slug($item->name); 
+            $slugName =$slug; 
+            $product = Product::findOrFail($item->id);
+            $product->slug = $slugName; 
+            $product->save();
         }
         return 0;
     }

@@ -31,17 +31,12 @@
 					<thead>
 						<tr>
 							<th>{{ tableHeader(0) }}</th>
-							<th>{{ tableHeader(7) }}</th>
-							<th>{{ tableHeader(12) }}</th>
-							<th>{{ tableHeader(1) }}</th>
-							<th>{{ tableHeader(23) }}</th>
-							<th>{{ tableHeader(5) }}</th>
-							<th>{{ tableHeader(6) }}</th>
-							<th>{{ tableHeader(10) }}</th>
-							<th>{{ tableHeader(13) }}</th>
-							<th>{{ tableHeader(22) }}</th>
-							<th>{{ tableHeader(2) }}</th>
-							<th>{{ tableHeader(3) }}</th>
+							<th>{{ tableHeader(24) }}</th> 
+							<th>{{ tableHeader(1) }}</th>  
+							<th>{{ tableHeader(10) }}</th> 
+							<th>{{ tableHeader(26) }}</th> 
+							<th>{{ tableHeader(22) }}</th> 
+							<th>{{ tableHeader(25) }}</th>
 							<th>{{ tableHeader(4) }}</th>
                         </tr>
 					</thead> 
@@ -53,6 +48,7 @@
 @include('modals.delete') 
 @endsection
 @push('scripts') 
+<script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-switch.js?v=7.2.8')}}"></script> 
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script> 
 <script src="{{ asset('wjs/product.js')}}"></script>
 @endpush

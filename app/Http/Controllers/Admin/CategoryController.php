@@ -55,14 +55,6 @@ class CategoryController extends Controller
             $category->description          = $request->input('description');
             $category->status               = $request->input('status'); 
             $category->save();
-            if($request->hasFile('image')) {
-                $image = $request->file('image');
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/category/'.$category->id);
-                $image->move($destinationPath, $name); 
-                $category->image= $name; 
-                $category->save();
-            } 
             DB::commit();
             return redirect()->route('categires.index')->with('success',' Category create successfully!');
 
@@ -118,14 +110,6 @@ class CategoryController extends Controller
             $category->description       = $request->input('description');
             $category->status            = $request->input('status'); 
             $category->save();
-            if($request->hasFile('image')) {
-                $image = $request->file('image');
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/category/'.$category->id);
-                $image->move($destinationPath, $name); 
-                $category->image= $name; 
-                $category->save();
-            } 
             DB::commit();
             return redirect()->route('categires.index')->with('success','category update Successfully.');
         } catch (DecryptException  $e) {

@@ -49,13 +49,6 @@
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>  
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						           <label class="col-form-label" for="product-image">Image</label> 
-						      	   <input type="file" class="form-control" id="product-image"value="" name="image">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
 						  	 <div class="form-group row">
 						  	 	<div class="col-lg-12">
 	  	 							<div class="radio-inline">

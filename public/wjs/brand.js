@@ -19,7 +19,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			serverSide: true,
 			columns: dataObject[0].COLUMNS,
 			ajax: {
-				url: APP_URL + '/brand_ajax_list',
+				url: APP_URL + '/admin/brand_ajax_list',
 				type: 'GET', 
 			}, 
 		});

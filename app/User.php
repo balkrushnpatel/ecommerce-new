@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function isUser() {
        return $this->role === 'user';
     }
+    public function createdBy()
+    {
+        return $this->hasOne('App\Models\Product','created_by');
+    }
 }

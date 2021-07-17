@@ -14,7 +14,7 @@ class AddImageOnBrand extends Migration
     public function up()
     {
         Schema::table('brands', function (Blueprint $table) {
-            $table->string('description')->nullable()->after('name');
+            $table->longText('description')->nullable()->after('name');
             $table->string('image')->nullable()->after('description');
         });
     }

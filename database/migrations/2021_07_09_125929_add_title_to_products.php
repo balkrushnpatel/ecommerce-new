@@ -13,10 +13,8 @@ class AddTitleToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('Products', function (Blueprint $table) {
-             $table->string('input_title')->nullable()->after('size');
-             $table->string('title_choice')->nullable()->after('size');
-             $table->string('option')->nullable()->after('size');
+        Schema::table('Products', function (Blueprint $table) { 
+            $table->string('option')->nullable()->after('image');
         });
     }
 

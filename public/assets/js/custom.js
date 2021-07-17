@@ -70,71 +70,7 @@ $(document).ready(function() {
         format: "dd-mm-yyyy",
         endDate:new Date()
     });
-    
-    // get selected region Majlis
-    if($('#region_id').length){
-        var regionId = $('#region_id').val();
-        if(regionId){
-            getMajlis(regionId);
-        }
-    }
-
-    $('#region_id').select2().on('change', function(e) {  
-        var regionId = $(this).val();
-        getMajlis(regionId);
-    });
-
-    function getMajlis(id) {
-        if(id == '') id=0;
-        $.ajax({
-            url: APP_URL + '/ajax/majlis/'+ id,
-            data: {
-                 
-            },
-            beforeSend: function() {
-                 
-            },
-            success: function(res) {
-                //$(reDiv).html(res), $(reDiv +' select').select2(); 
-                var optionHtml = '<option value="">Select Majlis</option>';
-                var majlisId = $('#majlisId').val();
-                $.each( res.data, function( key, value ) {
-                    var optionSelected = '';
-                    if(majlisId == key){
-                        optionSelected = 'selected';
-                    }
-                    optionHtml +='<option value="'+key+'" '+optionSelected+'>'+value+'</option>';
-                });
-                $('#majlis_id').html(optionHtml), $('#majlis_id').select2();
-            }
-        });
-       
-    }
-
-    $('#add_payment_book_id').on('change', function(e) {
-        var book_id = $(this).val();
-        getReceipt(book_id);
-    });
-
-    function getReceipt(id) {
-        if(id == '') id=0;
-        $.ajax({
-            url: APP_URL + '/ajax/receipt_no/'+ id,
-            data: {
-
-            },
-            beforeSend: function() {
-
-            },
-            success: function(res) {
-                var optionHtml = '<option value="">Select Receipt No</option>';
-                $.each( res.data, function( key, value ) {
-                    optionHtml +='<option value="'+key+'">'+value+'</option>';
-                });
-                $('#book_receipt_id').html(optionHtml);
-            }
-        }); 
-    } 
+      
 });
 
 $(document).on("input", ".number", function() {
@@ -143,3 +79,43 @@ $(document).on("input", ".number", function() {
 function getCsrfToken() {
     return $.trim($('meta[name="csrf-token"]').attr('content'));
 }
+function handleResponse(res) { 
+    if (jQuery.type(res.status) == 'undefined') {
+        if (jQuery.type(notice) == 'object') notice.remove();
+        return true;
+    } 
+    if (res.status === 2) { 
+        toastr.success(res.message, "SUCCESS");
+        return true;
+    } else if (res.status === 3) {
+        toastr.error(res.message, "Oh No!"); 
+        return true;
+    } else if (res.status === 401) {
+        location.reload();
+    } else if (res.status === 422 || res.status === 1) {
+        return handleFormErrors(res);
+    } else if (res.status === 419) {         
+        toastr.error(res.responseJSON.message, "Oh No!");
+        return true;
+    } else if (jQuery.inArray(res.status, [403, 404]) >= 0) {
+        var msg = (res.status === 404) ? 'The record does not exist. If you are repeatedly getting this error contact system admin for more details.' : res.responseJSON.message;
+         toastr.error(msg, "Oh No!");
+        return true;
+    }
+}
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+};

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSizeToProducts extends Migration
+class CreateBlogCatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddSizeToProducts extends Migration
      */
     public function up()
     {
-        Schema::table('Products', function (Blueprint $table) {
-            $table->string('size')->nullable()->after('name');
+        Schema::create('blog_cats', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddSizeToProducts extends Migration
      */
     public function down()
     {
-        Schema::table('Products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('blog_cats');
     }
 }
