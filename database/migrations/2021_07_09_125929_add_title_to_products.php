@@ -14,7 +14,8 @@ class AddTitleToProducts extends Migration
     public function up()
     {
         Schema::table('Products', function (Blueprint $table) { 
-            $table->string('option')->nullable()->after('image');
+            $table->longText('color')->nullable()->after('image');
+            $table->longText('option')->nullable()->after('image');
         });
     }
 

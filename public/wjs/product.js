@@ -24,19 +24,13 @@ var KTDatatablesDataSourceAjaxServer = function() {
 			}, 
 		});
 	};
-
 	return {
-
-		//main function to initiate the module
 		init: function() {
 			initTable1();
 		},
-
 	};
-
 }();   
 var KTFormControls = function () {
-	// Private functions
 	var _initProductForm = function () {
 		FormValidation.formValidation(
 			document.getElementById('product-form'),
@@ -156,7 +150,7 @@ $('#addInput').click(function(){
      var rowIndex =  $('#addition-input-wrap').find('.row-item').length;
      i = (+rowIndex + +1);
      console.log('row-item ::'+i);
-	html +='<div class="form-group row row-item pt-5" id="row'+i+'">';
+	html +='<div class="form-group row row-item pb-3" id="row'+i+'">';
 		html +='<div class="col-lg-5">';
 			html +='<input type="text" placeholder="Input Title" class="form-control" name="input_title[]">';
 		html +='</div> ';
@@ -188,12 +182,13 @@ $( document ).delegate( ".choice-title", "change", function() {
 	var i = $(this).attr('data-row'); 
 	var html = '';
 	$('#chiled-row-'+i).html('');
+	var placeholder = "Please enter ',' separate";
 	if(choice != 'text'){ 
-	       html +='<div class="form-group row pt-5" id="row'+i+'">';
+	    html +='<div class="row pb-3" id="row'+i+'">';
            html +='<div class="col-lg-6">';
-    	   html += '<input type="text" placeholder="Add option name by comma seperated" class="form-control" name="option[]">';
+    		   html += '<input type="text" placeholder="'+placeholder+'" class="form-control" name="option[]">';
     	   html +='</div>'; 
-       html +='</div>';            	
+       	html +='</div>';            	
     }
    	$('#chiled-row-'+i).append(html); 
 }); 
@@ -223,7 +218,7 @@ $('#addColorInput').click(function(){
      console.log('row-item ::'+i);
 	html +='<div class="form-group row row-item" id="row'+i+'">';
 		html +='<div class="col-lg-6 input-group colorpicker-component">';
-			html +='<input type="text" name="input_color[]" class="form-control"/>';
+			html +='<input placeholder="Choice color" type="text" name="input_color[]" class="form-control"/>';
 		html +='</div> ';
 		html +='<div class="col-lg-2">';
 		html +='<button id="'+i+'" class=" btn btn-sm btn-danger btn_remove">X</button>';
@@ -232,7 +227,6 @@ $('#addColorInput').click(function(){
 	$('#add-color-input-wrap').append(html);
 });  
 $( document ).delegate( ".btn_remove", "click", function() {
-
 	var button_id = $(this).attr("id");   
         // console.log(button_id);
          $('#row'+button_id).remove();

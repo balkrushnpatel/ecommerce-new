@@ -43,6 +43,8 @@ class ProductController extends Controller
             DB::beginTransaction();
             $validator = Validator::make($request->all(),[
                 'name' => 'required',
+                'cat_id' => 'required',
+                'price' => 'required',
                 'description' => 'required',
             ]);
             if ($validator->fails()) {
@@ -50,8 +52,7 @@ class ProductController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
-            $option = [];
-            $color =[];
+            $option = []; 
             if(!empty($request->input('input_title'))){
               foreach($request->input('input_title') as $key=>$title){
                 $option[] = array(
@@ -60,25 +61,14 @@ class ProductController extends Controller
                   'option'=>$request->input('option')[$key],
                 );
               } 
-            }
-           
-           if(!empty($request->input('input_color'))){
-              foreach ($request->input('input_color') as $key => $clr) {
-                if(!empty($clr)){
-                  $color[] = array(
-                    'color'=>$clr,
-                  );
-                }
-              }
-            }
-            $product   = new Product(); 
-            
+            }  
+            $product   = new Product();             
             $product->cat_id          = $request->input('cat_id');
             $product->subcat_id       = $request->input('subcat_id');
             $product->brand_id        = $request->input('brand_id');
             $product->name            = $request->input('name'); 
-            $product->title_choice    = json_encode($option);
-            $product->input_color     = json_encode($color);
+            $product->option          = json_encode($option);
+            $product->color           = json_encode($request->input('input_color'));
             $product->description     = $request->input('description');
             $product->price           = $request->input('price');
             $product->qty             = $request->input('qty');
@@ -89,18 +79,19 @@ class ProductController extends Controller
             $product->purchase_price  = $request->input('purchase_price');
             $product->shipping_cost   = $request->input('shipping_cost');
             $product->tax             = $request->input('tax');
-            $product->save();
+            $i = '0';
             if ($request->hasFile('image')) {
               $image = $request->file('image');
+              $i = '1';
               foreach($image as $img){
-                $name = time().'.'.$img->getClientOriginalExtension();
+                $name = $i.'.'.$img->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/product/'.$product->id);
-                $img->move($destinationPath, $name); 
-                $data[]=$name;
-                $product->image= json_encode($data); 
-                $product->save();
-              }    
+                $img->move($destinationPath, $name);
+                $i++;
+              }
             } 
+            $product->image= $i; 
+            $product->save();
             DB::commit();
             return redirect()->route('product.index')->with('success',' Product create successfully!');
 
@@ -154,8 +145,7 @@ class ProductController extends Controller
             
             $option = [];
             $color =[];
-            if(!empty($request->input('input_title')))
-            { 
+            if(!empty($request->input('input_title'))){ 
               foreach($request->input('input_title') as $key=>$title){
                 $option[] = array(
                   'title'=>$title,
@@ -174,34 +164,40 @@ class ProductController extends Controller
               }
             }
             $product = Product::findOrFail(decrypt($id));  
-            $product->cat_id                   = $request->input('cat_id');
-            $product->subcat_id                = $request->input('subcat_id');
-            $product->brand_id                 = $request->input('brand_id');
-            $product->name                     = $request->input('name');
-            $product->size                    = $request->input('size');
-            $product->description              = $request->input('description');
-            $product->price                    = $request->input('price');
-            $product->qty                      = $request->input('qty');
-            $product->discount                 = $request->input('discount'); 
-            $product->unit                    = $request->input('unit');
-            $product->tags                    = $request->input('tags');
-            $product->purchase_price                    = $request->input('purchase_price');
-            $product->shipping_cost                    = $request->input('shipping_cost');
-            $product->tax                    = $request->input('tax');
-            $product->title_choice             = json_encode($option);
-            $product->input_color            = json_encode($color);
-            $product->save(); 
+            $product->cat_id          = $request->input('cat_id');
+            $product->subcat_id       = $request->input('subcat_id');
+            $product->brand_id        = $request->input('brand_id');
+            $product->name            = $request->input('name');
+            $product->description     = $request->input('description');
+            $product->price           = $request->input('price');
+            $product->qty             = $request->input('qty');
+            $product->discount        = $request->input('discount'); 
+            $product->unit            = $request->input('unit');
+            $product->tags            = $request->input('tags');
+            $product->purchase_price  = $request->input('purchase_price');
+            $product->shipping_cost   = $request->input('shipping_cost');
+            $product->tax             = $request->input('tax');
+            if(!empty($request->input('input_title'))){
+              $product->option          = json_encode($option);
+            }
+            if(!empty($request->input('input_color'))){
+              $product->color           = json_encode($request->input('input_color'));
+            }
+            $product->save();
+
+            if ($request->hasFile('image')) {
+              $image = $request->file('image');
+              $i = '1';
+              foreach($image as $img){
+                $name = $i.'.'.$img->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/product/'.$product->id);
+                $img->move($destinationPath, $name);
+                $i++;
+              }
+              $product->image= $i; 
+              $product->save();
+            }
             DB::commit();
-              if ($request->hasFile('image')) {
-                if(!empty($request->file('image'))){
-                  $image = $request->file('image');
-                  $name = time().'.'.$image->getClientOriginalExtension();
-                  $destinationPath = public_path('/uploads/product/'.$product->id);
-                  $image->move($destinationPath, $name); 
-                  $product->image = $name; 
-                  $product->save();
-                }
-            } 
             return redirect()->route('product.index')->with('success','Product update Successfully.');
         }catch (\Exception $e) {
             DB::rollback();

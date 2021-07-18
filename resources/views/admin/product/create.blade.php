@@ -58,9 +58,9 @@
 												<label for="cat_id" class="col-form-label">  Category <span class="required">*</span></label>
 												<select class="form-control select2" name="cat_id" id="cat_id"> 
 													<option value=""> Select  Category</option> 
-													@foreach(getCategory() as $key => $category)
+													@foreach(getCategory() as $key => $category) 
 														@if(isset($product->cat_id) && ($product->cat_id == $category['id']))
-															<option selected value="{{ $category['id'] }}"> {{ $$category['name'] }}</option>
+															<option selected value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 														@else
 															<option value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 														@endif
@@ -94,8 +94,8 @@
 										</div>
 										<div class="col-sm-12 col-lg-4">
 											<div class="form-group">
-												<label for="product-tags" class="col-form-label"> Tags <span class="required">*</span></label>
-												<input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value='' style="height: 20px;" />
+												<label for="product-tags" class="col-form-label">Tags <span class="required">*</span></label>
+												<input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value="{{ $product->tags }}" style="height: 20px;" />
 											</div>   
 										</div>
 										<div class="col-sm-12 col-lg-4">
@@ -107,7 +107,7 @@
 										</div> 
 										<div class="col-sm-12 col-lg-12">
 											<div class="form-group">
-												 	<label for="product-description" class="col-form-label">  Description </label> 
+												<label for="product-description" class="col-form-label">  Description </label>
 										        <textarea name="description" id="kt-ckeditor-1">{{ (isset($product)) ? $product->description : '' }}
 										        </textarea>
 											</div>
@@ -157,7 +157,30 @@
 								<div class="pb-5" data-wizard-type="step-content">
 									<div class="row"> 
 										<div class="col-sm-12 col-lg-12">
-											<div class="form-group" id="add-color-input-wrap">
+											@php $i= '1'; @endphp
+											@if(!empty($product->color))
+												@foreach(json_decode($product->color) as $color)
+													<div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
+											           <div class="col-lg-6 colorpicker-component">
+											    		   <input type="text" placeholder="Choice color" class="form-control" name="input_color[]" value="{{ $color }}">
+											    	   </div> 
+												       	@if($i != '1')
+												       		<div class="col-lg-2">
+																<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
+															</div> 
+												       	@endif
+												       	@php $i++; @endphp
+												    </div>
+												@endforeach
+											@else
+												<div class="row pb-3">
+										           <div class="col-lg-6 colorpicker-component">
+										    		   <input type="text" placeholder="Choice color" class="form-control" name="input_color[]" value="#000000">
+										    	   </div> 
+										       	</div>
+										    @endif
+											<div id="add-color-input-wrap"></div>
+											<div class="form-group">
 												<button  type="button" id="addColorInput"class="btn btn-primary">Add More Colors</button>
 											</div> 
 										</div>
@@ -166,7 +189,7 @@
 											<h4 class="pull-left">
 		                                        <i>If You Need More Choice Options For Customers Of This Product ,please Click Here.</i>
 		                                    </h4>
-											<div class="form-group pb-5">
+											<div class="form-group pb-3">
 												<button  type="button" id="addInput"class="btn btn-primary">Add Customer Input Options</button>
 											</div>
 										</div>
