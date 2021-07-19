@@ -21,13 +21,15 @@ class UserHomeController extends Controller
     public function index()
     { 
     	$sliders=Slider::all();
-      $featuredProduct=Product::where('is_featured',1)->get();
-      return view('userhome',compact('sliders','featuredProduct'));
+      $featuredProduct=Product::feactureProduct();
+      $todayDeal=Product::todayDeal();
+      
+      $newArrival=Product::newArrival();
+      return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal'));
     }
-    public function productDetail(Request $request,$id){
-          
-            $product = Product::find($id);  
-            return view('user.product-details',compact('product'));
+    public function productDetail(Request $request,$id){ 
+      $product = Product::find($id);  
+      return view('user.product-details',compact('product'));
     }
 
     public function addtoCart(Request $request,$id)

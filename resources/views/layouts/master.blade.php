@@ -34,10 +34,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     @if(!empty(request()->segment(1)))
-        <link rel="stylesheet" type="text/css" href="{{ asset('user/css/style.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('user/css/style.min.css') }}"> 
     @else
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/demo1.min.css') }}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
 </head> 
 @php
     $class = 'home';

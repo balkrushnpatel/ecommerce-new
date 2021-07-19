@@ -1,8 +1,7 @@
 <div class="product">
-    <figure class="product-media">
+    <figure class="product-media product-img">
         <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
-             <img src="{{ asset('user/images/demos/demo1/products/3-4-1.jpg') }}" alt="{{ $product->name }}"
-                    class="product-image" />
+            {!! fileView($product,'thumb','no','jpg','img') !!}
         </a>
         <div class="product-action-vertical">
             <a href="#" class="btn-product-icon btn-cart w-icon-cart" onclick="to_cart({{ $product->id}} )" title="Add to cart"></a>

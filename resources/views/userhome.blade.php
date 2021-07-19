@@ -266,516 +266,384 @@
             </div>
         </div>
         <!-- End of Category Banner Wrapper -->
-
-        <div class="row deals-wrapper appear-animate mb-8">
-            <div class="col-lg-9 mb-4">
-                <div class="single-product h-100 br-sm">
-                    <h4 class="title-sm title-underline font-weight-bolder ls-normal">Deals Hot Of The Day</h4>
-                    <div class="owl-carousel owl-theme owl-nav-top owl-nav-lg row cols-1 gutter-no"
-                        data-owl-options="{
-                        'nav': true,
-                        'dots': false,
-                        'margin': 20,
-                        'items': 1
-                    }">
-                        <div class="product product-single row">
-                            <div class="col-md-6">
-                                <div class="product-gallery product-gallery-vertical mb-0">
-                                    <div
-                                        class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/1-1-800x900.jpg') }}"
-                                                alt="Product Image" width="800" height="900">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/1-2-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/1-3-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/1-4-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                    </div>
-                                    <div class="product-thumbs-wrap">
-                                        <div class="product-thumbs">
-                                            <div class="product-thumb active">
-                                                <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-label-group">
-                                        <label class="product-label label-discount">25% Off</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="product-details scrollable">
-                                    <h2 class="product-title mb-1"><a href="product-default.html">Coat Pool
-                                            Comfort Jacket</a></h2>
-
-                                    <hr class="product-divider">
-
-                                    <div class="product-price"><ins class="new-price ls-50">$150.00 -
-                                            $180.00</ins></div>
-
-                                    <div class="product-countdown-container flex-wrap">
-                                        <label class="mr-2 text-default">Offer Ends In:</label>
-                                        <div class="product-countdown countdown-compact"
-                                            data-until="2022, 12, 31" data-compact="true">
-                                            629 days, 11: 59: 52</div>
-                                    </div>
-
-                                    <div class="ratings-container">
-                                        <div class="ratings-full">
-                                            <span class="ratings" style="width: 80%;"></span>
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <a href="#" class="rating-reviews">(3 Reviews)</a>
-                                    </div>
-
-                                    <div class="product-form product-variation-form product-size-swatch mb-3">
-                                        <label class="mb-1">Size:</label>
-                                        <div class="flex-wrap d-flex align-items-center product-variations">
-                                            <a href="#" class="size">Extra Large</a>
-                                            <a href="#" class="size">Large</a>
-                                            <a href="#" class="size">Medium</a>
-                                            <a href="#" class="size">Small</a>
-                                        </div>
-                                        <a href="#" class="product-variation-clean">Clean All</a>
-                                    </div>
-
-                                    <div class="product-variation-price">
-                                        <span></span>
-                                    </div>
-
-                                    <div class="product-form pt-4">
-                                        <div class="product-qty-form mb-2 mr-2">
-                                            <div class="input-group">
-                                                <input class="quantity form-control" type="number" min="1"
-                                                    max="10000000">
-                                                <button class="quantity-plus w-icon-plus"></button>
-                                                <button class="quantity-minus w-icon-minus"></button>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary btn-cart">
-                                            <i class="w-icon-cart"></i>
-                                            <span>Add to Cart</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="social-links-wrapper mt-1">
-                                        <div class="social-links">
-                                            <div class="social-icons social-no-color border-thin">
-                                                <a href="#"
-                                                    class="social-icon social-facebook w-icon-facebook"></a>
-                                                <a href="#"
-                                                    class="social-icon social-twitter w-icon-twitter"></a>
-                                                <a href="#"
-                                                    class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                                                <a href="#"
-                                                    class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                                <a href="#"
-                                                    class="social-icon social-youtube fab fa-linkedin-in"></a>
-                                            </div>
-                                        </div>
-                                        <span class="divider d-xs-show"></span>
-                                        <div class="product-link-wrapper d-flex">
-                                            <a href="#"
-                                                class="btn-product-icon btn-wishlist w-icon-heart"></a>
-                                            <a href="#"
-                                                class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Product Single -->
-                        <div class="product product-single row">
-                            <div class="col-md-6">
-                                <div class="product-gallery product-gallery-vertical mb-0">
-                                    <div
-                                        class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-1-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/2-1-800x900.jpg') }}"
-                                                alt="Product Image" width="800" height="900">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-2-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/2-2-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-3-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/2-3-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                        <figure class="product-image">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-4-600x675.jpg') }}"
-                                                data-zoom-image="{{ asset('user/images/demos/demo1/products/2-4-800x900.jpg') }}"
-                                                alt="Product Image" width="362" height="408">
-                                        </figure>
-                                    </div>
-                                    <div class="product-thumbs-wrap">
-                                        <div class="product-thumbs">
-                                            <div class="product-thumb active">
-                                                <img src="{{ asset('user/images/demos/demo1/products/2-1-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/2-2-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/2-3-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                            <div class="product-thumb">
-                                                <img src="{{ asset('user/images/demos/demo1/products/2-4-600x675.jpg') }}"
-                                                    alt="Product thumb" width="60" height="68" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-label-group">
-                                        <label class="product-label label-discount">25% Off</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="product-details scrollable">
-                                    <h2 class="product-title mb-1"><a href="product-default.html">Beyond OTP
-                                            Shirt</a></h2>
-
-                                    <hr class="product-divider">
-
-                                    <div class="product-price"><ins class="new-price ls-50">$26.00</ins></div>
-
-                                    <div class="product-countdown-container flex-wrap">
-                                        <label class="mr-2 text-default">Offer Ends In:</label>
-                                        <div class="product-countdown countdown-compact"
-                                            data-until="2022, 12, 31" data-compact="true">
-                                            629 days, 11: 59: 52</div>
-                                    </div>
-
-                                    <div class="ratings-container">
-                                        <div class="ratings-full">
-                                            <span class="ratings" style="width: 80%;"></span>
-                                            <span class="tooltiptext tooltip-top"></span>
-                                        </div>
-                                        <a href="#product-tab-reviews" class="rating-reviews">(3 Reviews)</a>
-                                    </div>
-
-                                    <div class="product-form product-variation-form product-size-swatch mb-3">
-                                        <label class="mb-1">Size:</label>
-                                        <div class="flex-wrap d-flex align-items-center product-variations">
-                                            <a href="#" class="size">Extra Large</a>
-                                            <a href="#" class="size">Large</a>
-                                            <a href="#" class="size">Medium</a>
-                                            <a href="#" class="size">Small</a>
-                                        </div>
-                                        <a href="#" class="product-variation-clean">Clean All</a>
-                                    </div>
-
-                                    <div class="product-variation-price">
-                                        <span></span>
-                                    </div>
-
-                                    <div class="product-form pt-4">
-                                        <div class="product-qty-form mb-2 mr-2">
-                                            <div class="input-group">
-                                                <input class="quantity form-control" type="number" min="1"
-                                                    max="10000000">
-                                                <button class="quantity-plus w-icon-plus"></button>
-                                                <button class="quantity-minus w-icon-minus"></button>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary btn-cart">
-                                            <i class="w-icon-cart"></i>
-                                            <span>Add to Cart</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="social-links-wrapper mt-1">
-                                        <div class="social-links">
-                                            <div class="social-icons social-no-color border-thin">
-                                                <a href="#"
-                                                    class="social-icon social-facebook w-icon-facebook"></a>
-                                                <a href="#"
-                                                    class="social-icon social-twitter w-icon-twitter"></a>
-                                                <a href="#"
-                                                    class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                                                <a href="#"
-                                                    class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                                <a href="#"
-                                                    class="social-icon social-youtube fab fa-linkedin-in"></a>
-                                            </div>
-                                        </div>
-                                        <span class="divider d-xs-show"></span>
-                                        <div class="product-link-wrapper d-flex">
-                                            <a href="#"
-                                                class="btn-product-icon btn-wishlist w-icon-heart"></a>
-                                            <a href="#"
-                                                class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Product Single -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 mb-4">
-                <div class="widget widget-products widget-products-bordered h-100">
-                    <div class="widget-body br-sm h-100">
-                        <h4 class="title-sm title-underline font-weight-bolder ls-normal mb-2">Top 20 Best
-                            Seller</h4>
-                        <div class="owl-carousel owl-theme owl-nav-top row cols-lg-1 cols-md-3"
+        @if(count($todayDeal) > 0)
+            <div class="row deals-wrapper appear-animate mb-8">
+                <div class="col-lg-9 mb-4">
+                    <div class="single-product h-100 br-sm">
+                        <h4 class="title-sm title-underline font-weight-bolder ls-normal">Deals Hot Of The Day</h4>
+                        <div class="owl-carousel owl-theme owl-nav-top owl-nav-lg row cols-1 gutter-no"
                             data-owl-options="{
                             'nav': true,
                             'dots': false,
                             'margin': 20,
-                            'responsive': {
-                                '0': {
-                                    'items': 1
-                                },
-                                '576': {
-                                    'items': 2
-                                },
-                                '768': {
-                                    'items': 3
-                                },
-                                '992': {
-                                    'items': 1
-                                }
-                            }
+                            'items': 1
                         }">
-                            <div class="product-widget-wrap">
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-1.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Kitchen Cooker</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                            @foreach($todayDeal as $deal)
+                                <div class="product product-single row">
+                                    <div class="col-md-6">
+                                        <div class="product-gallery product-gallery-vertical mb-0">
+                                            <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
+                                                <figure class="product-image">
+                                                    <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
+                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-1-800x900.jpg') }}"
+                                                        alt="Product Image" width="800" height="900">
+                                                </figure>
+                                                <figure class="product-image">
+                                                    <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
+                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-2-800x900.jpg') }}"
+                                                        alt="Product Image" width="362" height="408">
+                                                </figure>
+                                                <figure class="product-image">
+                                                    <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
+                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-3-800x900.jpg') }}"
+                                                        alt="Product Image" width="362" height="408">
+                                                </figure>
+                                                <figure class="product-image">
+                                                    <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
+                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-4-800x900.jpg') }}"
+                                                        alt="Product Image" width="362" height="408">
+                                                </figure>
+                                            </div>
+                                            <div class="product-thumbs-wrap">
+                                                <div class="product-thumbs">
+                                                    <div class="product-thumb active">
+                                                        <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
+                                                            alt="Product thumb" width="60" height="68" />
+                                                    </div>
+                                                    <div class="product-thumb">
+                                                        <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
+                                                            alt="Product thumb" width="60" height="68" />
+                                                    </div>
+                                                    <div class="product-thumb">
+                                                        <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
+                                                            alt="Product thumb" width="60" height="68" />
+                                                    </div>
+                                                    <div class="product-thumb">
+                                                        <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
+                                                            alt="Product thumb" width="60" height="68" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-label-group">
+                                                <label class="product-label label-discount">25% Off</label>
                                             </div>
                                         </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$150.60</ins>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="product-details scrollable">
+                                            <h2 class="product-title mb-1"><a href="product-default.html">Coat Pool
+                                                    Comfort Jacket</a></h2>
+
+                                            <hr class="product-divider">
+
+                                            <div class="product-price"><ins class="new-price ls-50">$150.00 -
+                                                    $180.00</ins></div>
+
+                                            <div class="product-countdown-container flex-wrap">
+                                                <label class="mr-2 text-default">Offer Ends In:</label>
+                                                <div class="product-countdown countdown-compact"
+                                                    data-until="2022, 12, 31" data-compact="true">
+                                                    629 days, 11: 59: 52</div>
+                                            </div>
+
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 80%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                                <a href="#" class="rating-reviews">(3 Reviews)</a>
+                                            </div>
+
+                                            <div class="product-form product-variation-form product-size-swatch mb-3">
+                                                <label class="mb-1">Size:</label>
+                                                <div class="flex-wrap d-flex align-items-center product-variations">
+                                                    <a href="#" class="size">Extra Large</a>
+                                                    <a href="#" class="size">Large</a>
+                                                    <a href="#" class="size">Medium</a>
+                                                    <a href="#" class="size">Small</a>
+                                                </div>
+                                                <a href="#" class="product-variation-clean">Clean All</a>
+                                            </div>
+
+                                            <div class="product-variation-price">
+                                                <span></span>
+                                            </div>
+
+                                            <div class="product-form pt-4">
+                                                <div class="product-qty-form mb-2 mr-2">
+                                                    <div class="input-group">
+                                                        <input class="quantity form-control" type="number" min="1"
+                                                            max="10000000">
+                                                        <button class="quantity-plus w-icon-plus"></button>
+                                                        <button class="quantity-minus w-icon-minus"></button>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary btn-cart">
+                                                    <i class="w-icon-cart"></i>
+                                                    <span>Add to Cart</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="social-links-wrapper mt-1">
+                                                <div class="social-links">
+                                                    <div class="social-icons social-no-color border-thin">
+                                                        <a href="#"
+                                                            class="social-icon social-facebook w-icon-facebook"></a>
+                                                        <a href="#"
+                                                            class="social-icon social-twitter w-icon-twitter"></a>
+                                                        <a href="#"
+                                                            class="social-icon social-pinterest fab fa-pinterest-p"></a>
+                                                        <a href="#"
+                                                            class="social-icon social-whatsapp fab fa-whatsapp"></a>
+                                                        <a href="#"
+                                                            class="social-icon social-youtube fab fa-linkedin-in"></a>
+                                                    </div>
+                                                </div>
+                                                <span class="divider d-xs-show"></span>
+                                                <div class="product-link-wrapper d-flex">
+                                                    <a href="#"
+                                                        class="btn-product-icon btn-wishlist w-icon-heart"></a>
+                                                    <a href="#"
+                                                        class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <div class="widget widget-products widget-products-bordered h-100">
+                        <div class="widget-body br-sm h-100">
+                            <h4 class="title-sm title-underline font-weight-bolder ls-normal mb-2">Top 20 Best Seller</h4>
+                            <div class="owl-carousel owl-theme owl-nav-top row cols-lg-1 cols-md-3"
+                                data-owl-options="{
+                                'nav': true,
+                                'dots': false,
+                                'margin': 20,
+                                'responsive': {
+                                    '0': {
+                                        'items': 1
+                                    },
+                                    '576': {
+                                        'items': 2
+                                    },
+                                    '768': {
+                                        'items': 3
+                                    },
+                                    '992': {
+                                        'items': 1
+                                    }
+                                }
+                            }">
+                                <div class="product-widget-wrap">
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-1.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Kitchen Cooker</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$150.60</ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-2.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Professional Pixel Camera</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$215.68</ins><del
+                                                    class="old-price">$230.45</del>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-widget">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-3.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Sport Women’s Wear</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$220.20</ins><del
+                                                    class="old-price">$300.62</del>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-2.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Professional Pixel Camera</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                                <div class="product-widget-wrap">
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-4.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Latest Speaker</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$250.68</ins>
                                             </div>
                                         </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$215.68</ins><del
-                                                class="old-price">$230.45</del>
+                                    </div>
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-5.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Men's Black Wrist Watch</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$135.60</ins><del
+                                                    class="old-price">$155.70</del>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-widget">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-6.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Wash Machine</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins class="new-price">$215.68</ins>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product product-widget">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-3.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Sport Women’s Wear</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                                <div class="product-widget-wrap">
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-7.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Security Guard</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$220.20</ins><del
-                                                class="old-price">$300.62</del>
+                                            <div class="product-price">
+                                                <ins class="new-price">$320.00</ins>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="product-widget-wrap">
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-4.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Latest Speaker</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                                    <div class="product product-widget bb-no">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-8.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">Apple Super Notecom</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$250.68</ins>
+                                            <div class="product-price">
+                                                <ins class="new-price">$243.30</ins><del
+                                                    class="old-price">$253.50</del>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-5.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Men's Black Wrist Watch</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                                    <div class="product product-widget">
+                                        <figure class="product-media">
+                                            <a href="product-default.html">
+                                                <img src="{{ asset('user/images/demos/demo1/products/2-9.jpg') }}" alt="Product"
+                                                    width="105" height="118" />
+                                            </a>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name">
+                                                <a href="product-default.html">HD Television</a>
+                                            </h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 60%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$135.60</ins><del
-                                                class="old-price">$155.70</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product product-widget">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-6.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Wash Machine</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
+                                            <div class="product-price">
+                                                <ins class="new-price">$450.68</ins><del
+                                                    class="old-price">$500.00</del>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$215.68</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-widget-wrap">
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-7.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Security Guard</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$320.00</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product product-widget bb-no">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-8.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">Apple Super Notecom</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$243.30</ins><del
-                                                class="old-price">$253.50</del>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product product-widget">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="{{ asset('user/images/demos/demo1/products/2-9.jpg') }}" alt="Product"
-                                                width="105" height="118" />
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name">
-                                            <a href="product-default.html">HD Television</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$450.68</ins><del
-                                                class="old-price">$500.00</del>
                                         </div>
                                     </div>
                                 </div>
@@ -784,7 +652,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         <!-- End of Deals Wrapper -->
     </div>
 
@@ -886,7 +754,7 @@
         <div class="tab tab-nav-boxed tab-nav-outline appear-animate">
             <ul class="nav nav-tabs justify-content-center" role="tablist">
                 <li class="nav-item mr-2 mb-2">
-                    <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrivals</a>
+                    <a class="nav-link active br-sm font-size-md ls-normal" href="#new-arrival">New arrivals</a>
                 </li>
                 <li class="nav-item mr-2 mb-2">
                     <a class="nav-link br-sm font-size-md ls-normal" href="#tab1-2">Best seller</a>
@@ -901,362 +769,11 @@
         </div>
         <!-- End of Tab -->
         <div class="tab-content product-wrapper appear-animate">
-            <div class="tab-pane active pt-4" id="tab1-1">
+            <div class="tab-pane active pt-4" id="new-arrival">
                 <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-1-1.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-1-2.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Classic Hat</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 60%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(1 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$53.00</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-2.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Women’s White
-                                        Handbag</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 80%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$26.62</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-3.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                                <div class="product-label-group">
-                                    <label class="product-label label-discount">7% Off</label>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Multi Funtional Apple
-                                        iPhone</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(5 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">136.26</ins>
-                                    <del class="old-price">$145.90</del>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-4-1.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-4-2.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Fashion Blue Towel</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(8 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$26.55 - $29.99</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-5.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                                <div class="product-label-group">
-                                    <label class="product-label label-discount">4% Off</label>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Apple Super Notecom</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(4 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$243.30</ins>
-                                    <del class="old-price">$253.50</del>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-6-1.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-6-2.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Women’s Comforter</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(10 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$32.00 - $33.26</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-7.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Multi-colorful Music</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 60%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$260.59 - $297.83</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-8-1.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-8-2.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Comfortable Backpack</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(6 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$45.90</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-9.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Data Transformer Tool
-                                    </a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 60%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <span class="price">$64.47</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="{{ asset('user/images/demos/demo1/products/3-10.jpg') }}" alt="Product"
-                                        width="300" height="338" />
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                        title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Women’s hairdye</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 60%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <span class="price">$173.84</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach($newArrival as $product)
+                        @include('user.product.product-box',$product)  
+                    @endforeach 
                 </div>
             </div>
             <!-- End of Tab Pane -->
@@ -1979,7 +1496,11 @@
             </div>
             <!-- End of Tab Pane -->
             <div class="tab-pane pt-4" id="featured-product"> 
-                @include('user.product.featured-product')  
+                <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                    @foreach($featuredProduct as $product)
+                        @include('user.product.product-box',$product)  
+                    @endforeach 
+                </div>
             </div>
             <!-- End of Tab Pane -->
         </div>

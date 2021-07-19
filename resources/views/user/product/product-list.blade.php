@@ -1,11 +1,11 @@
 <div id="box-view" class="product-wrapper row cols-xl-6 cols-lg-5 cols-md-4 cols-sm-3 cols-2">
     @if(!empty($products))
-    	@foreach($products as $product)
+    	@foreach($products as $product) 
             <div class="product-wrap">
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="product-default.html">
-                            <img src="{{asset('/uploads/product/'.$product->id.'/'.$product->image)}}" alt="{{ $product->name }}" class="product-image"/>
+                        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
+                            {!! fileView($product,'thumb','no','jpg','img') !!}
                         </a>
                         <div class="product-action-horizontal">
                             <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart" onclick="to_wishlist({{ $product->id}} )"></a>
@@ -50,7 +50,7 @@
     		<div class="product product-list product-select">
                 <figure class="product-media">
                     <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
-                        <img src="{{asset('/uploads/product/'.$product->id.'/'.$product->image)}}" alt="{{ $product->name }}" class="product-image">
+                        {!! fileView($product,'thumb','no','jpg','img') !!}
                     </a>
                     <div class="product-action-vertical">
                         <a href="#" class="btn-product-icon btn-quickview w-icon-search" title="Quick View"></a>
@@ -68,7 +68,7 @@
                             <span class="ratings" style="width: 100%;"></span>
                             <span class="tooltiptext tooltip-top">5.00</span>
                         </div>
-                        <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
+                        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}" class="rating-reviews">(3 Reviews)</a>
                     </div>
                     <div class="product-price"> <i class="fa fa-inr"></i> {{ $product->price }}</div>
                     <div class="product-desc">

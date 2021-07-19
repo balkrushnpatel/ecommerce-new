@@ -19,7 +19,15 @@ class Product extends Model
     {
         return $this->belongsTo('App\User','created_by');
     }
-
+    public static function newArrival(){
+        return self::where('status',1)->orderBy('id','DESC')->limit(10)->get();
+    }
+    public static function todayDeal(){
+        return self::where('today_deal',1)->where('status',1)->get();
+    }
+    public static function feactureProduct(){
+        return self::where('is_featured',1)->where('status',1)->get();
+    }
     public function stockPro()
     {
         return $this->hasOne('App\Models\Productstock','product_id');
