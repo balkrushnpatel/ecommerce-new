@@ -4,7 +4,7 @@
             <div class="product-wrap">
                 <div class="product text-center">
                     <figure class="product-media">
-                        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
+                        <a href="{{ $product->productSlug() }}">
                             {!! fileView($product,'thumb','no','jpg','img') !!}
                         </a>
                         <div class="product-action-horizontal">
@@ -19,18 +19,18 @@
                             <a href="javascript:void(0);">{{ $product->categories->name }}</a>
                         </div>
                         <h3 class="product-name">
-                            <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">{{ $product->name }}</a>
+                            <a href="{{ $product->productSlug() }}">{{ $product->name }}</a>
                         </h3>
                         <div class="ratings-container">
                             <div class="ratings-full">
                                 <span class="ratings" style="width: 100%;"></span>
                                 <span class="tooltiptext tooltip-top"></span>
                             </div>
-                            <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}" class="rating-reviews">(3 reviews)</a>
+                            <a href="{{ $product->productSlug() }}" class="rating-reviews">(3 reviews)</a>
                         </div>
                         <div class="product-pa-wrapper">
                             <div class="product-price">
-                                <i class="fa fa-inr"></i> {{ $product->price }}
+                                {!! $product->productPrice() !!}
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
         @foreach($products as $product)
     		<div class="product product-list product-select">
                 <figure class="product-media">
-                    <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
+                    <a href="{{ $product->productSlug() }}">
                         {!! fileView($product,'thumb','no','jpg','img') !!}
                     </a>
                     <div class="product-action-vertical">
@@ -61,16 +61,16 @@
                         <a href="javascript:void(0);">{{ $product->categories->name }}</a>
                     </div>
                     <h4 class="product-name">
-                        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">{{ $product->name }}</a>
+                        <a href="{{ $product->productSlug() }}">{{ $product->name }}</a>
                     </h4>
                     <div class="ratings-container">
                         <div class="ratings-full">
                             <span class="ratings" style="width: 100%;"></span>
                             <span class="tooltiptext tooltip-top">5.00</span>
                         </div>
-                        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}" class="rating-reviews">(3 Reviews)</a>
+                        <a href="{{ $product->productSlug() }}" class="rating-reviews">(3 Reviews)</a>
                     </div>
-                    <div class="product-price"> <i class="fa fa-inr"></i> {{ $product->price }}</div>
+                    <div class="product-price"> {!! $product->productPrice() !!}</div>
                     <div class="product-desc">
                         Ultrices eros in cursus turpis massa cursus mattis. Volutpat ac tincidunt
                         vitae semper quis lectus. Aliquam id diam maecenas ultricies…

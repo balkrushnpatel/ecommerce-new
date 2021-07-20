@@ -74,6 +74,18 @@ if (! function_exists('fileView')) {
             $srcl = '<img src="'.$srcl.'" alt="'.$thiss->name.'" class="product-image"/>';
         }     
         return $srcl;
+      }else{
+        $srcl = [];
+        for($i=1;$i<=$thiss->image;$i++){
+          if (file_exists(public_path('uploads/product/'.$thiss->id.'/thumb_'.$i.'.'.$ext))) {
+            if ($thumb == 'no') {
+              $srcl[] = asset('/uploads/product/'.$thiss->id.'/'.$i.'.'.$ext);
+            } else{
+              $srcl[] = asset('/uploads/product/'.$thiss->id.'/thumb_'.$i.'.'.$ext);
+            } 
+          } 
+        }
+        return $srcl;
       }
     }else{
       echo "Product no found";die;

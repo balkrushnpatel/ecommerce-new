@@ -1,6 +1,6 @@
 <div class="product">
     <figure class="product-media product-img">
-        <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">
+        <a href="{{ $product->productSlug() }}">
             {!! fileView($product,'thumb','no','jpg','img') !!}
         </a>
         <div class="product-action-vertical">
@@ -16,17 +16,17 @@
     <div class="product-details">
         <div class="product-cat"><a href="javascript:void(0);">{{ $product->categories->name }}</a>
         </div>
-        <h4 class="product-name"><a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}">{{ $product->name }}</a></h4>
+        <h4 class="product-name"><a href="{{ $product->productSlug() }}">{{ $product->name }}</a></h4>
         <div class="ratings-container">
             <div class="ratings-full">
                 <span class="ratings" style="width: 80%;"></span>
                 <span class="tooltiptext tooltip-top"></span>
             </div>
-            <a href="{{ route('product.detail',array('id' => $product->id, 'slug' => Str::slug($product->slug)))}}"  class="rating-reviews">(5 reviews)</a>
+            <a href="{{ $product->productSlug() }}"  class="rating-reviews">(5 reviews)</a>
         </div>
         <div class="product-pa-wrapper">
             <div class="product-price">
-                <ins class="new-price"><i class="fa fa-inr"></i> {{ $product->price}}</ins><del class="old-price">$534.00</del>
+                <ins class="new-price">{!! $product->productPrice() !!}</ins><del class="old-price">$534.00</del>
             </div>
         </div>
     </div>

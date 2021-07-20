@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Str;
 class Product extends Model
 {
      public function categories()
@@ -31,6 +31,12 @@ class Product extends Model
     public function stockPro()
     {
         return $this->hasOne('App\Models\Productstock','product_id');
+    }
+    public function productPrice(){
+        return '<i class="fa fa-inr"></i> '.$this->price;
+    }
+    public function productSlug(){
+        return route('product.detail',array('id' => $this->id, 'slug' => Str::slug($this->slug)));
     }
     protected static function boot(){
         parent::boot();  

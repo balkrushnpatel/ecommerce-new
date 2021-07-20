@@ -282,46 +282,25 @@
                                 <div class="product product-single row">
                                     <div class="col-md-6">
                                         <div class="product-gallery product-gallery-vertical mb-0">
+                                            @php
+                                            $images = fileView($deal,'no','multi','jpg','img');
+
+                                            @endphp
                                             <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
-                                                <figure class="product-image">
-                                                    <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
-                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-1-800x900.jpg') }}"
-                                                        alt="Product Image" width="800" height="900">
-                                                </figure>
-                                                <figure class="product-image">
-                                                    <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
-                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-2-800x900.jpg') }}"
-                                                        alt="Product Image" width="362" height="408">
-                                                </figure>
-                                                <figure class="product-image">
-                                                    <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
-                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-3-800x900.jpg') }}"
-                                                        alt="Product Image" width="362" height="408">
-                                                </figure>
-                                                <figure class="product-image">
-                                                    <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
-                                                        data-zoom-image="{{ asset('user/images/demos/demo1/products/1-4-800x900.jpg') }}"
-                                                        alt="Product Image" width="362" height="408">
-                                                </figure>
+                                                @foreach($images as $img)
+                                                    <figure class="product-image">
+                                                        <img src="{{  $img }}" data-zoom-image="{{  $img }}"
+                                                            alt="{{ $deal->name }}" width="800" height="900">
+                                                    </figure>
+                                                @endforeach
                                             </div>
                                             <div class="product-thumbs-wrap">
                                                 <div class="product-thumbs">
-                                                    <div class="product-thumb active">
-                                                        <img src="{{ asset('user/images/demos/demo1/products/1-1-600x675.jpg') }}"
-                                                            alt="Product thumb" width="60" height="68" />
-                                                    </div>
-                                                    <div class="product-thumb">
-                                                        <img src="{{ asset('user/images/demos/demo1/products/1-2-600x675.jpg') }}"
-                                                            alt="Product thumb" width="60" height="68" />
-                                                    </div>
-                                                    <div class="product-thumb">
-                                                        <img src="{{ asset('user/images/demos/demo1/products/1-3-600x675.jpg') }}"
-                                                            alt="Product thumb" width="60" height="68" />
-                                                    </div>
-                                                    <div class="product-thumb">
-                                                        <img src="{{ asset('user/images/demos/demo1/products/1-4-600x675.jpg') }}"
-                                                            alt="Product thumb" width="60" height="68" />
-                                                    </div>
+                                                    @foreach($images as $key=>$img)
+                                                        <div class="product-thumb {{ ($key == 0)?'active':'' }}">
+                                                            <img src="{{ $img }}" alt="{{ $deal->name }}" width="60" height="68" />
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="product-label-group">
@@ -331,21 +310,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="product-details scrollable">
-                                            <h2 class="product-title mb-1"><a href="product-default.html">Coat Pool
-                                                    Comfort Jacket</a></h2>
-
+                                            <h2 class="product-title mb-1">
+                                                <a href="{{ $deal->productSlug() }}">{{ $deal->name }}</a>
+                                            </h2>
                                             <hr class="product-divider">
-
-                                            <div class="product-price"><ins class="new-price ls-50">$150.00 -
-                                                    $180.00</ins></div>
-
-                                            <div class="product-countdown-container flex-wrap">
-                                                <label class="mr-2 text-default">Offer Ends In:</label>
-                                                <div class="product-countdown countdown-compact"
-                                                    data-until="2022, 12, 31" data-compact="true">
-                                                    629 days, 11: 59: 52</div>
+                                            <div class="product-price">
+                                                <ins class="new-price ls-50">{!! $deal->productPrice() !!} -
+                                                    $180.00
+                                                </ins>
                                             </div>
-
                                             <div class="ratings-container">
                                                 <div class="ratings-full">
                                                     <span class="ratings" style="width: 80%;"></span>
@@ -353,22 +326,9 @@
                                                 </div>
                                                 <a href="#" class="rating-reviews">(3 Reviews)</a>
                                             </div>
-
-                                            <div class="product-form product-variation-form product-size-swatch mb-3">
-                                                <label class="mb-1">Size:</label>
-                                                <div class="flex-wrap d-flex align-items-center product-variations">
-                                                    <a href="#" class="size">Extra Large</a>
-                                                    <a href="#" class="size">Large</a>
-                                                    <a href="#" class="size">Medium</a>
-                                                    <a href="#" class="size">Small</a>
-                                                </div>
-                                                <a href="#" class="product-variation-clean">Clean All</a>
-                                            </div>
-
                                             <div class="product-variation-price">
                                                 <span></span>
                                             </div>
-
                                             <div class="product-form pt-4">
                                                 <div class="product-qty-form mb-2 mr-2">
                                                     <div class="input-group">
