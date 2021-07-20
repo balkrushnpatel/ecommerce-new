@@ -50,6 +50,8 @@ class SliderController extends Controller
 
             $slider                           = new Slider();
             $slider->name                     = $request->input('name');
+            $slider->link                     = $request->input('link');
+            $slider->text                     = $request->input('text');
             $slider->status                   = $request->input('status'); 
             $slider->save();
               if ($request->hasFile('image')) {
@@ -112,6 +114,8 @@ class SliderController extends Controller
             DB::beginTransaction();
             $slider = Slider::findOrFail(decrypt($id));  
             $slider->name                     = $request->input('name');
+            $slider->link                     = $request->input('link');
+            $slider->text                     = $request->input('text');
             $slider->status                   = $request->input('status'); 
             $slider->save(); 
             DB::commit();
@@ -192,6 +196,8 @@ class SliderController extends Controller
                     $data[] = [
                         str_replace(" ","",tableHeader(0)) =>  $key + 1,
                         str_replace(" ","",tableHeader(1)) => $slider->name,
+                        str_replace(" ","",tableHeader(32)) => $slider->link,
+                         str_replace(" ","",tableHeader(33)) => $slider->text,
                         str_replace(" ","",tableHeader(2)) => $slider->created_at->format('d-m-Y h:i A'),
                         str_replace(" ","",tableHeader(3)) => $status,
                         str_replace(" ","",tableHeader(4)) =>  $action,

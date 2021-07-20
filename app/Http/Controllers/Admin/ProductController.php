@@ -31,13 +31,7 @@ class ProductController extends Controller
   {
        return view('admin.product.create');
   }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+ 
   public function store(Request $request)
   {
        try {  
@@ -60,48 +54,40 @@ class ProductController extends Controller
                 'title'=>$title,
                 'choice'=>$request->input('title_choice')[$key],
                 'option'=>$request->input('option')[$key],
-              );
+              ); 
+            }
+            $product   = new Product();             
+            $product->cat_id          = $request->input('cat_id');
+            $product->subcat_id       = $request->input('subcat_id');
+            $product->brand_id        = $request->input('brand_id');
+            $product->name            = $request->input('name'); 
+            $product->option          = json_encode($option);
+            $product->color           = json_encode($request->input('input_color'));
+            $product->description     = $request->input('description');
+            $product->price           = $request->input('price');
+            $product->qty             = $request->input('qty');
+            $product->discount        = $request->input('discount');
+            $product->discount_type    =$request->input('discount_type');
+            $product->status          = '0'; 
+            $product->unit            = $request->input('unit');
+            $product->tags            = $request->input('tags');
+            $product->purchase_price  = $request->input('purchase_price');
+            $product->shipping_cost   = $request->input('shipping_cost');
+            $product->tax             = $request->input('tax');
+            $product->tax_type         =$request->input('tax_type');
+            $i = '0';
+            if ($request->hasFile('image')) {
+              $image = $request->file('image');
+              $i = '1';
+              foreach($image as $img){
+                $name = $i.'.'.$img->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/product/'.$product->id);
+                $img->move($destinationPath, $name);
+                $i++;
+              } 
             } 
           }  
-          $product   = new Product();             
-          $product->cat_id          = $request->input('cat_id');
-          $product->subcat_id       = $request->input('subcat_id');
-          $product->brand_id        = $request->input('brand_id');
-          $product->name            = $request->input('name'); 
-          $product->option          = json_encode($option);
-          $product->color           = json_encode($request->input('input_color'));
-          $product->description     = $request->input('description');
-          $product->price           = $request->input('price');
-          $product->qty             = $request->input('qty');
-          $product->discount        = $request->input('discount');
-          $product->status          = '0'; 
-          $product->unit            = $request->input('unit');
-          $product->tags            = $request->input('tags');
-          $product->purchase_price  = $request->input('purchase_price');
-          $product->shipping_cost   = $request->input('shipping_cost');
-          $product->tax             = $request->input('tax');
-          $i = '0';
-          if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $i = '1';
-            foreach($image as $img){
-              $name = $i.'.'.$img->getClientOriginalExtension();
-              $destinationPath = public_path('/uploads/product/'.$product->id);
-              $thumbnil= 'thumb_'.$name;
-
-              $imgThumb = ImageResize::make($img->path());
-              $imgThumb->resize(100, 100, function ($constraint) {
-                  $constraint->aspectRatio();
-              })->save($destinationPath.'/'.$thumbnil);
-
-
-              
-              $img->move($destinationPath, $name);
-
-              $i++;
-            }
-          } 
-          $product->image= count($image);
+          $product->image= count($i);
           $product->save();
           DB::commit();
           return redirect()->route('product.index')->with('success',' Product create successfully!');
@@ -147,7 +133,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
   public function update(Request $request, $id){
     try {
       DB::beginTransaction();        
@@ -191,8 +177,7 @@ class ProductController extends Controller
       if(!empty($request->input('input_color'))){
         $product->color  = json_encode($request->input('input_color'));
       }
-      $product->save();
-
+      $product->save(); 
       if ($request->hasFile('image')) {
         $image = $request->file('image');
         $i = '1'; 
@@ -211,7 +196,7 @@ class ProductController extends Controller
 
           $i++;
         } 
-        $product->image= count($image); 
+        $product->image= count($i); 
         $product->save();
       }
       DB::commit();

@@ -27,4 +27,5 @@
  <script src="{{ asset('assets/js/pages/crud/forms/widgets/tagify.js')}}"></script>
  <script src="{{ asset('assets/js/pages/widgets.js')}}"></script>
  <script src="{{ asset('assets/js/pages/custom/profile/profile.js')}}"></script>
+
 <!--end::Global Theme Bundle--> 

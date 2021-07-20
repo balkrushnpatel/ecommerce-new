@@ -240,6 +240,14 @@
 									<span class="menu-text">@lang('ecommerce.Contact Page')</span>
 								</a>
 							</li>
+							<li class="menu-item {{ (Request::is('admin/headersetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+								<a href="{{ route('admin.header') }}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">@lang('ecommerce.Header')</span>
+								</a>
+							</li>
 							<li class="menu-item {{ (Request::is('admin/footsetting'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.footer') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
@@ -275,6 +283,37 @@
 						</ul>
 					</div>
 				</li> 
+					@php
+					$usersActive = '';
+					if(Request::is('admin/user/list')){
+						$usersActive = 'menu-item-open';
+					}
+				    @endphp
+				<li class="menu-item menu-item-submenu {{ $usersActive }}" aria-haspopup="true" data-menu-toggle="hover">
+					<a href="javascript:;" class="menu-link menu-toggle  {{ $usersActive }} " >
+						<i class="menu-icon fab fa-blogger"></i>
+						<span class="menu-text">@lang('ecommerce.Users')</span>
+						<i class="menu-arrow"></i>
+					</a>
+					<div class="menu-submenu">
+						<i class="menu-arrow"></i>
+						<ul class="menu-subnav">
+							<li class="menu-item menu-item-parent" aria-haspopup="true">
+								<span class="menu-link">
+									<span class="menu-text">@lang('ecommerce.Users')</span>
+								</span>
+							</li>
+							<li class="menu-item {{ (Request::is('admin/user/list'))?'menu-item-open':'' }}" aria-haspopup="true">
+								<a href="{{route('admin.userlist')}}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">@lang('ecommerce.Users')</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>

@@ -23,6 +23,7 @@ Route::get('/', 'UserHomeController@index')->name('home');
 
 
 Route::get('/admin', 'HomeController@index')->name('admin.dashboard')->middleware('verified');
+
 Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], function () { 
 	$admin_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'admin-route' . DIRECTORY_SEPARATOR; 
 	include_once($admin_real_path . 'category.php'); 
@@ -37,6 +38,7 @@ Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], funct
 	include_once($admin_real_path . 'blog.php');
 	include_once($admin_real_path . 'setting.php');
 	include_once($admin_real_path . 'language.php');
+	include_once($admin_real_path . 'user.php');
 });
 
 $web_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'web-route' . DIRECTORY_SEPARATOR; 
@@ -51,6 +53,15 @@ Route::group(['middleware' => ['auth','role:User']], function () {
 Route::get('about-us', 'UserHomeController@aboutUs')->name('about-us');
 Route::get('contact-us', 'UserHomeController@ContactUs')->name('contact-us');
 Route::post('contact-us/send', 'UserHomeController@contactUsSend')->name('inquiry.send');
+
+Route::get('profile', 'Admin\AdminProfileController@edit')->name('profile.edit');
+
+Route::PUT('profile', 'Admin\AdminProfileController@update')->name('profile.update');
+
+Route::PUT('profile/password', 'Admin\AdminProfileController@password')->name('profile.password');
+Route::get('headersearch','UserHomeController@headersearch')->name('search');
+
+Route::get('product/search','ProductController@index')->name('product.search');
 
   
 

@@ -187,4 +187,29 @@ class UserHomeController extends Controller
 
     }
 
+    function headersearch(Request $request){
+      if($request->ajax()){
+        try {  
+            DB::beginTransaction();
+             $category = $request->catId;
+               $product = Product::select("name","cat_id")
+                ->where("name","LIKE","%{$request->term}%");
+              if(!empty($category)){
+                $product->where("cat_id",$category);
+              }
+                $product = $product->get();
+                foreach ($product as $key => $pro) {
+                  $data[] = $pro['name'];
+                }
+           DB::commit();
+            return response()->json($data);
+        }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+
 }

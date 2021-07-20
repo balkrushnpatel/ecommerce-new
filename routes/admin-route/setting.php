@@ -17,3 +17,6 @@
 	Route::get('general-setting', 'Admin\SettingController@general')->name('admin.general');
 	Route::post('generalsetting', 'Admin\SettingController@generalsetting')->name('general.setting');
  
+    Route::get('header', 'Admin\SettingController@header')->name('admin.header');
+
+	Route::get('headersetting', 'Admin\SettingController@setHeader')->name('header.setting');

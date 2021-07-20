@@ -183,7 +183,7 @@ $( document ).delegate( ".choice-title", "change", function() {
 	var html = '';
 	$('#chiled-row-'+i).html('');
 	var placeholder = "Please enter ',' separate";
-	if(choice != 'text'){ 
+	if(choice != 'text' && choice != ''){ 
 	    html +='<div class="row pb-3" id="row'+i+'">';
            html +='<div class="col-lg-6">';
     		   html += '<input type="text" placeholder="'+placeholder+'" class="form-control" name="option[]">';

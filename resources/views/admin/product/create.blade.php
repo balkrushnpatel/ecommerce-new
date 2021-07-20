@@ -95,7 +95,7 @@
 										<div class="col-sm-12 col-lg-4">
 											<div class="form-group">
 												<label for="product-tags" class="col-form-label">Tags <span class="required">*</span></label>
-												<input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value="{{ $product->tags }}" style="height: 20px;" />
+												<input id="kt_tagify_1" class="form-control tagify" name='tags' placeholder='type...' value="{{ (isset($product)) ? $product->tags : '' }}" style="height: 20px;" />
 											</div>   
 										</div>
 										<div class="col-sm-12 col-lg-4">
@@ -145,11 +145,29 @@
 												<label for="product-discount" class="col-form-label"> Product Discount</label> 
 		  										<input type="text" class="form-control number" id="product-discount" value="{{ (isset($product)) ? $product->discount : '' }}" name="discount">
 											</div>
-										</div> 
+                                        </div> 
+										<div class="col-sm-12 col-lg-2">
+											<div class="form-group">
+												<label for="product-discount" class="col-form-label">type</label> 
+												<select class="form-control select2" name="discount_type" id="discount_type"> <option value="1" @if((isset($product->discount_type) && $product->discount_type == '1')) selected="selected" @endif>$</option>
+												 <option value="2" @if((isset($product->discount_type) && $product->discount_type == '2')) selected="selected" @endif>%</option> 
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
 										<div class="col-sm-12 col-lg-4">
 											<div class="form-group">
 												<label for="product-discount" class="col-form-label"> Product tax</label> 
 		  										<input type="text" class="form-control number" id="product-discount" value="{{ (isset($product)) ? $product->tax : '' }}" name="tax">
+											</div>
+										</div>
+										<div class="col-sm-12 col-lg-2">
+											<div class="form-group">
+												<label for="product-tax" class="col-form-label">type</label> 
+												<select class="form-control select2" name="tax_type" id="tax_type"><option value="1" @if((isset($product->tax_type) && $product->tax_type == '1')) selected="selected" @endif>$</option>
+												 <option value="2" @if((isset($product->tax_type) && $product->tax_type == '2')) selected="selected" @endif>%</option>
+												</select>
 											</div>
 										</div>
 									</div>
@@ -179,13 +197,54 @@
 										    	   </div> 
 										       	</div>
 										    @endif
-											<div id="add-color-input-wrap"></div>
+										    <div id="add-color-input-wrap"></div>
 											<div class="form-group">
 												<button  type="button" id="addColorInput"class="btn btn-primary">Add More Colors</button>
 											</div> 
 										</div>
-										<div class="col-sm-12 col-lg-12">  
-											<div id="addition-input-wrap"></div>
+										<div class="col-sm-12">
+											<div id="addition-input-wrap">
+												@php $i= '1'; @endphp
+												@if(!empty($product->option))
+													@foreach(json_decode($product->option) as $option)
+														<div class="form-group row row-item pb-3" id="row{{$i}}">
+															<div class="col-lg-5">
+																<input type="text" placeholder="Input Title" class="form-control" name="input_title[]" value="{{$option->title}}">
+															</div> 
+															<div class="col-lg-5">
+																<select name="title_choice[]" class="form-control choice-title"  data-row="'+i+'">
+																<option value="">Select</option>
+																<option value="text"@if(isset($option) && $option->choice == "text") ? 'selected':'' @endif>Text Input</option>
+																<option value="single"@if(isset($option) &&  $option->choice == "single") ? selected="selected" @endif>Single Dropdown</option>
+																<option value="multi" @if(isset($option) &&  $option->choice == "multi") ? selected="selected" @endif>Multiple Dropdown</option>
+																<option value="checkbox"@if(isset($option) &&  $option->choice == "checkbox") ? selected="selected" @endif>Checkbox</option>
+																<option value="radio" @if(isset($option) &&  $option->choice == "radio") ? selected="selected" @endif>Radio Button</option>
+																</select>
+															</div> 
+															<div class="col-lg-2">
+															<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
+															</div> 
+															<div class="col-lg-12">
+																<div id="chiled-row{{ $i }}"></div> 
+															</div>	
+														</div>	
+														<div class="row pb-3" id="row{{ $i }}">
+												           <div class="col-lg-6">
+												    		   <input type="text" placeholder="" class="form-control" value="{{$option->option}}" name="option[]">
+												    	   </div>'
+												       	</div>
+													@if($i != '1')
+													       		<div class="col-lg-2">
+																	<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
+																</div> 
+													       	@endif
+													       	@php $i++; @endphp
+													    </div>
+													@endforeach
+												@endif
+											</div>
+										</div>
+										<div class="col-sm-12 col-lg-12">
 											<h4 class="pull-left">
 		                                        <i>If You Need More Choice Options For Customers Of This Product ,please Click Here.</i>
 		                                    </h4>
