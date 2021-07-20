@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
-
-<!-- Mirrored from demo.graygrids.com/themes/emart-v2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jul 2021 09:29:41 GMT -->
 <head>
-
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>E-Commerce </title>
-
+    @if(Request::is('/'))
+        <title>Welcome To {{ getSetting('system_title') }}</title> 
+    @else
+	   <title>@yield('title') | {{ getSetting('system_title') }}</title> 
+    @endif
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
     <meta name="author" content="D-THEMES">
@@ -31,14 +31,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('user/vendor/animate/animate.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/vendor/magnific-popup/magnific-popup.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/vendor/nouislider/nouislider.min.css') }}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> 
 
     @if(!empty(request()->segment(1)))
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/style.min.css') }}"> 
     @else
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/demo1.min.css') }}">
     @endif
+    <link rel="stylesheet" type="text/css" href="{{ asset('user/css/jquery-ui.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
 </head> 
 @php

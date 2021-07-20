@@ -19,14 +19,19 @@ class ProductController extends Controller
       if(!empty($id)){
         if($id == 'search')
         {
-             $name=$request->get('name');
-             $getProducts = Product::where("name","LIKE","%{$name}%");
+          $name=$request->get('name');
+          $getProducts = Product::where("name","LIKE","%{$name}%");
         }else{
-        $getProducts = $getProducts->where('id',$id); 
-        $products = $getProducts->get();
-        return view('user.product.detail',compact('products')); }  
+          $reletedProduct = [];
+          $getProducts = $getProducts->where('id',$id); 
+          $products = $getProducts->get();
+          if(count($products)){
+            $catid = $products[0]->cat_id;
+             $reletedProduct = Product::where('cat_id',$catid)->inRandomOrder()->get(); 
+          }
+          return view('user.product.detail',compact('products','reletedProduct')); 
+        }  
       }
-
   	}else if($type == 'category'){
       if(!empty($id)){
         $getProducts = $getProducts->where('cat_id',$id);    

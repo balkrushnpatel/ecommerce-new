@@ -5,9 +5,19 @@
         setTimeout(function() {
            $('#alert-message').fadeOut('slow');
         }, 3000);
-    });
+    }); 
+    WebFontConfig = {
+        google: { families: ['Poppins:400,500,600,700,800'] }
+    };
+    ( function ( d ) {
+        var wf = d.createElement( 'script' ), s = d.scripts[0];
+        wf.src = '{{ asset('user/js/webfont.js') }} ';
+        wf.async = true;
+        s.parentNode.insertBefore( wf, s );
+    } )( document );
 </script>
-<script src="{{ asset('user/vendor/jquery/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('user/vendor/jquery/jquery.min.js') }}"></script> -->
+<script src="{{ asset('user/js/jquery-1.11.1.min.js') }}"></script >
 <script src="{{ asset('user/vendor/nouislider/nouislider.min.js') }}"></script>
 <script src="{{ asset('user/vendor/sticky/sticky.min.js') }}"></script>
 <script src="{{ asset('user/vendor/jquery.plugin/jquery.plugin.min.js') }}"></script>
@@ -20,9 +30,10 @@
 <script src="{{ asset('user/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script> 
 
 
-<!-- Main JS -->
-<script src="{{ asset('user/js/main.min.js') }}"></script>
-<script src="{{ asset('user/js/bow.min.js') }}"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!-- Main JS --> 
+
+<script src="{{ asset('user/js/jquery-ui.min.js') }}"></script> 
+<script src="{{ asset('user/js/jquery-ui.js') }}"></script> 
+<script src="{{ asset('user/js/main.min.js') }}"></script> 
+<script src="{{ asset('user/js/bow.min.js') }}"></script> 
 <script src="{{ asset('wjs/search.js')}}"></script>

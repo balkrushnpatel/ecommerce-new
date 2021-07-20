@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-   public function brand()
-    {
+    public function brand(){
         return $this->hasOne('App\Models\Product','brand_id');
     }
     protected static function boot(){

@@ -4,6 +4,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Language;
+use App\Models\Settings;
 use App\Models\BlogCat;
 
 if (! function_exists('getCategory')) {
@@ -92,6 +93,11 @@ if (! function_exists('fileView')) {
       echo "Product no found";die;
     }
   }
+}
+if (! function_exists('getSetting')) {
+    function getSetting($type) {
+      return Settings::getSetting($type);
+    }
 }
 if (! function_exists('getBlogCategory')) {
     function getBlogCategory() {

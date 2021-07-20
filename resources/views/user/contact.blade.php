@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title','Contact Us')
 @section('content') 
     <!-- Start of Page Header -->
     <div class="page-header">

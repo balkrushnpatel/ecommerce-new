@@ -17,15 +17,17 @@ Route::group(['prefix' => '/blog'], function () {
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('blogs.detail');
 });
 Route::group(['prefix' => '/product'], function () {
+	Route::get('/', 'ProductController@index')->name('product');
 	
 	Route::get('/featured', 'ProductController@index')->name('product.fecture');
 	Route::get('/classifieds', 'ProductController@index')->name('product.classifieds');
+	Route::get('/search','ProductController@index')->name('product.search');
 
-	Route::get('/', 'ProductController@index')->name('product');
 	
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('product.detail');
 	Route::get('/today/deal', 'ProductController@index')->name('product.today_deal');
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('product.detail');
-	Route::get('compare', 'UserHomeController@ContactUs')->name('compare');
+	Route::get('/compare', 'UserHomeController@ContactUs')->name('compare');
 	Route::get('/get-list', 'ProductController@productFilter')->name('product.filter');	
+
 });

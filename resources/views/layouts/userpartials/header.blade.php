@@ -60,8 +60,7 @@
                             @endforeach 
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="name" id="headerSearch"
-                        placeholder="Search in..." required />
+                    <input type="text" class="form-control" name="name" id="headerSearch" placeholder="Search in..." required value="{{ app('request')->input('name') }}" />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i></button>
                 </form>
             </div>

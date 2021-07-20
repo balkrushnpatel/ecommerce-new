@@ -6089,6 +6089,9 @@ blockquote {
 .w-icon-pinterest:before {
   content: "";
 }
+.w-icon-skype:before {
+  content: "\f17e";
+}
 
 .w-icon-pinterest-p:before {
   content: "";

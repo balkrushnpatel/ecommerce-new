@@ -26,12 +26,7 @@ class UserHomeController extends Controller
       
       $newArrival=Product::newArrival();
       return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal'));
-    }
-    public function productDetail(Request $request,$id){ 
-      $product = Product::find($id);  
-      return view('user.product-details',compact('product'));
-    }
-
+    } 
     public function addtoCart(Request $request,$id)
     {   
       
@@ -103,30 +98,19 @@ class UserHomeController extends Controller
 
        return view('user.checkout');
     } 
-
-     public function productListing()
-    {   
-
-         $products=Product::where('status',1)->get();
-        return view('user.shop',compact('products'));
-    } 
-
     public function aboutUs(){
       return view('user.about');
     }
-
-    public function category(){ 
-            $products=Product::where('status',1)->get();
-        return view('user.category',compact('products'));
+    public function privacyPolicy(){
+      return view('user.privacy-policy');
     }
-
-    public function categoryFilter($id){
-             //category filter
-             $products = Product::where('cat_id',$id)->where('status',1)->get();
-            
-       return view('user.productfilter',compact('products'));
-    } 
-
+    public function termAndCondition(){
+      return view('user.term-condition');
+    }
+    public function category(){ 
+      $products=Product::where('status',1)->get();
+      return view('user.category',compact('products'));
+    }
     public function contactUs(){
       return view('user.contact');
     }
@@ -154,8 +138,8 @@ class UserHomeController extends Controller
         DB::commit();
         return redirect()->route('contact-us')->with('success','Inquirey send successfully!');
       }catch (\Exception $e) {
-          DB::rollback();
-          dd($e->getMessage());
+        DB::rollback();
+        dd($e->getMessage());
       }
     }   
     public function orderPlace(Request $request){
@@ -186,30 +170,28 @@ class UserHomeController extends Controller
            return redirect()->route('userhome')->with('success',' Order Place successfully!');
 
     }
-
-    function headersearch(Request $request){
-      if($request->ajax()){
-        try {  
-            DB::beginTransaction();
-             $category = $request->catId;
-               $product = Product::select("name","cat_id")
-                ->where("name","LIKE","%{$request->term}%");
-              if(!empty($category)){
-                $product->where("cat_id",$category);
-              }
-                $product = $product->get();
-                foreach ($product as $key => $pro) {
-                  $data[] = $pro['name'];
-                }
-           DB::commit();
-            return response()->json($data);
-        }catch (\Exception $e) {
-            DB::rollback(); 
-            return response()->json($e->getMessage());
-        } 
-      }else{
-          return abort(404);
-      }
+  function headersearch(Request $request){
+    if($request->ajax()){
+      try {  
+        DB::beginTransaction();
+        $category = $request->catId;
+         $product = Product::select("name","cat_id")
+          ->where("name","LIKE","%{$request->term}%");
+        if(!empty($category)){
+          $product->where("cat_id",$category);
+        }
+        $product = $product->get();
+        foreach ($product as $key => $pro) {
+          $data[] = $pro['name'];
+        }
+        DB::commit();
+        return response()->json($data);
+      }catch (\Exception $e) {
+        DB::rollback(); 
+        return response()->json($e->getMessage());
+      } 
+    }else{
+      return abort(404);
     }
-
+  }
 }

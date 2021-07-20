@@ -1,24 +1,11 @@
 @extends('layouts.master')
+@section('title','About Us')
 @section('content')
-	<script>
-	    WebFontConfig = {
-	        google: { families: ['Poppins:400,500,600,700,800'] }
-	    };
-	    ( function ( d ) {
-	        var wf = d.createElement( 'script' ), s = d.scripts[0];
-	        wf.src = '{{ asset('user/js/webfont.js') }} ';
-	        wf.async = true;
-	        s.parentNode.insertBefore( wf, s );
-	    } )( document );
-	</script>
  	<div class="page-header">
         <div class="container">
             <h1 class="page-title mb-0">About Us</h1>
         </div>
-    </div>
-    <!-- End of Page Header -->
-
-    <!-- Start of Breadcrumb -->
+    </div> 
     <nav class="breadcrumb-nav mb-10 pb-8">
         <div class="container">
             <ul class="breadcrumb">
@@ -26,10 +13,7 @@
                 <li>About Us</li>
             </ul>
         </div>
-    </nav>
-    <!-- End of Breadcrumb -->
-    
-    <!-- Start of Page Content -->
+    </nav> 
     <div class="page-content">
         <div class="container">
             <section class="introduce mb-10 pb-10">

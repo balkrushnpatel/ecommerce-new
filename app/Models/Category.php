@@ -11,9 +11,11 @@ class Category extends Model
         return $this->hasOne('App\Models\SubCategory','cat_id');
     }
 
-    public function categories()
-    {
+    public function categories(){
         return $this->hasOne('App\Models\Product','cat_id');
+    }
+    public function categoriess(){
+        return $this->hasMany('App\Models\Product','cat_id');
     }
 
     public function stockCat()

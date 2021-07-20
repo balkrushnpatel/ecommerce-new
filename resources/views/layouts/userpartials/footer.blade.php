@@ -46,11 +46,24 @@
                             </p>
 
                             <div class="social-icons social-icons-colored">
-                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                                <a href="#" class="social-icon social-instagram w-icon-instagram"></a>
-                                <a href="#" class="social-icon social-youtube w-icon-youtube"></a>
-                                <a href="#" class="social-icon social-pinterest w-icon-pinterest"></a>
+                                @if(!empty(getSetting('facebook_link')))
+                                    <a href="{{ getSetting('facebook_link') }}" class="social-icon social-facebook w-icon-facebook"></a>
+                                @endif
+                                @if(!empty(getSetting('twitter_link')))
+                                    <a href="{{ getSetting('twitter_link') }}" class="social-icon social-twitter w-icon-twitter"></a>
+                                @endif
+                                @if(!empty(getSetting('instagram_link')))
+                                    <a href="{{ getSetting('instagram_link') }}" class="social-icon social-instagram w-icon-instagram"></a>
+                                @endif
+                                @if(!empty(getSetting('youtube_link')))
+                                    <a href="{{ getSetting('youtube_link') }}" class="social-icon social-youtube w-icon-youtube"></a>
+                                @endif
+                                @if(!empty(getSetting('pinterest_link')))
+                                    <a href="{{ getSetting('pinterest_link') }}" class="social-icon social-pinterest w-icon-pinterest"></a>
+                                @endif
+                                @if(!empty(getSetting('skype_link')))
+                                    <a href="{{ getSetting('skype_link') }}" class="social-icon social-twitter fab fa-skype"></a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -59,12 +72,10 @@
                     <div class="widget">
                         <h3 class="widget-title">Company</h3>
                         <ul class="widget-body">
-                            <li><a href="{{ route('about-us') }}">About Us</a></li>
-                            <li><a href="#">Team Member</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="#">Affilate</a></li>
-                            <li><a href="#">Order History</a></li>
+                            <li><a href="{{ route('about-us') }}">About Us</a></li> 
+                            <li><a href="{{ route('contact-us') }}">Contact Us</a></li> 
+                            <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                            <li><a href="{{ route('term-condition') }}">Term & Condirion</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,10 +85,8 @@
                         <ul class="widget-body">
                             <li><a href="#">Track My Order</a></li>
                             <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="login.html">Sign In</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="wishlist.html">My Wishlist</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="{{ route('login') }}">Sign In</a></li> 
+                            <li><a href="#">My Wishlist</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,12 +94,8 @@
                     <div class="widget">
                         <h4 class="widget-title">Customer Service</h4>
                         <ul class="widget-body">
-                            <li><a href="#">Payment Methods</a></li>
                             <li><a href="#">Money-back guarantee!</a></li>
-                            <li><a href="#">Product Returns</a></li>
-                            <li><a href="#">Support Center</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Term and Conditions</a></li>
+                            <li><a href="#">Product Returns</a></li> 
                         </ul>
                     </div>
                 </div>

@@ -283,8 +283,7 @@
                                     <div class="col-md-6">
                                         <div class="product-gallery product-gallery-vertical mb-0">
                                             @php
-                                            $images = fileView($deal,'no','multi','jpg','img');
-
+                                                $images = fileView($deal,'no','multi','jpg','img');
                                             @endphp
                                             <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
                                                 @foreach($images as $img)
