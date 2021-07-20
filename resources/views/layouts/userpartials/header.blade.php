@@ -51,7 +51,7 @@
                 <a href="{{ url('/') }}" class="logo ml-lg-0">
                     <img src="{{ asset('user/images/logo.png') }}" alt="logo" width="144" height="45" />
                 </a>
-                <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                <form method="get" action="{{route('product.search')}}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
                         <select id="category" name="category">
                             <option value="">All Categories</option>
@@ -60,7 +60,7 @@
                             @endforeach 
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="search" id="search"
+                    <input type="text" class="form-control" name="name" id="headerSearch"
                         placeholder="Search in..." required />
                     <button class="btn btn-search" type="submit"><i class="w-icon-search"></i></button>
                 </form>

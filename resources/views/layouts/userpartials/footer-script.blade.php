@@ -19,6 +19,10 @@
 <script src="{{ asset('user/vendor/jquery.count-to/jquery.count-to.min.js') }}"></script> 
 <script src="{{ asset('user/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script> 
 
+
 <!-- Main JS -->
 <script src="{{ asset('user/js/main.min.js') }}"></script>
 <script src="{{ asset('user/js/bow.min.js') }}"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="{{ asset('wjs/search.js')}}"></script>

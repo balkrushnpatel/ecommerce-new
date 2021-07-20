@@ -73,7 +73,9 @@
 						</div>
 					</div>
 					<div class="navi-text">
-						<div class="font-weight-bold">My Profile</div> 
+						 <div class="font-weight-bold">
+						 <a  href="{{ route('profile.edit') }}">My Profile</a>
+						 </div> 
 					</div>
 				</div>
 			</a>

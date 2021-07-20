@@ -29,5 +29,12 @@ return [
         '24'   => 'Added By',
         '25'   => 'Public',
         '26'   => "Today's Deal",
+        '27'   => 'First Name',
+        '28'   => 'Middle Name',
+        '29'   => 'last Name',
+        '30'   => 'Email',
+        '31'   => 'Mobile No',
+        '32'   => 'link',
+        '33'   => 'text',
     ), 
 ];

@@ -4,6 +4,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Language;
+use App\Models\BlogCat;
 
 if (! function_exists('getCategory')) {
   function getCategory() {

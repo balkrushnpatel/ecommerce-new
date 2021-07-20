@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('user/vendor/magnific-popup/magnific-popup.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/vendor/nouislider/nouislider.min.css') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 
     @if(!empty(request()->segment(1)))
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/style.min.css') }}">

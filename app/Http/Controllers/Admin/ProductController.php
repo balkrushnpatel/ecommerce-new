@@ -73,12 +73,14 @@ class ProductController extends Controller
             $product->price           = $request->input('price');
             $product->qty             = $request->input('qty');
             $product->discount        = $request->input('discount');
+            $product->discount_type    =$request->input('discount_type');
             $product->status          = '0'; 
             $product->unit            = $request->input('unit');
             $product->tags            = $request->input('tags');
             $product->purchase_price  = $request->input('purchase_price');
             $product->shipping_cost   = $request->input('shipping_cost');
             $product->tax             = $request->input('tax');
+            $product->tax_type         =$request->input('tax_type');
             $i = '0';
             if ($request->hasFile('image')) {
               $image = $request->file('image');
@@ -171,12 +173,14 @@ class ProductController extends Controller
             $product->description     = $request->input('description');
             $product->price           = $request->input('price');
             $product->qty             = $request->input('qty');
-            $product->discount        = $request->input('discount'); 
+            $product->discount        = $request->input('discount');
+            $product->discount_type   =$request->input('discount_type'); 
             $product->unit            = $request->input('unit');
             $product->tags            = $request->input('tags');
             $product->purchase_price  = $request->input('purchase_price');
             $product->shipping_cost   = $request->input('shipping_cost');
             $product->tax             = $request->input('tax');
+            $product->tax_type         =$request->input('tax_type');
             if(!empty($request->input('input_title'))){
               $product->option          = json_encode($option);
             }

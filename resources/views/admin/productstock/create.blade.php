@@ -43,9 +43,9 @@
 										<option value=""> Select  Category</option> 
 										@foreach(getCategory() as $key => $category)
 											@if(isset($stock->cat_id) && ($stock->cat_id == $key))
-												<option selected value="{{ $key }}"> {{ $category }}</option>
+												<option selected value="{{ $key }}"> {{ $category['name'] }}</option>
 											@else
-												<option value="{{ $key }}"> {{ $category }}</option>
+												<option value="{{ $key }}"> {{ $category['name'] }}</option>
 											@endif
 										@endforeach  
 									</select>

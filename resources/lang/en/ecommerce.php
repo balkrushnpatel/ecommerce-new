@@ -35,4 +35,7 @@ return [
     'Logo'=>'Logo',
     'Language'=>'Language',
     'General Setting'=>'General Setting',
+    'Users'=>'Users',
+    'Header'=>'Header',
+    
 ];

@@ -143,6 +143,43 @@ class SettingController extends Controller
         } 
     }
 
+    public function header(){
+
+        return view('admin.setting.header');
+    }
+
+    function setHeader(Request $request){
+      if($request->ajax()){
+        try {  
+            DB::beginTransaction();
+            $isEnable = $request->isEnable;
+            $name=$request->name;
+
+             $setting=$this->set($name);
+            $setting->type       = $name;
+            $setting->value       =$isEnable;
+            $setting->save();
+
+            $status = 3;
+            $featured = ' un public';
+            if($isEnable == 1){
+              $status = 2;
+              $featured = ' public';
+            }
+           DB::commit();
+            return response()->json([ 
+              'status'=>$status ,
+              'message'=>str_replace("_"," ",$name).$featured,
+            ]);
+        }catch (\Exception $e) {
+            DB::rollback(); 
+            return response()->json($e->getMessage());
+        } 
+      }else{
+          return abort(404);
+      }
+    }
+
     public function footer(){
         return view('admin.setting.footer');
     }

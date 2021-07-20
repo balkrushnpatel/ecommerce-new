@@ -17,10 +17,16 @@ class ProductController extends Controller
   	$products = [];
   	if($type == 'product'){ 
       if(!empty($id)){
+        if($id == 'search')
+        {
+             $name=$request->get('name');
+             $getProducts = Product::where("name","LIKE","%{$name}%");
+        }else{
         $getProducts = $getProducts->where('id',$id); 
-        $products = $getProducts->get(); 
-        return view('user.product.detail',compact('products'));   
+        $products = $getProducts->get();
+        return view('user.product.detail',compact('products')); }  
       }
+
   	}else if($type == 'category'){
       if(!empty($id)){
         $getProducts = $getProducts->where('cat_id',$id);    
