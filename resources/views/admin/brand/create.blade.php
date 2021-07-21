@@ -42,6 +42,15 @@
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
+						  	<div class="form-group row">
+					        	<div class="col-lg-12">
+						    	<label class="col-form-label" for="brand-image">Image</label> 
+								<input type="file" class="form-control" id="brand-image"value="{{ (isset($brand)) ? $brand->image : '' }}" name="image">
+								<div class="images-preview-div"></div>
+								</div>
+						      	<div class="fv-plugins-message-container"></div>
+						        </div> 
+						  	</div>
 						  	 <div class="form-group row">
 						  	 	<div class="col-lg-12">
 	  	 							<div class="radio-inline">

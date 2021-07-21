@@ -37,5 +37,6 @@ return [
     'General Setting'=>'General Setting',
     'Users'=>'Users',
     'Header'=>'Header',
+    'Shipment'=>'Shipment',
     
 ];

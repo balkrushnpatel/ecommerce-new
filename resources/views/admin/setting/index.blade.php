@@ -51,7 +51,7 @@
                   <label class="col-form-label">Featured Products</label>
                   <span class="switch switch-success">
                     <label class="col-form-label">
-                    <input type="checkbox" value="1" name="featured_products"/>
+                    <input type="checkbox" value="1" {{ (getSetting('featured_products')  == 1 ? ' checked' : '') }} name="featured_products"/>
                     <span></span>
                     </label>
                   </span>
@@ -59,7 +59,7 @@
               </div>
               <div class="form-group col-3">
                 <label for="pro_num" class="col-form-label"> Number Of Products <span class="required">*</span></label>
-                <input type="number" class="form-control" id="pro_num"  value="{{ (isset($setting)) ? $setting->no_of_featured_products: '' }}" name="no_of_featured_products">
+                <input type="number" class="form-control" id="pro_num"  value="{{getSetting('no_of_featured_products')}}" name="no_of_featured_products">
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
                 <label class="col-form-label">Bundle Products</label>
                   <span class="switch switch-success">
                     <label class="col-form-label">
-                    <input type="checkbox" value="1" name="bundle_products"/>
+                    <input type="checkbox" value="1" {{ (getSetting('bundle_products')  == 1 ? ' checked' : '') }} name="bundle_products"/>
                     <span></span>
                     </label>
                   </span>
@@ -79,7 +79,7 @@
               <div class="form-group col-3">
                 <div class="form-group">
                   <label for="pro_num" class="col-form-label"> Number Of Products <span class="required">*</span></label>
-                  <input type="number" class="form-control" id="bun_pro_num" name="no_of_bundle_products">
+                  <input type="number" class="form-control" id="bun_pro_num"  value="{{getSetting('no_of_bundle_products')}}" name="no_of_bundle_products">
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@
                   <label class="col-form-label">Customer Products</label>
                   <span class="switch switch-success">
                     <label class="col-form-label">
-                    <input type="checkbox" value="1" name="customer_products"/>
+                    <input type="checkbox" {{ (getSetting('customer_products')  == 1 ? ' checked' : '') }} value="1" name="customer_products"/>
                     <span></span>
                     </label>
                   </span> 
@@ -100,7 +100,7 @@
               <div class="col-3">
                 <div class="form-group">
                   <label for="pro_num" class="col-form-label"> Number Of Products <span class="required">*</span></label>
-                  <input type="number" class="form-control" id="cust_pro_num"  name="no_of_customer_products">
+                  <input type="number" class="form-control" value="{{getSetting('no_of_customer_products')}}" id="cust_pro_num"  name="no_of_customer_products">
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@
                   <label class="col-6 col-form-label">Vendor</label> 
                   <span class="switch switch-success">
                     <label class="col-6 col-form-label">
-                      <input type="checkbox" value="1" name="vendor"/>
+                      <input type="checkbox" {{ (getSetting('vendor')  == 1 ? ' checked' : '') }} value="1" name="vendor"/>
                       <span></span>
                     </label>
                   </span> 
@@ -120,11 +120,11 @@
               </div>
               <div class="col-3 form-group ">
                 <label for="vender_title" class="col-form-label"> Title for Vendor Section <span class="required">*</span></label>
-                <input type="text" class="form-control" id="vendor_title"  name="vendor_title">
+                <input type="text"  class="form-control"  value="{{getSetting('vendor_title')}}"id="vendor_title"  name="vendor_title" >
               </div>
               <div class="col-3 form-group ">
                 <label for="vender_num" class="col-form-label"> Number Of Vendor <span class="required">*</span></label>
-                <input type="number" class="form-control" id="vendor_num"  name="no_of_vendor">
+                <input type="number" value="{{getSetting('no_of_vendor')}}" class="form-control" id="vendor_num"  name="no_of_vendor">
               </div>
             </div>
           </div>

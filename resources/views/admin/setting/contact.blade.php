@@ -22,33 +22,33 @@
                     <div class="row"> 
                         <div class="form-group col-3">
                                 <label for="cont-address" class="col-form-label"> Contact Address<span class="required">*</span></label>
-                                <input type="text" class="form-control" id="cont-address"  name="cont_address">
+                                <input type="text" class="form-control" id="cont-address" value="{{getSetting('contact_address')}}" name="contact_address">
                                 <div class="fv-plugins-message-container"></div>
                         </div>
                         <div class="form-group col-3">
                            
                                 <label for="cont-phone" class="col-form-label"> Contact Phone<span class="required">*</span></label>
-                                <input type="number" class="form-control" id="cont-phone"  name="cont_phone">
+                                <input type="number" class="form-control" id="cont-phone" value="{{getSetting('contact_phone')}}" name="contact_phone">
                                 <div class="fv-plugins-message-container"></div>
                            
                         </div>
                         <div class="form-group col-3">
-                                                              <label for="cont-email" class="col-form-label"> Contact Email<span class="required">*</span></label>
-                                <input type="email" class="form-control" id="cont-email"  name="cont_email">
+                                <label for="cont-email" class="col-form-label"> Contact Email<span class="required">*</span></label>
+                                <input type="email" class="form-control" id="cont-email" value="{{getSetting('contact_email')}}" name="contact_email">
                                 <div class="fv-plugins-message-container"></div>
                            
                         </div>
                         <div class="form-group col-3">
                             
                                 <label for="cont-website" class="col-form-label"> Contact Website<span class="required">*</span></label>
-                                <input type="text" class="form-control" id="cont-website"  name="cont_website">
+                                <input type="text" class="form-control" id="cont-website" value="{{getSetting('contact_website')}}" name="contact_website">
                                 <div class="fv-plugins-message-container"></div>
                         </div>
                     </div>    
                       <div class="form-group row">
                           <div class="col-lg-12">
                               <label for="cont-about" class="col-form-label"> Contact About<span class="required">*</span></label>
-                             <textarea name="cont_about" id="kt-ckeditor-1">
+                             <textarea name="contact_about" id="kt-ckeditor-1">{{getSetting('contact_about')}}
                              </textarea>
                               <div class="fv-plugins-message-container"></div>
                           </div> 

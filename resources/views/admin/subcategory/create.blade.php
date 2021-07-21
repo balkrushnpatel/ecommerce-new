@@ -68,16 +68,25 @@
 							    	<label for="subcategory-name" class="col-form-label"> Sub Category Name <span class="required">*</span></label>
 							      	<input type="text" class="form-control" id="name" value="{{ (isset($subcategory)) ? $subcategory->name : '' }}" name="name">
 							      	<div class="fv-plugins-message-container"></div>
-						        </div> 
+						        </div>
 						  	</div>
-                             <div class="form-group row">
-					        	<div class="col-lg-12">
+						  	<div class="form-group row">
+                             	<div class="col-lg-12">
 							    	<label for="subcategory-description" class="col-form-label">  Description </label> 
 							    	<textarea class="form-control"  id="subcategory-description" name="description">{{ (isset($subcategory)) ? $subcategory->description : '' }}</textarea> 
 							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+						  	</div> 
+                            <div class="form-group row">
+                             	<div class="col-lg-12">
+							    	<label class="col-form-label" for="subcategory-image">Image</label> 
+									<input type="file" class="form-control" id="subcategory-image"value="{{ (isset($subcategory)) ? $subcategory->image : '' }}" name="image">
+									<div class="images-preview-div"></div>
+									</div>
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>  
-						  	 <div class="form-group row">
+						  	<div class="form-group row">
 						  	 	<div class="col-lg-12">
 	  	 							<div class="radio-inline">
 	  	 								<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp

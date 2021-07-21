@@ -243,6 +243,14 @@ $( document ).delegate( ".colorpicker-component", "click", function(e) {
 $( document ).delegate( "#cat_id", "change", function() {
 	var catId = $(this).val();
 	//console.log(catId);
+	getCategory(catId);
+
+});
+
+function getCategory(catId,subcat = '')
+{
+	//console.log(catId);
+	//console.log(subcat);
 	$.ajax({
             url: APP_URL + '/admin/get-sub-categories',
             data: { 
@@ -256,21 +264,30 @@ $( document ).delegate( "#cat_id", "change", function() {
             	html += '<option value="0">Select Subcategory</option>';
             	if(res.success){
             		$.each( res.data, function( key, value ) {
-				        html += '<option value="'+key+'">'+value+'</option>';
+            			var selected='';
+            			if(subcat !='' && subcat == key){
+                           selected='selected';
+            			}
+				        html += '<option value="'+key+'" '+selected+'>'+value+'</option>';
 				    });
             	}
             	$('#subcat_id').html('');
             	$('#subcat_id').append(html);
-            }
+            	}
         });
-
-});
-
+}
 $( document ).delegate( "#subcat_id", "change", function() {
 	var subcat_id = $(this).val();
 	var catId = $('#cat_id').val();
-	/*membership-positions/edit*/
-	$.ajax({
+	getBrand(catId,subcat_id);
+
+});
+
+function getBrand(catId,subcat_id,brand_id= ''){
+console.log(subcat_id);
+	console.log(brand_id);
+
+		$.ajax({
             url: APP_URL + '/admin/get-brand',
             data: { 
 	            'cat_id':catId,            
@@ -284,14 +301,18 @@ $( document ).delegate( "#subcat_id", "change", function() {
             	html += '<option value="0">Select Brand</option>';
             	if(res.success){
             		$.each( res.data, function( key, value ) {
-				        html += '<option value="'+key+'">'+value+'</option>';
+            			var selected='';
+            			if(brand_id !='' && brand_id == key){
+                           selected='selected';
+            			}
+				        html += '<option value="'+key+'" '+selected+'>'+value+'</option>';
 				    });
             	}
             	$('#brand_id').html('');
             	$('#brand_id').append(html);
             }
         });
-});
+}
  
 
 var KTBootstrapSwitch = function() { 

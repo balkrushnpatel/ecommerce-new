@@ -10,6 +10,7 @@ use App\Models\Brand;
 use Validator;
 use ImageResize;
 use DB;
+use File;
 class ProductController extends Controller
 {
   /**
@@ -74,7 +75,8 @@ class ProductController extends Controller
             $product->purchase_price  = $request->input('purchase_price');
             $product->shipping_cost   = $request->input('shipping_cost');
             $product->tax             = $request->input('tax');
-            $product->tax_type         =$request->input('tax_type');
+            $product->tax_type        =$request->input('tax_type');
+            $product->specification   =$request->input('specification');
             $i = '0';
             if ($request->hasFile('image')) {
               $image = $request->file('image');
@@ -87,7 +89,7 @@ class ProductController extends Controller
               } 
             } 
           }  
-          $product->image= count($i);
+          $product->image= $i;
           $product->save();
           DB::commit();
           return redirect()->route('product.index')->with('success',' Product create successfully!');
@@ -166,11 +168,14 @@ class ProductController extends Controller
       $product->price           = $request->input('price');
       $product->qty             = $request->input('qty');
       $product->discount        = $request->input('discount'); 
+      $product->discount_type    =$request->input('discount_type');
       $product->unit            = $request->input('unit');
       $product->tags            = $request->input('tags');
       $product->purchase_price  = $request->input('purchase_price');
       $product->shipping_cost   = $request->input('shipping_cost');
       $product->tax             = $request->input('tax');
+      $product->tax_type        =$request->input('tax_type');
+      $product->specification   =$request->input('specification');
       if(!empty($request->input('input_title'))){
         $product->option          = json_encode($option);
       }
@@ -185,6 +190,9 @@ class ProductController extends Controller
         foreach($image as $img){
           $name = $i.'.'.$img->getClientOriginalExtension();
           $destinationPath = public_path('/uploads/product/'.$product->id);
+           if(!File::exists($destinationPath)) {
+              File::makeDirectory($destinationPath, $mode = 0755, true, true);
+          }
           $thumbnil= 'thumb_'.$name;
 
           $imgThumb = ImageResize::make($img->path());
@@ -196,7 +204,7 @@ class ProductController extends Controller
 
           $i++;
         } 
-        $product->image= count($i); 
+        $product->image= $i; 
         $product->save();
       }
       DB::commit();

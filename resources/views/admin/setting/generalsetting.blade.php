@@ -54,32 +54,32 @@
             <div class="row">
               <div class="col-3 form-group">
                <label for="system_name" class="col-form-label">  System Name <span class="required">*</span></label>
-                <input type="text" class="form-control" id="system_name"  name="system_name">
+                <input type="text" value="{{getSetting('system_name')}}" class="form-control" id="system_name"  name="system_name">
               </div>
                <div class="col-3 form-group">
                 <label for="system_email" class="col-form-label">  System Email <span class="required">*</span></label>
-                <input type="text" class="form-control" id="system_email"  name="system_email">
+                <input type="text" class="form-control"  value="{{getSetting('system_email')}}"id="system_email"  name="system_email">
               </div>
               <div class="col-3 form-group">
                 <label for="system_title" class="col-form-label">  System Title <span class="required">*</span></label>
-                <input type="text" class="form-control" id="system_title"  name="system_title">
+                <input type="text" class="form-control" value="{{getSetting('system_title')}}" id="system_title"  name="system_title">
               </div>
             </div>
             <div class="row">
                 <div class="col-3 form-group">
                  <label for="cache_time" class="col-form-label">Homepage Cache Time(Minutes)<span class="required">*</span></label>
-                  <input type="number" min="0" step="5"class="form-control" id="cache_time"  name="cache_time">
+                  <input type="number" min="0" step="5"class="form-control" id="cache_time" value="{{getSetting('cache_time')}}" name="cache_time">
                 </div>
                 <div class="col-3 form-group">
                   <label for="pro-folder-name" class="col-form-label">Downloadable Product Folder Name <span class="required">*</span></label>
-                  <input type="text" class="form-control" id="pro-folder-name"  name="pro_folder_name">
+                  <input type="text" class="form-control" id="pro-folder-name" value="{{getSetting('pro_folder_name')}}" name="pro_folder_name">
                 </div>
                 <div class="col-3 form-group">
                   <label for="language" class="col-form-label">  Language<span class="required">*</span></label>
                   <select class="form-control select2" name="language_id" id="language"> 
                     <option value="">Select Language</option> 
                     @foreach(getLanguage() as $key => $language)
-                    <option selected value="{{ $language }}"> {{ $language }}</option>
+                     <option  value="{{ $key }}"  {{ (getSetting('language_id')  == $key ? 'selected' : '') }} > {{ $language }}</option> 
                     @endforeach  
                   </select>
                 </div>
@@ -91,7 +91,7 @@
             <div class="col-3">
               <span class="switch switch-success">
                 <label class="col-3 col-form-label">
-                <input type="checkbox" value="1" name="smtp_status"/>
+                <input type="checkbox"  {{ (getSetting('smtp_status')  == 1 ? ' checked' : '') }} value="1" name="smtp_status"/>
                 <span></span>
                 </label>
               </span>
@@ -100,19 +100,19 @@
           <div class="row">
             <div class="col-3 form-group">
              <label for="smtp_host" class="col-form-label">  Smtp Host <span class="required">*</span></label>
-              <input type="text" class="form-control" id="smtp_host"  name="smtp_host">
+              <input type="text" class="form-control" value="{{getSetting('smtp_host')}}" id="smtp_host"  name="smtp_host">
             </div>
             <div class="col-3 form-group">
               <label for="smtp_port" class="col-form-label">  Smtp Port<span class="required">*</span></label>
-              <input type="text" class="form-control" id="smtp_port"  name="smtp_port">
+              <input type="text" class="form-control"  value="{{getSetting('smtp_port')}}" id="smtp_port"  name="smtp_port">
             </div>
             <div class="col-3 form-group">
               <label for="smtp_user" class="col-form-label">  Smtp User <span class="required">*</span></label>
-              <input type="text" class="form-control" id="smtp_user"  name="smtp_user">
+              <input type="text" class="form-control" value="{{getSetting('smtp_user')}}" id="smtp_user"  name="smtp_user">
             </div>
             <div class="col-3 form-group">
               <label for="smtp_pwd" class="col-form-label">  Smtp Password <span class="required">*</span></label>
-              <input type="password" class="form-control" id="smtp_pwd"  name="smtp_pwd">
+              <input type="password" class="form-control" value="{{getSetting('smtp_pwd')}}" id="smtp_user" id="smtp_pwd"  name="smtp_pwd">
             </div>
           </div>
         </div>
@@ -120,36 +120,36 @@
           <div class="row">
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-facebook text-primary mr-5"></i></span>
-              <input type="text" class="form-control" id="facebook"  name="facebook_link">
+              <input type="text" class="form-control" id="facebook" value="{{getSetting('facebook_link')}}" name="facebook_link">
             </div> 
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-twitter text-primary mr-5"></i></span>
-              <input type="text" class="form-control" id="twitter"  name="twitter_link">
+              <input type="text" class="form-control" value="{{getSetting('twitter_link')}}" id="twitter"  name="twitter_link">
             </div>
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-instagram text-primary mr-5"></i></span>
-              <input type="text" class="form-control" id="instagram_link"  name="instagram_link">
+              <input type="text" class="form-control" value="{{getSetting('google_link')}}" id="google_link"  name="google_link">
             </div>
           </div>
           <div class="row">
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-pinterest text-danger mr-5"></i></span>
-              <input type="text" class="form-control" id="pinterest"  name="pinterest_link">
+              <input type="text" class="form-control" value="{{getSetting('pinterest_link')}}" id="pinterest"  name="pinterest_link">
             </div>
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-skype text-primary mr-5"></i></span>
-              <input type="text" class="form-control" id="skype"  name="skype_link">
-            </div>
+              <input type="text" class="form-control"  value="{{getSetting('skype_link')}}" id="skype"  name="skype_link">
+            </div> 
             <div class="col-3 form-group input-group-prepend">
               <span class="input-group-text"><i class="socicon-youtube text-danger mr-5"></i></span>
-              <input type="text" class="form-control" id="youtube"  name="youtube_link">
+              <input type="text" class="form-control" id="youtube" value="{{getSetting('youtube_link')}}"  name="youtube_link">
             </div>
           </div> 
         </div>
         <div class="tab-pane fade " id="kt_tab_pane_4_4" role="tabpanel" aria-labelledby="kt_tab_pane_4_4">
          <div class="form-group row">
               <div class="col-lg-12">
-                <textarea name="terms_condition" id="kt-ckeditor-1">
+                <textarea name="terms_condition" id="kt-ckeditor-1">{{getSetting('terms_condition')}}
                 </textarea>
                   <div class="fv-plugins-message-container"></div>
               </div> 
@@ -158,7 +158,7 @@
         <div class="tab-pane fade " id="kt_tab_pane_5_4" role="tabpanel" aria-labelledby="kt_tab_pane_5_4">
           <div class="form-group row">
               <div class="col-lg-12">
-                <textarea name="privacy_policy" id="kt-ckeditor-2">
+                <textarea name="privacy_policy" id="kt-ckeditor-2">{{getSetting('privacy_policy')}}
                 </textarea>
                   <div class="fv-plugins-message-container"></div>
               </div> 

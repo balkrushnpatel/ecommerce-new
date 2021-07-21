@@ -56,6 +56,15 @@ class SubCategoryController extends Controller
             $subcategory->description          = $request->input('description');
             $subcategory->status               = $request->input('status'); 
             $subcategory->save();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+               $name ='subcategory_'.$subcategory->id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/sub_category/');
+                $image->move($destinationPath, $name);
+                $subcategory->image= $name; 
+                $subcategory->save();
+            } 
             DB::commit();
             return redirect()->route('subcategory.index')->with('success',' SubCategory create successfully!');
 
@@ -114,6 +123,15 @@ class SubCategoryController extends Controller
             $subcategory->description       = $request->input('description');
             $subcategory->status            = $request->input('status'); 
             $subcategory->save();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+                $name ='subcategory_'.$subcategory->id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/sub_category/');
+                $image->move($destinationPath, $name);
+                $subcategory->image= $name; 
+                $subcategory->save();
+            } 
             DB::commit();
             return redirect()->route('subcategory.index')->with('success','subcategory update Successfully.');
         } catch (DecryptException  $e) {
@@ -132,6 +150,11 @@ class SubCategoryController extends Controller
          try {
             DB::beginTransaction();
             $subcategory = SubCategory::findOrFail($id); 
+             $destinationPath = public_path('/uploads/sub_category/').$subcategory->image;
+
+              if (file_exists($destinationPath)) { 
+                @unlink($destinationPath); 
+              } 
             $subcategory->status = 0; 
             $subcategory->save(); 
             DB::commit();

@@ -52,6 +52,15 @@ class BrandController extends Controller
             $brand->name                 = $request->input('name');
             $brand->status               = $request->input('status'); 
             $brand->save();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+               $name ='brand_'.$brand->id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/brand/');
+                $image->move($destinationPath, $name);
+                $brand->image= $name; 
+                $brand->save();
+            } 
             DB::commit();
             return redirect()->route('brand.index')->with('success',' Brand create successfully!');
 
@@ -106,6 +115,15 @@ class BrandController extends Controller
             $brand->name              = $request->input('name');
             $brand->status            = $request->input('status'); 
             $brand->save();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+
+               $name ='brand_'.$brand->id.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/brand/');
+                $image->move($destinationPath, $name);
+                $brand->image= $name; 
+                $brand->save();
+            } 
             DB::commit();
             return redirect()->route('brand.index')->with('success','Brand update Successfully.');
         } catch (DecryptException  $e) {
@@ -124,6 +142,11 @@ class BrandController extends Controller
        try {
             DB::beginTransaction();
             $brand = Brand::findOrFail($id); 
+            $destinationPath = public_path('/uploads/brand/').$brand->image;
+
+              if (file_exists($destinationPath)) { 
+                @unlink($destinationPath); 
+              } 
             $brand->status = 0; 
             $brand->save(); 
             DB::commit();

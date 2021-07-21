@@ -206,7 +206,9 @@
 				</li>
 				 @php
 					$settingActive = '';
-					if(Request::is('admin/setting/home') || Request::is('admin/setting/contact')|| Request::is('admin/setting/header') || Request::is('admin/setting/footer') || Request::is('admin/setting/favicon') || Request::is('admin/setting/logo')|| Request::is('admin/setting/general')){
+					if(Request::is('admin/setting/home') || Request::is('admin/setting/contact')|| Request::is('admin/setting/header') || Request::is('admin/setting/footer') || Request::is('admin/setting/favicon')|| 
+                    Request::is('admin/setting/shipment')||
+					Request::is('admin/setting/logo')|| Request::is('admin/setting/general')){
 						$settingActive = 'menu-item-open';
 					}
 				@endphp
@@ -278,6 +280,14 @@
 										<span></span>
 									</i>
 									<span class="menu-text">@lang('ecommerce.General Setting')</span>
+								</a>
+							</li>
+							<li class="menu-item {{ (Request::is('admin/setting/shipment'))?'menu-item-open':'' }}" aria-haspopup="true">
+								<a href="{{ route('admin.shipment') }}" class="menu-link">
+									<i class="menu-bullet menu-bullet-dot">
+										<span></span>
+									</i>
+									<span class="menu-text">@lang('ecommerce.Shipment')</span>
 								</a>
 							</li>
 						</ul>

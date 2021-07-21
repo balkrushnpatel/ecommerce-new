@@ -5,7 +5,7 @@ $( document ).delegate( ".header-setting", "change", function() {
 		var isEnable = '1';
 	}
 	$.ajax({
-        url: APP_URL + '/admin/headersetting',
+        url: APP_URL + '/admin/setting/headersetting',
         data: { 
         	'isEnable':isEnable,  
             'name':name             

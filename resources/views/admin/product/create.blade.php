@@ -73,7 +73,7 @@
 												<div class="col-lg-12">
 													<label for="subcat_id" class="col-form-label">  Subcategory <span class="required">*</span></label>
 													<select class="form-control select2" name="subcat_id" id="subcat_id"> 
-														<option value=""> Select  Subcategory</option> 
+														<option selected value=""> Select  Subcategory</option> 
 														
 													</select>
 													<div class="fv-plugins-message-container"></div>
@@ -168,6 +168,13 @@
 												<select class="form-control select2" name="tax_type" id="tax_type"><option value="1" @if((isset($product->tax_type) && $product->tax_type == '1')) selected="selected" @endif>$</option>
 												 <option value="2" @if((isset($product->tax_type) && $product->tax_type == '2')) selected="selected" @endif>%</option>
 												</select>
+											</div>
+										</div>
+										<div class="col-sm-12 col-lg-12">
+											<div class="form-group">
+												<label for="product-specification" class="col-form-label">Specification </label>
+										        <textarea name="specification" id="kt-ckeditor-2">{{ (isset($product)) ? $product->specification : '' }}
+										        </textarea>
 											</div>
 										</div>
 									</div>
@@ -274,4 +281,13 @@
 @endsection
 @push('scripts')  
 <script src="{{ asset('wjs/product.js')}}"></script>
+@if(isset($product))
+<script>
+	
+$(document).ready(function() {
+  getCategory({{$product->cat_id}},{{$product->subcat_id}});
+  getBrand({{$product->cat_id}},{{$product->subcat_id}},{{$product->brand_id}});
+});
+</script>
+@endif
 @endpush

@@ -20,4 +20,7 @@
     Route::get('header', 'Admin\SettingController@header')->name('admin.header');
 
 	Route::get('headersetting', 'Admin\SettingController@setHeader')->name('header.setting');
+
+	Route::get('shipment', 'Admin\SettingController@shipment')->name('admin.shipment');
+	Route::post('shipmentsetting', 'Admin\SettingController@shipmentsetting')->name('shipment.setting');
 });

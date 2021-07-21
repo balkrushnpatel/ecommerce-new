@@ -111,28 +111,28 @@ class SettingController extends Controller
 
             $setting=$this->set('contact_address');
             $setting->type       = 'contact_address';
-            $setting->value       =$request->input('cont_address');
+            $setting->value       =$request->input('contact_address');
             $setting->save();
 
             $setting=$this->set('contact_phone');
             $setting->type       = 'contact_phone';
-            $setting->value      =$request->input('cont_phone');
+            $setting->value      =$request->input('contact_phone');
             $setting->save();
 
             $setting=$this->set('contact_email');
             $setting->type       = 'contact_email';
-            $setting->value      =$request->input('cont_email');
+            $setting->value      =$request->input('contact_email');
             $setting->save();
 
-            $setting=$this->set('website');
-            $setting->type       = 'website';
-            $setting->value      =$request->input('cont_website');
+            $setting=$this->set('contact_website');
+            $setting->type       = 'contact_website';
+            $setting->value      =$request->input('contact_website');
             $setting->save();
 
 
             $setting=$this->set('contact_about');
             $setting->type       = 'contact_about';
-            $setting->value      =$request->input('cont_about');
+            $setting->value      =$request->input('contact_about');
             $setting->save();
             DB::commit();
              return view('admin.setting.contact');
@@ -388,6 +388,40 @@ class SettingController extends Controller
 
             DB::commit();
             return view('admin.setting.generalsetting');
+        }catch (\Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+        } 
+    }
+
+    public function shipment(){
+        return view('admin.setting.shipment');
+    }
+    public function shipmentsetting(Request $request){
+       try {  
+            DB::beginTransaction();
+            $validator = Validator::make($request->all(),[
+               
+            ]);
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $setting=$this->set('shipment_cost');
+            $setting->type       = 'shipment_cost';
+            $setting->value      =$request->input('shipment_cost');
+            $setting->save();
+
+
+            $setting=$this->set('shipment_info');
+            $setting->type       = 'shipment_info';
+            $setting->value      =$request->input('shipment_info');
+            $setting->save();
+            DB::commit();
+             return view('admin.setting.shipment');
+
         }catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
