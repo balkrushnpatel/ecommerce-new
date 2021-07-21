@@ -35,6 +35,19 @@ class Product extends Model
     public function productPrice(){
         return '<i class="fa fa-inr"></i> '.$this->price;
     }
+    public function mainPrice(){
+          $discount_type=$this->discount_type;
+          if($discount_type=='1')
+          {
+             $mainprice=($this->price)+($this->discount);
+
+          }else{
+              $price=($this->price)*($this->discount)/100;
+              $mainprice=($this->price)+$price;
+          } 
+
+          return '<i class="fa fa-inr"></i> '.$mainprice;
+    }
     public function productSlug(){
         return route('product.detail',array('id' => $this->id, 'slug' => Str::slug($this->slug)));
     }

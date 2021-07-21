@@ -26,7 +26,7 @@
         </div>
         <div class="product-pa-wrapper">
             <div class="product-price">
-                <ins class="new-price">{!! $product->productPrice() !!}</ins><del class="old-price">$534.00</del>
+                <ins class="new-price">{!! $product->productPrice() !!}</ins><del class="old-price">{!! $product->mainPrice() !!}</del>
             </div>
         </div>
     </div>
