@@ -12,10 +12,7 @@ Route::group(['prefix' => '/brand'], function () {
 	Route::get('/', 'ProductController@index')->name('all.brand');
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('brand.product');
 });
-Route::group(['prefix' => '/blog'], function () { 
-	Route::get('/', 'ProductController@blogs')->name('blogs');
-	Route::get('/{id}/{slug}', 'ProductController@index')->name('blogs.detail');
-});
+
 Route::group(['prefix' => '/product'], function () {
 	Route::get('/', 'ProductController@index')->name('product');
 	

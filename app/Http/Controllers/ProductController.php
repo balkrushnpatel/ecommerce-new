@@ -11,42 +11,50 @@ class ProductController extends Controller
    
   }
   public function index(Request $request){
-  	$type = request()->segment(1);
-    $id = request()->segment(2); 
-  	$getProducts = Product::where('status',1);
-  	$products = [];
-  	if($type == 'product'){ 
-      if(!empty($id)){
-        if($id == 'search')
-        {
-          $name=$request->get('name');
-          $getProducts = Product::where("name","LIKE","%{$name}%");
-        }else{
-          $reletedProduct = [];
-          $getProducts = $getProducts->where('id',$id); 
-          $products = $getProducts->get();
-          if(count($products)){
-            $catid = $products[0]->cat_id;
-             $reletedProduct = Product::where('cat_id',$catid)->inRandomOrder()->get(); 
-          }
-          return view('user.product.detail',compact('products','reletedProduct')); 
-        }  
+    try { 
+      DB::beginTransaction(); 
+    	$type = request()->segment(1);
+      $id = request()->segment(2); 
+    	$getProducts = Product::where('status',1);
+    	$products = [];
+    	if($type == 'product'){ 
+        if(!empty($id)){
+          if($id == 'search')
+          {
+            $name=$request->get('name');
+            $getProducts = Product::where("name","LIKE","%{$name}%");
+          }else{
+            $reletedProduct = [];
+            $getProducts = $getProducts->where('id',$id); 
+            $products = $getProducts->get();
+            if(count($products)){
+              $catid = $products[0]->cat_id;
+               $reletedProduct = Product::where('cat_id',$catid)->inRandomOrder()->get(); 
+            }
+            DB::commit();
+            return view('user.product.detail',compact('products','reletedProduct')); 
+          }  
+        }
+    	}else if($type == 'category'){
+        if(!empty($id)){
+          $getProducts = $getProducts->where('cat_id',$id);    
+        }
+      }else if($type == 'subcategory'){
+        if(!empty($id)){
+          $getProducts = $getProducts->where('subcat_id',$id);    
+        }
+      }else if($type == 'brand'){
+        if(!empty($id)){
+          $getProducts = $getProducts->where('brand_id',$id);    
+        }
       }
-  	}else if($type == 'category'){
-      if(!empty($id)){
-        $getProducts = $getProducts->where('cat_id',$id);    
-      }
-    }else if($type == 'subcategory'){
-      if(!empty($id)){
-        $getProducts = $getProducts->where('subcat_id',$id);    
-      }
-    }else if($type == 'brand'){
-      if(!empty($id)){
-        $getProducts = $getProducts->where('brand_id',$id);    
-      }
+      $products = $getProducts->get(); 
+      DB::commit();
+    	return view('user.product.list',compact('products')); 
+    }catch (\Exception $e) {
+        DB::rollback(); 
+        return response()->json($e->getMessage());
     }
-    $products = $getProducts->get(); 
-  	return view('user.product.list',compact('products')); 
   }
   public function productFilter(Request $request){
     if($request->ajax()){
@@ -82,24 +90,31 @@ class ProductController extends Controller
           DB::commit();
           return view('user.product.product-list', $data);
       }catch (\Exception $e) {
-          DB::rollback(); 
-          return response()->json($e->getMessage());
+        DB::rollback(); 
+        return response()->json($e->getMessage());
       } 
-  }else{
+    }else{
       return abort(404);
-  }
+    }
   }
   public function blogs(Request $request){
-    $type = request()->segment(1);
-    $id = request()->segment(2); 
-    $getProducts = Product::where('status',1);
-    $blog = [];
-    if(!empty($id)){
-      $getProducts = $getProducts->where('id',$id); 
-      $blog = $getProducts->get(); 
-      return view('user.product.detail',compact('blog'));   
-    }
-    $blog = $getProducts->get(); 
-    return view('user.blog.list',compact('blog')); 
-  }
+    try{
+      DB::beginTransaction();
+      $type = request()->segment(1);
+      $id = request()->segment(2); 
+      $getProducts = Product::where('status',1);
+      $blog = [];
+      if(!empty($id)){
+        $getProducts = $getProducts->where('id',$id); 
+        $blog = $getProducts->get(); 
+        return view('user.blog.detail',compact('blog'));   
+      }
+      $blogs = $getProducts->get(); 
+      DB::commit();
+      return view('user.blog.list',compact('blogs'));
+    }catch (\Exception $e) {
+      DB::rollback(); 
+      return response()->json($e->getMessage());
+    } 
+  }  
 }

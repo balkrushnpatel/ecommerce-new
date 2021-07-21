@@ -28,6 +28,9 @@ class Product extends Model
     public static function feactureProduct(){
         return self::where('is_featured',1)->where('status',1)->get();
     }
+    public static function getSingleProduct($id){
+        return self::where('id',$id)->where('status',1)->first();
+    }
     public function stockPro()
     {
         return $this->hasOne('App\Models\Productstock','product_id');

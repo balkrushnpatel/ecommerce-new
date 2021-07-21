@@ -2,7 +2,7 @@
 @section('content') 
 	@if(count($products) == 1)
 		@foreach($products as $item)
-			@section('title',$item->name)
+			@section('title',$item->name) 
 			<main class="main mb-10 pb-1"> 
 		        <nav class="breadcrumb-nav container">
 		            <ul class="breadcrumb bb-no">
@@ -24,8 +24,7 @@
 	                                            @endphp
 	                                            @foreach($images as $img)
                                                     <figure class="product-image">
-                                                        <img src="{{  $img }}" data-zoom-image="{{  $img }}"
-                                                            alt="{{ $item->name }}" width="800" height="900">
+                                                        <img src="{{  $img }}" data-zoom-image="{{  $img }}" alt="{{ $item->name }}" width="800" height="900">
                                                     </figure>
                                                 @endforeach 
 		                                    </div>
@@ -139,7 +138,7 @@
 		                                        <div class="product-form container">
 		                                            <div class="product-qty-form">
 		                                                <div class="input-group">
-		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}">
+		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}" name="qty" id="qty">
 		                                                    <button class="quantity-plus w-icon-plus"></button>
 		                                                    <button class="quantity-minus w-icon-minus"></button>
 		                                                </div>

@@ -54,9 +54,7 @@ include_once($web_real_path . 'product-route.php');
 Route::group(['middleware' => ['auth','role:User']], function () { 
 	$web_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'web-route' . DIRECTORY_SEPARATOR;
 	include_once($web_real_path . 'user-route.php');  
-	Route::post('cart', 'HomeController@addtoCart')->name('cart');
-	Route::post('checkout', 'HomeController@checkout')->name('checkout');
-	Route::get('remove-to-cart/{id}', 'HomeController@removetoCart')->name('removetocart');
+	include_once($web_real_path . 'cart.php');   
 });
 
 
