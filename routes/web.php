@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'UserHomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/admin', 'HomeController@index')->name('admin.dashboard')->middleware('verified');
+Route::get('/admin', 'AdminController@index')->name('admin.dashboard')->middleware('verified');
 
 Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], function () { 
 	$admin_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'admin-route' . DIRECTORY_SEPARATOR; 
@@ -51,9 +51,11 @@ include_once($web_real_path . 'web-route.php');
 include_once($web_real_path . 'product-route.php');   
 
 Route::group(['middleware' => ['auth','role:User']], function () { 
-	Route::post('cart', 'UserHomeController@addtoCart')->name('cart');
-	Route::post('checkout', 'UserHomeController@checkout')->name('checkout');
-	Route::get('remove-to-cart/{id}', 'UserHomeController@removetoCart')->name('removetocart');
+	$web_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'web-route' . DIRECTORY_SEPARATOR;
+	include_once($web_real_path . 'user-route.php');  
+	Route::post('cart', 'HomeController@addtoCart')->name('cart');
+	Route::post('checkout', 'HomeController@checkout')->name('checkout');
+	Route::get('remove-to-cart/{id}', 'HomeController@removetoCart')->name('removetocart');
 });
 
 

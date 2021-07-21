@@ -1,60 +1,65 @@
 @extends('layouts.auth')
-
+@section('title','Login')
 @section('content')
-<div class="login login-3 wizard d-flex flex-column flex-lg-row flex-column-fluid"> 
-    <div class="login-aside d-flex flex-column flex-row-auto"> 
-        <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15"> 
-            <a href="{{ url('/') }}" class="login-logo text-center pt-lg-25 pb-10">
-                <img src="{{ asset('assets/media/logos/logo-1.png')}}" class="max-h-70px" alt="" />
-            </a> 
-            <h3 class="font-weight-bolder text-center font-size-h4 text-dark-50 line-height-xl">User Experience &amp; Interface Design
-            <br />Strategy SaaS Solutions</h3> 
-        </div> 
-        <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-position-y: calc(100% + 5rem); background-image: url({{ asset('assets/media/svg/illustrations/login-visual-5.svg')}}"></div> 
-    </div> 
-    <div class="login-content flex-row-fluid d-flex flex-column p-10">
-        <div class="text-right d-flex justify-content-center">
-            <div class="top-signin text-right d-flex justify-content-end pt-5 pb-lg-0 pb-10">
-                <span class="font-weight-bold text-muted font-size-h4">Having issues?</span>
-                <a href="javascript:;" class="font-weight-bold text-primary font-size-h4 ml-2" id="kt_login_signup">Get Help</a>
+<main class="main login-page">
+<!-- Start of Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title mb-0">Login</h1>
+        </div>
+    </div>
+    <!-- End of Page Header -->
+     
+    <!-- End of Breadcrumb -->
+    <div class="page-content">
+        <div class="container">
+            <div class="login-popup">
+                <div class="tab tab-nav-boxed tab-nav-center tab-nav-underline">
+                    <ul class="nav nav-tabs text-uppercase" role="tablist">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link active">Sign In</a>
+                        </li> 
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="sign-in">
+                            <form method="POST" action="{{ route('login') }}" class="form">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Email address <span class="required">*</span></label>
+                                    <input type="text" class="form-control border-0 @error('email') is-invalid @enderror" name="email" id="email" required value="{{ old('email') }}">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label>Password <span class="required">*</span></label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required value="{{ old('password') }}">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-checkbox d-flex align-items-center justify-content-between">
+                                    <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1" required="" >
+                                    <label for="remember1">Remember me</label>
+                                    <a href="{{ route('password.request') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary">{{ __('Forgot Your Password?') }}</a> 
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Log In</button>
+                            </form>
+                        </div> 
+                    </div>
+                    <!-- <p class="text-center">Sign in with social account</p>
+                    <div class="social-icons social-icon-border-color d-flex justify-content-center">
+                        <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                        <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+                        <a href="#" class="social-icon social-google fab fa-google"></a>
+                    </div> -->
+                </div>
             </div>
         </div>
-        <div class="d-flex flex-row-fluid flex-center"> 
-            <div class="login-form"> 
-                <form method="POST" action="{{ route('login') }}" class="form">
-                    @csrf
-                    <div class="pb-5 pb-lg-15">
-                        <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{ __('Login') }}</h3>
-                    </div> 
-                    <div class="form-group">
-                        <label class="font-size-h6 font-weight-bolder text-dark">Email Id</label>
-                        <input id="email" type="email" class="form-control h-auto py-7 px-6 rounded-lg border-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus autocomplete="off" > 
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> 
-                    <div class="form-group">
-                        <div class="d-flex justify-content-between mt-n5">
-                            <label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label> 
-                            @if (Route::has('password.request')) 
-                                <a href="{{ route('password.request') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">{{ __('Forgot Your Password?') }}</a> 
-                            @endif
-                        </div>
-                        <input id="password" type="password" class="form-control h-auto py-7 px-6 rounded-lg border-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> 
-                    <div class="pb-lg-0 pb-5">
-                        <button type="submit" id="" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Log In</button> 
-                    </div> 
-                </form> 
-            </div> 
-        </div> 
-    </div> 
-</div>
+    </div>
+</main>
 @endsection

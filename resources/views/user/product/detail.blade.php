@@ -75,14 +75,6 @@
 		                                            <span class="tooltiptext tooltip-top"></span>
 		                                        </div>
 		                                        <a href="#product-tab-reviews" class="rating-reviews scroll-to">(3 Reviews)</a>
-		                                    </div>
-
-		                                    <div class="product-short-desc">
-		                                        <ul class="list-type-check list-style-none">
-		                                            <li>Ultrices eros in cursus turpis massa cursus mattis.</li>
-		                                            <li>Volutpat ac tincidunt vitae semper quis lectus.</li>
-		                                            <li>Aliquam id diam maecenas ultricies mi eget mauris.</li>
-		                                        </ul>
 		                                    </div> 
 		                                    <hr class="product-divider"> 
 		                                    @if(!empty($item->color))
@@ -90,7 +82,7 @@
 			                                        <label>Color:</label>
 			                                        <div class="d-flex align-items-center product-variations">
 			                                        	@foreach(json_decode($item->color) as $clr)
-			                                            	<a href="#" class="color" style="background-color: {{ $clr }}"></a>
+			                                            	<a href="javascript:void(0)" class="color cust-color" data-color="{{ $clr }}" style="background-color: {{ $clr }}"></a>
 			                                            @endforeach
 			                                        </div>
 			                                    </div>
@@ -104,12 +96,40 @@
 				                                        <label class="mb-1">{{ $opt->title }}:</label>
 				                                        <div class="flex-wrap d-flex align-items-center product-variations">
 				                                        	@if($opt->choice != 'text')
-				                                        		@php 
+					                                        	@php 
 				                                        			$choice = explode(',',$opt->option); 
 				                                        		@endphp
-				                                        		@foreach($choice as $choic)
-				                                        			<a href="#" class="size">{{ $choic }}</a>
-				                                        		@endforeach
+				                                        		@if($opt->choice =='single')
+				                                        			<select name="option" id="option">
+				                                        				@foreach($choice as $choic)
+						                                        			<option value="{{ $choic }}">{{ $choic }}</option>
+						                                        		@endforeach
+				                                        			</select>
+					                                        	@endif
+				                                        		@if($opt->choice =='multi')
+				                                        			<div class="toolbox">
+				                                        			<div class="toolbox-item toolbox-sort select-box text-dark">
+					                                        			<select name="option[]" id="option" multiple class="form-control">
+					                                        				@foreach($choice as $choic)
+							                                        			<option value="{{ $choic }}">{{ $choic }}</option>
+							                                        		@endforeach
+					                                        			</select>
+				                                        			</div>
+				                                        			</div>
+					                                        	@endif
+				                                        		@if($opt->choice =='radio')
+				                                        			@foreach($choice as $choic)
+				                                        				<input type="radio" name="option" value="{{ $choic }}"class="size ml-2"><span class="product-option"> {{ $choic }}</span>
+				                                        			@endforeach
+					                                        	@endif
+				                                        		@if($opt->choice =='checkbox')
+				                                        			@foreach($choice as $choic)
+				                                        				<input type="checkbox" name="option[]" value="{{ $choic }}"> 
+				                                        				<span class="product-option"> {{ $choic }}</span>
+				                                        			@endforeach
+					                                        	@endif
+					                                        @else
+					                                        	<input type="text" name="option" class="form-control">
 			                                				@endif  
 				                                        </div> 
 				                                    </div>
@@ -119,13 +139,12 @@
 		                                        <div class="product-form container">
 		                                            <div class="product-qty-form">
 		                                                <div class="input-group">
-		                                                    <input class="quantity form-control" type="number" min="1"
-		                                                        max="10000000">
+		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}">
 		                                                    <button class="quantity-plus w-icon-plus"></button>
 		                                                    <button class="quantity-minus w-icon-minus"></button>
 		                                                </div>
 		                                            </div>
-		                                            <button class="btn btn-primary btn-cart">
+		                                            <button class="btn btn-primary btn-cart" data-id="{{ $item->id}}">
 		                                                <i class="w-icon-cart"></i>
 		                                                <span>Add to Cart</span>
 		                                            </button>
@@ -288,7 +307,7 @@
 		                                    <div class="row mb-4">
 		                                        <div class="col-xl-4 col-lg-5 mb-4">
 		                                            <ul class="comments list-style-none">
-	                                                    <li class="comment">
+	                                                    <!-- <li class="comment">
 	                                                        <div class="comment-body">
 	                                                            <figure class="comment-avatar">
 	                                                                <img src="{{ asset('user/images/agents/1-100x100.png') }}"
@@ -337,88 +356,7 @@
 	                                                                </div>
 	                                                            </div>
 	                                                        </div>
-	                                                    </li>
-	                                                    <li class="comment">
-	                                                        <div class="comment-body">
-	                                                            <figure class="comment-avatar">
-	                                                                <img src="{{ asset('user/images/agents/2-100x100.png') }}"
-	                                                                    alt="Commenter Avatar" width="90" height="90">
-	                                                            </figure>
-	                                                            <div class="comment-content">
-	                                                                <h4 class="comment-author">
-	                                                                    <a href="#">John Doe</a>
-	                                                                    <span class="comment-date">March 22, 2021 at
-	                                                                        1:52 pm</span>
-	                                                                </h4>
-	                                                                <div class="ratings-container comment-rating">
-	                                                                    <div class="ratings-full">
-	                                                                        <span class="ratings"
-	                                                                            style="width: 80%;"></span>
-	                                                                        <span
-	                                                                            class="tooltiptext tooltip-top"></span>
-	                                                                    </div>
-	                                                                </div>
-	                                                                <p>Nullam a magna porttitor, dictum risus nec,
-	                                                                    faucibus sapien.
-	                                                                    Ultrices eros in cursus turpis massa tincidunt
-	                                                                    ante in nibh mauris cursus mattis.
-	                                                                    Cras ornare arcu dui vivamus arcu felis bibendum
-	                                                                    ut tristique.</p>
-	                                                                <div class="comment-action">
-	                                                                    <a href="#"
-	                                                                        class="btn btn-secondary btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-	                                                                        <i class="far fa-thumbs-up"></i>Helpful (1)
-	                                                                    </a>
-	                                                                    <a href="#"
-	                                                                        class="btn btn-dark btn-link btn-underline sm btn-icon-left font-weight-normal text-capitalize">
-	                                                                        <i class="far fa-thumbs-down"></i>Unhelpful
-	                                                                        (0)
-	                                                                    </a>
-	                                                                    <div class="review-image">
-	                                                                        <a href="#">
-	                                                                            <figure>
-	                                                                                <img src="{{ asset('user/images/products/default/review-img-2.jpg') }} "
-	                                                                                    width="60" height="60"
-	                                                                                    alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-	                                                                                    data-zoom-image="{{ asset('user/images/products/default/review-img-2.jpg') }} " />
-	                                                                            </figure>
-	                                                                        </a>
-	                                                                        <a href="#">
-	                                                                            <figure>
-	                                                                                <img src="{{ asset('user/images/products/default/review-img-3.jpg') }} "
-	                                                                                    width="60" height="60"
-	                                                                                    alt="Attachment image of John Doe's review on Electronics Black Wrist Watch"
-	                                                                                    data-zoom-image="{{ asset('user/images/products/default/review-img-3.jpg') }} " />
-	                                                                            </figure>
-	                                                                        </a>
-	                                                                    </div>
-	                                                                </div>
-	                                                            </div>
-	                                                        </div>
-	                                                    </li>
-	                                                    <li class="comment">
-	                                                        <div class="comment-body">
-	                                                            <figure class="comment-avatar">
-	                                                                <img src="{{ asset('user/images/agents/3-100x100.png') }}"
-	                                                                    alt="Commenter Avatar" width="90" height="90">
-	                                                            </figure>
-	                                                            <div class="comment-content">
-	                                                                <h4 class="comment-author">
-	                                                                    <a href="#">John Doe</a>
-	                                                                    <span class="comment-date">March 22, 2021 at 1:21 pm</span>
-	                                                                </h4>
-	                                                                <div class="ratings-container comment-rating">
-	                                                                    <div class="ratings-full">
-	                                                                        <span class="ratings"
-	                                                                            style="width: 60%;"></span>
-	                                                                        <span
-	                                                                            class="tooltiptext tooltip-top"></span>
-	                                                                    </div>
-	                                                                </div>
-	                                                                <p>In fermentum et sollicitudin ac orci phasellus. </p>
-	                                                            </div>
-	                                                        </div>
-	                                                    </li>
+	                                                    </li>  -->
 	                                                </ul>
 		                                        </div>
 		                                        @if(!empty(auth()->user()->id))
@@ -431,11 +369,11 @@
 			                                                    <div class="rating-form">
 			                                                        <label for="rating">Your Rating Of This Product :</label>
 			                                                        <span class="rating-stars">
-			                                                            <a class="star-1" href="#">1</a>
-			                                                            <a class="star-2" href="#">2</a>
-			                                                            <a class="star-3" href="#">3</a>
-			                                                            <a class="star-4" href="#">4</a>
-			                                                            <a class="star-5" href="#">5</a>
+			                                                            <a class="star-1" href="javascript:void(0);">1</a>
+			                                                            <a class="star-2" href="javascript:void(0);">2</a>
+			                                                            <a class="star-3" href="javascript:void(0);">3</a>
+			                                                            <a class="star-4" href="javascript:void(0);">4</a>
+			                                                            <a class="star-5" href="javascript:void(0);">5</a>
 			                                                        </span>
 			                                                        <select name="rating" id="rating" required=""
 			                                                            style="display: none;">
@@ -451,10 +389,10 @@
 			                                                        placeholder="Write Your Review Here..." class="form-control" id="review"></textarea>
 			                                                    <div class="row gutter-md">
 			                                                        <div class="col-md-6">
-			                                                            <input type="text" class="form-control" placeholder="Your Name" id="author">
+			                                                            <input type="text" class="form-control" placeholder="Your Name" id="author" value="{{ auth()->user()->name }}" readonly>
 			                                                        </div>
 			                                                        <div class="col-md-6">
-			                                                            <input type="text" class="form-control" placeholder="Your Email" id="email_1">
+			                                                            <input type="text" class="form-control" placeholder="Your Email" id="email_1" value="{{ auth()->user()->email }}" readonly>
 			                                                        </div>
 			                                                    </div>
 			                                                    <div class="form-group">
@@ -542,16 +480,12 @@
 		                                <div class="widget widget-banner mb-9">
 		                                    <div class="banner banner-fixed br-sm">
 		                                        <figure>
-		                                            <img src="{{ asset('user/images/shop/banner3.jpg') }} " alt="Banner" width="266"
-		                                                height="220" style="background-color: #1D2D44;" />
+		                                            <img src="{{ asset('user/images/shop/banner3.jpg') }} " alt="Banner" width="266" height="220" style="background-color: #1D2D44;" />
 		                                        </figure>
 		                                        <div class="banner-content">
-		                                            <div class="banner-price-info font-weight-bolder text-white lh-1 ls-25">
-		                                                40<sup class="font-weight-bold">%</sup><sub
-		                                                    class="font-weight-bold text-uppercase ls-25">Off</sub>
+		                                            <div class="banner-price-info font-weight-bolder text-white lh-1 ls-25"> 40<sup class="font-weight-bold">%</sup><sub class="font-weight-bold text-uppercase ls-25">Off</sub>
 		                                            </div>
-		                                            <h4
-		                                                class="banner-subtitle text-white font-weight-bolder text-uppercase mb-0">
+		                                            <h4  class="banner-subtitle text-white font-weight-bolder text-uppercase mb-0">
 		                                                Ultimate Sale</h4>
 		                                        </div>
 		                                    </div>

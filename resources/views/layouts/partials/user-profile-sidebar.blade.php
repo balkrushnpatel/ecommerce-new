@@ -36,8 +36,7 @@
 							<span class="navi-text text-muted text-hover-primary">{{ Auth::user()->email}}</span>
 						</span>
 					</a> 
-					<a class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+					<a class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" href="{{ route('logout') }}" onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Sign Out') }}
                     </a>

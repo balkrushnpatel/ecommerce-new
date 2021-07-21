@@ -41,7 +41,7 @@ class LoginController extends Controller
             $this->redirectTo = '/admin'; 
             return $this->redirectTo;
         }else {  
-            $this->redirectTo = '/userhome'; 
+            $this->redirectTo = '/'; 
             return $this->redirectTo;
         } 
     }
@@ -60,11 +60,11 @@ class LoginController extends Controller
         if(Auth::user()->hasRole('Admin')){
             Auth::logout();
             Session::flush();
-            return redirect('admin/login');
+            return redirect('login');
         }else {
             Auth::logout();
             Session::flush();
-            return redirect('/login');
+            return redirect('/');
         }
         // return redirect()->route('login');
     }

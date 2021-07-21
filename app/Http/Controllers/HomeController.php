@@ -3,174 +3,192 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\Category;
+use App\Models\Slider;
+use App\Models\Product;
+use App\Models\OrderDetails;
+use session;
 use Validator;
 use DB;
-class HomeController extends Controller
-{
-   	public function index()
-    { 
-          return view('admin.user.index');
+use Mail;
+use App\Mail\ContactUsMail;
+
+class HomeController extends Controller{
+    public function __construct(){         
+    }
+    public function index()    { 
+    	$sliders=Slider::all();
+      $featuredProduct=Product::feactureProduct();
+      $todayDeal=Product::todayDeal();
+      
+      $newArrival=Product::newArrival();
+      return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal'));
+    } 
+    public function addtoCart(Request $request,$id)
+    {   
+      
+      $product = Product::find($id);
+      $cart = session()->get('cart'); 
+      if(!$cart) {
+          $cart = [
+              $id => [
+                  "id"   =>$product->id,
+                  "name" => $product->name,
+                  "size" => $request->input('size'),
+                  "description" => $product->description,
+                  "quantity" => !empty($request->input('quantity')) ? $request->input('quantity') : 1,
+                  "image"=>$product->image,
+                  "price" => $product->price,
+              ]
+          ]; 
+          session()->put('cart', $cart);
+        
+      }    
+        // if cart not empty then check if this product exist then increment quantity
+      if(isset($cart[$id])) {
+          $cart[$id]['quantity']++;
+          session()->put('cart', $cart);
+         
+      } 
+      $cart[$id] = [
+          "id"   =>$product->id,
+          "name" => $product->name,
+          "size" => $request->input('size'),
+          "description" => $product->description,
+          "quantity" => !empty($request->input('quantity')) ? $request->input('quantity') : 1,
+          "image"=>$product->image,
+          "price" => $product->price,
+      ];
+      session()->put('cart', $cart); 
+      return view('user.checkout.cart',compact('product'));        
     }
 
-     public function create()
-    { 
-          return view('admin.user.create');
+    public function removetoCart($id){ 
+      $product = Product::find($id);
+     if($id)
+     {
+       $cart = session()->get('cart');
+       if(isset($cart[$id]))
+       {
+         unset($cart[$id]);
+        session()->put('cart', $cart);
+       }
+         return view('user.viewCart',compact('product'));
+     }   
     }
 
-     public function userstore(Request $request)
-    { 
-         try {  
-            DB::beginTransaction();
-            $validator = Validator::make($request->all(),[
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'email'=>'required',
-                'mobile_no'=>'required',
-            ]);
-            if ($validator->fails()) {
-                return back()
+    public function checkout(Request $request)
+    {   
+      $quantity = $request->input('quantity');
+      $grandtotal = $request->input('grandtotal');
+      $sessionCart = session()->get('cart'); 
+      foreach($sessionCart as $key=>$item){
+          if(isset($quantity[$item['id']]) && !empty($quantity[$item['id']])){
+
+              $item['quantity'] = $quantity[$item['id']]['quantity'];
+          }
+          $cart[$item['id']] = $item;
+          session()->put('cart', $cart);
+      }
+       session()->put('grandtotal', $grandtotal);
+    
+
+       return view('user.checkout');
+    } 
+    public function aboutUs(){
+      return view('user.about');
+    }
+    public function privacyPolicy(){
+      return view('user.privacy-policy');
+    }
+    public function termAndCondition(){
+      return view('user.term-condition');
+    }
+    public function category(){ 
+      $products=Product::where('status',1)->get();
+      return view('user.category',compact('products'));
+    }
+    public function contactUs(){
+      return view('user.contact');
+    }
+    public function contactUsSend(Request $request){
+      try {  
+        DB::beginTransaction();
+        $validator = Validator::make($request->all(),[ 
+            'name' => 'required', 
+            'email_id' => 'required', 
+            'subject' => 'required', 
+            'message' => 'required', 
+        ]);
+        if ($validator->fails()) {
+            return back()
                     ->withErrors($validator)
                     ->withInput();
-            }
-
-            $user                      = new User();
-            $user->name                 = $request->get('first_name').' '. $request->get('last_name');
-            $user->first_name           = $request->get('first_name');
-            $user->middle_name          = $request->get('middle_name');
-            $user->last_name            = $request->get('last_name');
-            $user->email                = $request->get('email');
-            $user->mobile_no            = $request->get('mobile_no');
-            $user->password          = bcrypt($request->get('mobile_no'));
-            $user->email_verified_at          = date('Y-m-d H:i:s');
-            $user->save();
-            $user->assignRole('User');
-            if ($request->hasFile('image')) {
-                    $image = $request->file('image');
-                   
-                      $name = time().'.'.$image->getClientOriginalExtension();
-                      $destinationPath = public_path('/uploads/user/'.$user->id);
-                      $image->move($destinationPath, $name); 
-                       $user->image= $name; 
-                       $user->save();
-            } 
-            DB::commit();
-            return redirect()->route('admin.userlist')->with('success','  User create successfully!');
-
-        }catch (\Exception $e) {
-            DB::rollback();
-            dd($e->getMessage());
-        } 
-    }
-
-     public function edit($id){
-
-     	try {
-            DB::beginTransaction();
-            $user = User::find(decrypt($id)); 
-            DB::commit();
-            return view('admin.user.edit',compact('user'));
-        }catch (\Exception $e) {
-            DB::rollback();
-            dd($e->getMessage());
         }
+        $data = array(
+          'name'=>$request->input('name'),
+          'email_id'=>$request->input('email_id'),
+          'subject'=>$request->input('subject'),
+          'message'=>$request->input('message'),
+        );
+        Mail::to(env('RECEIVE_EMAIL'))->send(new ContactUsMail($data));
+        DB::commit();
+        return redirect()->route('contact-us')->with('success','Inquirey send successfully!');
+      }catch (\Exception $e) {
+        DB::rollback();
+        dd($e->getMessage());
+      }
+    }   
+    public function orderPlace(Request $request){
+            $orderdetails =new OrderDetails();           
+            //shipping information
+            $orderdetails->user_id = auth()->user()->id;
+            $orderdetails->status  = 'pending'; 
+            $orderdetails->fname =$request->input('fname');
+            $orderdetails->lname =$request->input('lname');
+            $orderdetails->email =$request->input('email');
+            $orderdetails->address =$request->input('address');
+            $orderdetails->city =$request->input('city');
+            $orderdetails->state =$request->input('state');
+            $orderdetails->zip =$request->input('zip');
+            $orderdetails->country=$request->input('country');
+            $orderdetails->mobile_no =$request->input('mobile_no');
 
-     }
+             //your order
+              $orderdetails->order_detail =json_encode(session()->get('cart')); 
 
-     public function update(Request $request, $id)
-    {
-        try {
-            DB::beginTransaction();
-            $user = User::find(decrypt($id)); 
-            $user->name                 = $request->get('first_name').' '. $request->get('last_name');
-            $user->first_name           = $request->get('first_name');
-            $user->middle_name          = $request->get('middle_name');
-            $user->last_name            = $request->get('last_name');
-            $user->email                = $request->get('email');
-            $user->mobile_no            = $request->get('mobile_no');
-            $user->password          = bcrypt($request->get('mobile_no'));
-            $user->email_verified_at          = date('Y-m-d H:i:s');
-            $user->save();
-            $user->assignRole('User');
-            if ($request->hasFile('image')) {
-                    $image = $request->file('image');
-                   
-                      $name = time().'.'.$image->getClientOriginalExtension();
-                      $destinationPath = public_path('/uploads/user/'.$user->id);
-                      $image->move($destinationPath, $name); 
-                       $user->image= $name; 
-                       $user->save();
-            } 
-            DB::commit();
-            return redirect()->route('admin.userlist')->with('success','user update Successfully.');
-        } catch (DecryptException  $e) {
-            return redirect()->route('admin.userlist')->with('error','Request URL does not match.');
-        }
+            $orderdetails->grandtotal = $request->input('finaltotal');
+
+            //payment
+           $orderdetails->shipping_type =$request->input('shipping_type');
+           //dd($orderdetails);
+           $orderdetails->save();
+
+           return redirect()->route('userhome')->with('success',' Order Place successfully!');
+
     }
-
-    public function destroy($id)
-    {
-        try {
-            DB::beginTransaction();
-            $user = User::findOrFail($id); 
-            $user->status = 0; 
-            $user->save(); 
-            DB::commit();
-            return redirect()->route('admin.userlist')->with('success','Blog  deActive successfully.');
-        } catch (DecryptException  $e) { 
-           return redirect()->route('admin.userlist')->with('error','Request URL does not match.');
+  function headersearch(Request $request){
+    if($request->ajax()){
+      try {  
+        DB::beginTransaction();
+        $category = $request->catId;
+         $product = Product::select("name","cat_id")
+          ->where("name","LIKE","%{$request->term}%");
+        if(!empty($category)){
+          $product->where("cat_id",$category);
         }
-    }
-
-     public function userAjaxList(\App\Http\Requests\DataTableRequest $request){
-
-        if($request->ajax()){
-            try {  
-                DB::beginTransaction();
-                $recordSet = User::role('User')->orderBy('name','ASC');
-                if ($request->search['value'] != '') {
-                    $recordSet->where('name','LIKE',$request->search['value']."%");
-                }
-                $recordsTotal = $recordSet->count();
-                $users = $recordSet->offset($request->start)->limit($request->length)->orderBy('id', 'desc')->get();
-                $data = [];
-                foreach ($users as $key => $user) {
-                    $encryptuserId = encrypt($user->id);
-                    $action = '';
-
-                    $action .='<a href="'.route('admin.useredit',$encryptuserId).'" class="btn btn-sm btn-icon btn-info mr-2" title="Edit details"> <i class="la la-edit"></i></a>';
-
-                    $action .= '<form action="'.route("admin.userdestroy", $user->id).'" method="post" style="display:inline-block; vertical-align: middle; margin: 0;" id="'.$user->id.'">
-                        <input type="hidden" name="_token" value="'.csrf_token().'">
-                        <input type="hidden" name="_method" value="DELETE">';
-                    $action .='<a href="javascript:;" data-toggle="modal" data-target="#confirmDelete" data-title="Delete" data-message="Are you sure you want to delete this service ?" class="btn btn-sm btn-icon btn-danger" title="Delete"><i class="la la-trash"></i></a>';
-                    $action .='</form>';
-
-
-                    $data[] = [
-                        str_replace(" ","",tableHeader(0)) =>  $key + 1,
-                        str_replace(" ","",tableHeader(27)) => $user->first_name,
-                        str_replace(" ","",tableHeader(28))  => $user->middle_name,
-                        str_replace(" ","",tableHeader(29))  => $user->last_name,
-                        str_replace(" ","",tableHeader(30))  => $user->email,
-                        str_replace(" ","",tableHeader(31))  => $user->mobile_no,
-                        str_replace(" ","",tableHeader(2))  => $user->created_at->format('d-m-Y h:i A'),
-                        str_replace(" ","",tableHeader(4))  =>  $action,
-                    ];
-                }
-                DB::commit();
-                return response()->json([
-                    'draw' => $request->draw,
-                    'recordsTotal' => $recordsTotal,
-                    'recordsFiltered' => $recordsTotal,
-                    'data' => $data,
-                ]);
-            }catch (\Exception $e) {
-                DB::rollback(); 
-                return response()->json($e->getMessage());
-            } 
-        }else{
-            return abort(404);
+        $product = $product->get();
+        foreach ($product as $key => $pro) {
+          $data[] = $pro['name'];
         }
+        DB::commit();
+        return response()->json($data);
+      }catch (\Exception $e) {
+        DB::rollback(); 
+        return response()->json($e->getMessage());
+      } 
+    }else{
+      return abort(404);
     }
+  }
 }

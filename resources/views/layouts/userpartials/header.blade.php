@@ -36,10 +36,23 @@
                 <span class="divider d-lg-show"></span>
                 <a href="blog.html" class="d-lg-show">Blog</a>
                 <a href="contact-us.html" class="d-lg-show">Contact Us</a>
-                <a href="my-account.html" class="d-lg-show">My Account</a>
-                <a href="javascript:void(0);" class="d-lg-show login sign-in"><i class="w-icon-account"></i>Sign In</a>
+                @if(isset(auth()->user()->id))
+                    <a href="{{ route('user.acount') }}" class="d-lg-show">
+                        <i class="w-icon-account"></i> My Account
+                    </a>
+                    <a class="d-lg-show" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @else
+                <a href="{{ url('login') }}" class="d-lg-show login">
+                    <i class="w-icon-account"></i> Sign In
+                </a>
                 <span class="delimiter d-lg-show">/</span>
-                <a href="#" class="ml-0 d-lg-show login register">Register</a>
+                <a href="{{ url('register') }}" class="ml-0 d-lg-show login">Register</a>
+                @endif
             </div>
         </div>
     </div> 
@@ -73,7 +86,7 @@
                         <a href="tel:#" class="phone-number font-weight-bolder ls-50">0(800)123-456</a>
                     </div>
                 </div>
-                <a class="wishlist label-down link d-xs-show" href="wishlist.html">
+                <a class="wishlist label-down link d-xs-show" href="{{ route('user.wishlist') }}">
                     <i class="w-icon-heart"></i>
                     <span class="wishlist-label d-lg-show">Wishlist</span>
                 </a>
@@ -98,8 +111,7 @@
                             <div class="product product-cart">
                                 <div class="product-detail">
                                     <a href="product-default.html" class="product-name">Beige knitted
-                                        elas<br>tic
-                                        runner shoes</a>
+                                        elas<br>tic runner shoes</a>
                                     <div class="price-box">
                                         <span class="product-quantity">1</span>
                                         <span class="product-price">$25.68</span>
@@ -107,8 +119,7 @@
                                 </div>
                                 <figure class="product-media">
                                     <a href="product-default.html">
-                                        <img src="{{ asset('user/images/cart/product-1.jpg') }}" alt="product" height="84"
-                                            width="94" />
+                                        <img src="{{ asset('user/images/cart/product-1.jpg') }}" alt="product" height="84" width="94" />
                                     </a>
                                 </figure>
                                 <button class="btn btn-link btn-close">
