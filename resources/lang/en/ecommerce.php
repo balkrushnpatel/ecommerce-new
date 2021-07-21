@@ -38,5 +38,6 @@ return [
     'Users'=>'Users',
     'Header'=>'Header',
     'Shipment'=>'Shipment',
+    'Faq'=>'Faq',
     
 ];

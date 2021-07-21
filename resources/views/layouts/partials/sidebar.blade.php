@@ -324,6 +324,18 @@
 						</ul>
 					</div>
 				</li>
+					@php
+					$faqActive = '';
+					if(Request::is('admin/faq')){
+						$faqActive = 'menu-item-open';
+					}
+				@endphp
+				<li class="menu-item menu-item-submenu {{ $faqActive }}">
+					<a href="{{ url('admin/faq') }}" class="menu-link">
+						<i class="menu-icon fas fa-question"></i>
+						<span class="menu-text">@lang('ecommerce.Faq')</span> 
+					</a> 
+				</li>
 			</ul>
 		</div>
 	</div>

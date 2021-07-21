@@ -149,8 +149,8 @@
 										<div class="col-sm-12 col-lg-2">
 											<div class="form-group">
 												<label for="product-discount" class="col-form-label">type</label> 
-												<select class="form-control select2" name="discount_type" id="discount_type"> <option value="1" @if((isset($product->discount_type) && $product->discount_type == '1')) selected="selected" @endif>$</option>
-												 <option value="2" @if((isset($product->discount_type) && $product->discount_type == '2')) selected="selected" @endif>%</option> 
+												<select class="form-control select2" name="discount_type" id="discount_type"> <option value="1" @if((isset($product->discount_type) && $product->discount_type == '1')) selected="selected" @endif>Amount</option>
+												 <option value="2" @if((isset($product->discount_type) && $product->discount_type == '2')) selected="selected" @endif>Percentage</option> 
 												</select>
 											</div>
 										</div>
@@ -165,8 +165,8 @@
 										<div class="col-sm-12 col-lg-2">
 											<div class="form-group">
 												<label for="product-tax" class="col-form-label">type</label> 
-												<select class="form-control select2" name="tax_type" id="tax_type"><option value="1" @if((isset($product->tax_type) && $product->tax_type == '1')) selected="selected" @endif>$</option>
-												 <option value="2" @if((isset($product->tax_type) && $product->tax_type == '2')) selected="selected" @endif>%</option>
+												<select class="form-control select2" name="tax_type" id="tax_type"><option value="1" @if((isset($product->tax_type) && $product->tax_type == '1')) selected="selected" @endif>Amount</option>
+												 <option value="2" @if((isset($product->tax_type) && $product->tax_type == '2')) selected="selected" @endif>Percentage</option>
 												</select>
 											</div>
 										</div>
