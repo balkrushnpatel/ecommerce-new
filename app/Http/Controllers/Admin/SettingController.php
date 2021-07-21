@@ -233,8 +233,8 @@ class SettingController extends Controller
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
 
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/favicon/'.$setting->id);
+                $name = 'favicon.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/favicon/');
                 $image->move($destinationPath, $name);
                 $setting->value= $name; 
                 $setting->save();
@@ -262,10 +262,9 @@ class SettingController extends Controller
             }
             $setting=$this->set('logo_image');
             $setting->type      = 'logo_image'; 
-            if ($request->hasFile('image')) {
-                $image = $request->file('image'); 
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/logo/'.$setting->id);
+            if ($request->hasFile('image')) { 
+                $name = 'logo.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/logo/');
                 $image->move($destinationPath, $name);
                 $setting->value= $name; 
                 $setting->save();

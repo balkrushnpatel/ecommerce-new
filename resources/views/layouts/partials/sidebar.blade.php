@@ -206,7 +206,7 @@
 				</li>
 				 @php
 					$settingActive = '';
-					if(Request::is('admin/setting') || Request::is('admin/contactsetting')){
+					if(Request::is('admin/setting/home') || Request::is('admin/setting/contact')|| Request::is('admin/setting/header') || Request::is('admin/setting/footer') || Request::is('admin/setting/favicon') || Request::is('admin/setting/logo')|| Request::is('admin/setting/general')){
 						$settingActive = 'menu-item-open';
 					}
 				@endphp
@@ -224,7 +224,7 @@
 									<span class="menu-text">@lang('ecommerce.Setting')</span>
 								</span>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/setting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/home'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('setting') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -232,7 +232,7 @@
 									<span class="menu-text">@lang('ecommerce.Home Page')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/contsetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/contact'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.contact') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -240,7 +240,7 @@
 									<span class="menu-text">@lang('ecommerce.Contact Page')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/headersetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/header'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.header') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -248,7 +248,7 @@
 									<span class="menu-text">@lang('ecommerce.Header')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/footsetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/footer'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.footer') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -256,7 +256,7 @@
 									<span class="menu-text">@lang('ecommerce.Footer')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/favisetting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/favicon'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.favicon') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -264,7 +264,7 @@
 									<span class="menu-text">@lang('ecommerce.Favicon')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/logo'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/logo'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.logo') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>
@@ -272,7 +272,7 @@
 									<span class="menu-text">@lang('ecommerce.Logo')</span>
 								</a>
 							</li>
-							<li class="menu-item {{ (Request::is('admin/general-setting'))?'menu-item-open':'' }}" aria-haspopup="true">
+							<li class="menu-item {{ (Request::is('admin/setting/general'))?'menu-item-open':'' }}" aria-haspopup="true">
 								<a href="{{ route('admin.general') }}" class="menu-link">
 									<i class="menu-bullet menu-bullet-dot">
 										<span></span>

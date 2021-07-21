@@ -1,6 +1,6 @@
 <?php
- 
-	Route::get('setting', 'Admin\SettingController@index')->name('setting');
+ Route::group(['prefix' => '/setting'], function () { 
+	Route::get('home', 'Admin\SettingController@index')->name('setting');
 	Route::post('homesetting', 'Admin\SettingController@homesetting')->name('home.setting');
 	Route::get('contact', 'Admin\SettingController@contact')->name('admin.contact');
 	Route::post('contactsetting', 'Admin\SettingController@contactsetting')->name('contact.setting');
@@ -14,9 +14,10 @@
 	Route::get('logo', 'Admin\SettingController@logo')->name('admin.logo');
 	Route::post('setting/logo/update', 'Admin\SettingController@logosetting')->name('logo.setting');
 
-	Route::get('general-setting', 'Admin\SettingController@general')->name('admin.general');
+	Route::get('general', 'Admin\SettingController@general')->name('admin.general');
 	Route::post('generalsetting', 'Admin\SettingController@generalsetting')->name('general.setting');
  
     Route::get('header', 'Admin\SettingController@header')->name('admin.header');
 
 	Route::get('headersetting', 'Admin\SettingController@setHeader')->name('header.setting');
+});
