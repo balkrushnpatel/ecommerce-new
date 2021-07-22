@@ -24,8 +24,8 @@
 											           <div class="col-lg-5 colorpicker-component">
 											    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="{{ $faq['faq_question']}}">
 											    	   </div> 
-											    	   <div class="col-lg-5 colorpicker-component">
-											    		   <textarea  name="faq_answer[]" class="kt-ckeditor-1">{{$faq['faq_answer']}}
+											    	   <div class="col-lg-5">
+											    		   <textarea  name="faq_answer[]" class="editor">{{$faq['faq_answer']}}
 										                  </textarea> 
 											    	   </div>
 											         
@@ -37,12 +37,12 @@
 												    </div>
 												@endforeach
 											@else
-												<!-- <div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
+												<div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
 											           <div class="col-lg-5 colorpicker-component">
 											    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="">
 											    	   </div> 
 											    	   <div class="col-lg-5 colorpicker-component">
-											    		   <textarea  name="faq_answer[]" id="kt-ckeditor-1">
+											    		   <textarea  name="faq_answer[]" class="editor">
 										                  </textarea> 
 											    	   </div>
 											         	@if($i != '1')
@@ -51,7 +51,7 @@
 															</div> 
 												       	@endif
 												       	@php $i++; @endphp
-												    </div> -->
+												    </div>
 										    @endif
 										    <div id="add-faq-input-wrap"></div>
 											<div class="form-group">

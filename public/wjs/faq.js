@@ -10,7 +10,7 @@ $('#addFaqInput').click(function(){
 			html +='<input placeholder="Add Question" type="text" name="faq_question[]" class="form-control"/>';
 		html +='</div> ';
 		html +='<div class="col-lg-5 input-group ">';
-			html +='<textarea  name="faq_answer[]" id="kt-ckeditor-1"></textarea>';
+			html +='<textarea  name="faq_answer[]" class="editor" ></textarea>';
 		html +='</div> ';
 		html +='<div class="col-lg-2">';
 		html +='<button id="'+i+'" class=" btn btn-sm btn-danger btn_remove">X</button>';
@@ -23,4 +23,30 @@ $( document ).delegate( ".btn_remove", "click", function() {
         // console.log(button_id);
          $('#row'+button_id).remove();
 });  
+
+var KTCkeditor = function () {
+    // Private functions
+    var demos = function () {
+        ClassicEditor
+            .create( document.querySelector( '.editor' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    }
+
+    return {
+        // public functions
+        init: function() {
+            demos();
+        }
+    };
+}();
+
+// Initialization
+jQuery(document).ready(function() {
+    KTCkeditor.init();
+});
 
