@@ -62,7 +62,7 @@
                         </span>
                         <div class="icon-box-content">
                             <h4 class="icon-box-title">E-mail Address</h4>
-                            <p>mail@example.com</p>
+                            <p>{{ getSetting('contact_email') }}</p>
                         </div>
                     </div>
                     <div class="icon-box text-center icon-box-primary">
@@ -71,7 +71,7 @@
                         </span>
                         <div class="icon-box-content">
                             <h4 class="icon-box-title">Phone Number</h4>
-                            <p>(123) 456-7890 / (123) 456-9870</p>
+                            <p>{{ getSetting('contact_phone') }}</p>
                         </div>
                     </div>
                     <div class="icon-box text-center icon-box-primary">
@@ -80,16 +80,16 @@
                         </span>
                         <div class="icon-box-content">
                             <h4 class="icon-box-title">Address</h4>
-                            <p>Lawrence, NY 11345, USA</p>
+                            <p>{{ getSetting('contact_address') }}</p>
                         </div>
                     </div>
                     <div class="icon-box text-center icon-box-primary">
                         <span class="icon-box-icon icon-fax">
-                            <i class="w-icon-mobile"></i>
+                            <i class="w-icon-net-world"></i>
                         </span>
                         <div class="icon-box-content">
-                            <h4 class="icon-box-title">Mobile No</h4>
-                            <p>+91 9876543210</p>
+                            <h4 class="icon-box-title">Website</h4>
+                            <p>{{ getSetting('contact_website') }}</p>
                         </div>
                     </div>
                 </div>
