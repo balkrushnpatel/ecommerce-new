@@ -57,7 +57,7 @@ class ProductStockController extends Controller
             $stock->subcat_id               = $request->input('subcat_id');
             $stock->product_id              = $request->input('product_id');
             if($request->input('stoct') == 'add'){
-                $stock->qty                 = $request->input('qty');    
+                $stock->qty                 = $request->input('qty'); 
             }else{
                 $stock->qty                 = '-'.$request->input('qty');
             }
@@ -68,6 +68,11 @@ class ProductStockController extends Controller
             $stock->note                    = $request->input('note');
             $stock->status                  = $request->input('status');
             $stock->save();
+
+            $product=Product::findOrFail($request->input('product_id'));
+            $product->qty = ($product->qty + $stock->qty);
+            $product->save();
+
             DB::commit();
             return redirect()->route('productstock.index')->with('success',' Productstock create successfully!');
 
@@ -119,7 +124,15 @@ class ProductStockController extends Controller
      */
     public function destroy($id)
     {
-        
+         try {
+      DB::beginTransaction();
+      $stoct = Productstock::findOrFail($id)->delete();
+      DB::commit();
+      return redirect()->route('productstock.index')->with('success','Productstock  Destroy successfully.');
+    }catch (\Exception $e) {
+      DB::rollback();
+      dd($e->getMessage());
+    } 
     }
 
     public function destroystock()

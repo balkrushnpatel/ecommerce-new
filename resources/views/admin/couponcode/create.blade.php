@@ -66,7 +66,7 @@
 						  	<div class="form-group row">
 					        	<div class="col-lg-12">
 						    	<label for="couponcode-discount" class="col-form-label">Discount</label> 
-						      	<input type="text" class="form-control" id="couponcode-discount" value="{{ (isset($code)) ? $code->discount : '' }}" name="discount">
+						      	<input type="text" class="form-control number" id="couponcode-discount" value="{{ (isset($code)) ? $code->discount : '' }}" name="discount">
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>

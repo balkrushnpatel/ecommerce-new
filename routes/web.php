@@ -52,10 +52,13 @@ include_once($web_real_path . 'web-route.php');
 include_once($web_real_path . 'product-route.php');   
 
 Route::group(['middleware' => ['auth','role:User']], function () { 
+	Route::get('/home', 'HomeController@index')->name('home');
 	$web_real_path = realpath(__DIR__) . DIRECTORY_SEPARATOR . 'web-route' . DIRECTORY_SEPARATOR;
 	include_once($web_real_path . 'user-route.php');  
 	include_once($web_real_path . 'cart.php');   
 });
+
+Auth::routes(['verify' => true]);
 
 
   

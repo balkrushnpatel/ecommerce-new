@@ -28,7 +28,7 @@
                         <div class="form-group col-3">
                            
                                 <label for="cont-phone" class="col-form-label"> Contact Phone<span class="required">*</span></label>
-                                <input type="number" class="form-control" id="cont-phone" value="{{getSetting('contact_phone')}}" name="contact_phone">
+                                <input type="number" class="form-control number" id="cont-phone" value="{{getSetting('contact_phone')}}" name="contact_phone">
                                 <div class="fv-plugins-message-container"></div>
                            
                         </div>

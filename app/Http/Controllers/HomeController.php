@@ -14,7 +14,8 @@ use Mail;
 use App\Mail\ContactUsMail;
 
 class HomeController extends Controller{
-    public function __construct(){         
+    public function __construct(){ 
+       $this->middleware(['auth','verified']);     
     }
     public function index()    { 
     	$sliders=Slider::all();

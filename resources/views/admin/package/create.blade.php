@@ -52,7 +52,7 @@
 						  	 <div class="form-group row">
 					        	<div class="col-lg-12">
 						    	<label for="package-price" class="col-form-label">Price</label> 
-						      	<input type="text" class="form-control" id="package-price" value="{{ (isset($package)) ? $package->price : '' }}" name="price">
+						      	<input type="text" class="form-control number" id="package-price" value="{{ (isset($package)) ? $package->price : '' }}" name="price">
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>

@@ -91,9 +91,9 @@ if($('#productstock-form').length){
 } 
 $( document ).delegate( "#cat_id", "change", function() {
 	var catId = $(this).val();
-	
+	console.log(catId);
 	$.ajax({
-            url: APP_URL + '/get-sub-category',
+            url: APP_URL + '/admin/get-sub-category',
             data: { 
             'cat_id':catId                
             },
@@ -118,7 +118,7 @@ $( document ).delegate( "#subcat_id", "change", function() {
 	var catId = $('#cat_id').val();
 	/*membership-positions/edit*/
 	$.ajax({
-            url: APP_URL + '/get-product',
+            url: APP_URL + '/admin/get-product',
             data: { 
 	            'cat_id':catId,            
 	            'subcat_id':subcat_id                
@@ -142,7 +142,7 @@ $( document ).delegate( "#subcat_id", "change", function() {
 $( document ).delegate( "#product_id", "change", function() {
 	var productId = $(this).val();  
 	$.ajax({
-            url: APP_URL + '/get-price',
+            url: APP_URL + '/admin/get-price',
             data: {               
 	            'productId':productId                
             },

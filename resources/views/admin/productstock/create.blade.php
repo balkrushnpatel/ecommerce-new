@@ -43,9 +43,9 @@
 										<option value=""> Select  Category</option> 
 										@foreach(getCategory() as $key => $category)
 											@if(isset($stock->cat_id) && ($stock->cat_id == $key))
-												<option selected value="{{ $key }}"> {{ $category['name'] }}</option>
+												<option selected value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 											@else
-												<option value="{{ $key }}"> {{ $category['name'] }}</option>
+												<option value="{{ $category['id'] }}"> {{ $category['name'] }}</option>
 											@endif
 										@endforeach  
 									</select>
@@ -75,25 +75,17 @@
 						  	 <div class="form-group row">
 					        	<div class="col-lg-12">
 						    	<label for="product-price" class="col-form-label">Price</label> 
-						      	<input type="text" class="form-control" id="product-price" value="{{ (isset($stock)) ? $stock->price : '' }}" name="price" readonly>
+						      	<input type="text" class="form-control number" id="product-price" value="{{ (isset($stock)) ? $stock->price : '' }}" name="price" readonly>
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
 						  	 <div class="form-group row">
 					        	<div class="col-lg-12">
 						    	<label for="product-qty" class="col-form-label">Qty</label> 
-						      	<input type="text" class="form-control" id="product-qty" name="qty">
+						      	<input type="text" class="form-control number" id="product-qty" name="qty">
 						      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
-						  	
-						  	 <!-- <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="product-total" class="col-form-label">Total</label> 
-						      	<input type="text" class="form-control" id="product-total" value="{{ (isset($stock)) ? $stock->total : '' }}" name="total">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>   -->
 						  	<div class="form-group row">
 					        	<div class="col-lg-12">
 						    	<label for="product-note" class="col-form-label"> Note </label> 
