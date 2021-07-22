@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use DB;
-
-class CartController extends Controller
-{
+use Session;
+class CartController extends Controller{
     public function __construct(){
-   
   	}
+    public function index(){
+      return view('user.checkout.cart');
+    }
   	public function addToCart(Request $request){
   		if($request->ajax()){
 	      	try {   
@@ -20,23 +21,27 @@ class CartController extends Controller
 	          	$qty    = $request->get('qty');
 	          	$product = Product::getSingleProduct($id); 
 	          	$isCart = true;
-		      	$cart[$id] = [
-					"id"   =>$product->id,
-					"name" => $product->name,
-					"option" => $option,
-					"color" => $color,
-					"description" => $product->description,
-					"quantity" => $qty,
-					"image"=>$product->image,
-					"price" => $product->price,
-					"total_price" => ($product->price * $qty),
-					"image" => fileView($product,'thumb','no','jpg','src'),
-					"url" => $product->productSlug(),
-				];
-		      	session()->put('cart', $cart); 
+	          	$cart = session()->get('cart'); 
+      			if(!isset($cart[$id])) { 
+					$cart[$id] = [
+		                "id"     => $product->id,
+						"name"   => $product->name,
+						"option" => $option,
+						"color"  => $color,
+						"description" => $product->description,
+						"quantity" => $qty,
+						"product_qty" => $product->qty,
+						"image"    => $product->image,
+						"price"    => $product->price,
+						"total_price" => ($product->price * $qty),
+						"image" => fileView($product,'thumb','no','jpg','src'),
+						"url"   => $product->productSlug(),
+		            ];
+			      	session()->put('cart', $cart);
+			    }
 		      	return response()->json([
-                    'success' => true, 
-                ]); 
+		      		'success' => true, 
+		      	]); 
 	        }catch (\Exception $e) { 
 		        return response()->json($e->getMessage());
     		}
@@ -45,7 +50,7 @@ class CartController extends Controller
   	public function removeProductCart(Request $request){
   		if($request->ajax()){
 	      	try {    
-	          	$id     = $request->get('id');
+	          	$id   = $request->get('id');
 	          	$cart = session()->get('cart');
 		      	if(isset($cart[$id])){
 			        unset($cart[$id]);
@@ -55,7 +60,20 @@ class CartController extends Controller
                     'success' => true, 
                     'message' => 'Product removed from cart', 
                 ]); 
-	        }catch (\Exception $e) { 
+	        }catch (\Exception $e) {
+		        return response()->json($e->getMessage());
+    		}
+    	}
+  	}
+  	public function clearCart(Request $request){
+  		if($request->ajax()){
+	      	try {    
+	          	Session::forget('cart');
+		      	return response()->json([
+                    'status' => 2, 
+                    'message' => 'Cart removed successfully', 
+                ]); 
+	        }catch (\Exception $e) {
 		        return response()->json($e->getMessage());
     		}
     	}

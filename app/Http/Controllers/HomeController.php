@@ -23,78 +23,7 @@ class HomeController extends Controller{
       
       $newArrival=Product::newArrival();
       return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal'));
-    } 
-    public function addtoCart(Request $request,$id)
-    {   
-      
-      $product = Product::find($id);
-      $cart = session()->get('cart'); 
-      if(!$cart) {
-          $cart = [
-              $id => [
-                  "id"   =>$product->id,
-                  "name" => $product->name,
-                  "size" => $request->input('size'),
-                  "description" => $product->description,
-                  "quantity" => !empty($request->input('quantity')) ? $request->input('quantity') : 1,
-                  "image"=>$product->image,
-                  "price" => $product->price,
-              ]
-          ]; 
-          session()->put('cart', $cart);
-        
-      }    
-        // if cart not empty then check if this product exist then increment quantity
-      if(isset($cart[$id])) {
-          $cart[$id]['quantity']++;
-          session()->put('cart', $cart);
-         
-      } 
-      $cart[$id] = [
-          "id"   =>$product->id,
-          "name" => $product->name,
-          "size" => $request->input('size'),
-          "description" => $product->description,
-          "quantity" => !empty($request->input('quantity')) ? $request->input('quantity') : 1,
-          "image"=>$product->image,
-          "price" => $product->price,
-      ];
-      session()->put('cart', $cart); 
-      return view('user.checkout.cart',compact('product'));        
-    }
-
-    public function removetoCart($id){ 
-      $product = Product::find($id);
-     if($id)
-     {
-       $cart = session()->get('cart');
-       if(isset($cart[$id]))
-       {
-         unset($cart[$id]);
-        session()->put('cart', $cart);
-       }
-         return view('user.viewCart',compact('product'));
-     }   
-    }
-
-    public function checkout(Request $request)
-    {   
-      $quantity = $request->input('quantity');
-      $grandtotal = $request->input('grandtotal');
-      $sessionCart = session()->get('cart'); 
-      foreach($sessionCart as $key=>$item){
-          if(isset($quantity[$item['id']]) && !empty($quantity[$item['id']])){
-
-              $item['quantity'] = $quantity[$item['id']]['quantity'];
-          }
-          $cart[$item['id']] = $item;
-          session()->put('cart', $cart);
-      }
-       session()->put('grandtotal', $grandtotal);
-    
-
-       return view('user.checkout');
-    } 
+    }  
     public function aboutUs(){
       return view('user.about');
     }

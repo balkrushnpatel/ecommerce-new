@@ -27,7 +27,8 @@
 <script src="{{ asset('user/vendor/jquery.countdown/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('user/vendor/isotope/isotope.pkgd.min.js') }}"></script> 
 <script src="{{ asset('user/vendor/jquery.count-to/jquery.count-to.min.js') }}"></script> 
-<script src="{{ asset('user/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script> 
+<script src="{{ asset('user/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>  
+<script src="{{ asset('user/js/bootstrap-notify.min.js')}}"></script>
 
 
 <!-- Main JS --> 
@@ -35,5 +36,4 @@
 <script src="{{ asset('user/js/jquery-ui.min.js') }}"></script> 
 <script src="{{ asset('user/js/jquery-ui.js') }}"></script> 
 <script src="{{ asset('user/js/main.min.js') }}"></script> 
-<script src="{{ asset('user/js/bow.min.js') }}"></script> 
-<script src="{{ asset('wjs/search.js')}}"></script>
+<script src="{{ asset('user/js/bow.min.js') }}"></script>  
