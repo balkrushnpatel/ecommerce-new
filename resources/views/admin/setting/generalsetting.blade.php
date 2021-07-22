@@ -149,7 +149,7 @@
         <div class="tab-pane fade " id="kt_tab_pane_4_4" role="tabpanel" aria-labelledby="kt_tab_pane_4_4">
          <div class="form-group row">
               <div class="col-lg-12">
-                <textarea name="terms_condition" id="kt-ckeditor-1">{{getSetting('terms_condition')}}
+                <textarea name="terms_condition" class="form-control summernote">{{getSetting('terms_condition')}}
                 </textarea>
                   <div class="fv-plugins-message-container"></div>
               </div> 
@@ -158,7 +158,7 @@
         <div class="tab-pane fade " id="kt_tab_pane_5_4" role="tabpanel" aria-labelledby="kt_tab_pane_5_4">
           <div class="form-group row">
               <div class="col-lg-12">
-                <textarea name="privacy_policy" id="kt-ckeditor-2">{{getSetting('privacy_policy')}}
+                <textarea name="privacy_policy" class="form-control summernote">{{getSetting('privacy_policy')}}
                 </textarea>
                   <div class="fv-plugins-message-container"></div>
               </div> 

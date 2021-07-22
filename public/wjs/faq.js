@@ -1,52 +1,29 @@
-var i = 0;
+var i = 0; 
+ summernot();
 $('#addFaqInput').click(function(){
 	var html = '';
 	
      var rowIndex =  $('#add-faq-input-wrap').find('.row-item').length;
-     i = (+rowIndex + +1);
-     console.log('row-item ::'+i);
-	html +='<div class="form-group row row-item" id="row'+i+'">';
+     i = (+rowIndex + +1); 
+	html +='<div class="form-group row pt-5 row-item" id="row'+i+'">';
 		html +='<div class="col-lg-5 input-group ">';
 			html +='<input placeholder="Add Question" type="text" name="faq_question[]" class="form-control"/>';
 		html +='</div> ';
-		html +='<div class="col-lg-5 input-group ">';
-			html +='<textarea  name="faq_answer[]" class="editor" ></textarea>';
+		html +='<div class="col-lg-5 input-group">';
+			html +='<textarea  name="faq_answer[]" class="form-control summernote"></textarea>';
 		html +='</div> ';
 		html +='<div class="col-lg-2">';
-		html +='<button id="'+i+'" class=" btn btn-sm btn-danger btn_remove">X</button>';
+		html +='<button type="button" id="'+i+'" class=" btn btn-sm btn-danger faq_remove" data-id="0">X</button>';
 		html +='</div> ';
-	html +='</div>	';
-	$('#add-faq-input-wrap').append(html);
+	html +='</div>	'; 
+	$('#add-faq-input-wrap').append(html); 
+    summernot();
 });  
-$( document ).delegate( ".btn_remove", "click", function() {
-	var button_id = $(this).attr("id");   
-        // console.log(button_id);
-         $('#row'+button_id).remove();
-});  
+$( document ).delegate( ".faq_remove", "click", function() {
+	var button_id = $(this).attr("id"); 
+    $('#row'+button_id).remove();
+}); 
 
-var KTCkeditor = function () {
-    // Private functions
-    var demos = function () {
-        ClassicEditor
-            .create( document.querySelector( '.editor' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
-    }
-
-    return {
-        // public functions
-        init: function() {
-            demos();
-        }
-    };
-}();
-
-// Initialization
-jQuery(document).ready(function() {
-    KTCkeditor.init();
-});
-
+function summernot(){
+    $('.summernote').summernote();
+};

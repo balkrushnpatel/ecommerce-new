@@ -35,36 +35,28 @@
 				<div class="card-body"> 
 					<div class="row"> 
 					    <div class="col-sm-12 col-md-12"> 
-					        <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="slider-name" class="col-form-label"> Title <span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="name" value="{{ (isset($slider)) ? $slider->name : '' }}" name="name">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-                             <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="slider-link" class="col-form-label"> Link <span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="link" value="{{ (isset($slider)) ? $slider->link : '' }}" name="link">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group row">
-					            <div class="col-lg-12">
-							    	<label for="slider-text" class="col-form-label">Text</label> 
-							      	<textarea name="text" id="kt-ckeditor-1">{{ (isset($slider)) ? $slider->text : '' }}
-									</textarea>
-						      	    <div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
+					        <div class="row">
+					        	<div class="col-lg-4">
+							    	<label for="slider-name" class="col-form-label"> Title <span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="name" value="{{ (isset($slider)) ? $slider->name : '' }}" name="name">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+					        	<div class="col-lg-4 form-group">
+							    	<label for="slider-link" class="col-form-label"> Link <span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="link" value="{{ (isset($slider)) ? $slider->link : '' }}" name="link">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+					        	<div class="col-lg-4 form-group">
 						           <label class="col-form-label" for="slider-image">Image</label> 
 						      	   <input type="file" class="form-control" id="slider-image"value="{{ (isset($slider)) ? $slider->image : '' }}" name="image">
-						      	<div class="fv-plugins-message-container"></div>
+						      		<div class="fv-plugins-message-container"></div>
 						        </div> 
-						  	</div> 
-						  	 <div class="form-group row">
+					            <div class="col-lg-12 form-group">
+							    	<label for="slider-text" class="col-form-label">Text</label> 
+							      	<textarea name="text" class="form-control summernote">{{ (isset($slider)) ? $slider->text : '' }}
+									</textarea>
+						      	    <div class="fv-plugins-message-container"></div>
+						        </div>  
 						  	 	<div class="col-lg-12">
 	  	 							<div class="radio-inline">
 	  	 								<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp

@@ -29,7 +29,7 @@
                       <div class="form-group row">
                           <div class="col-lg-12">
                               <label for="shipment_info" class="col-form-label">Shipment Info<span class="required">*</span></label>
-                             <textarea name="shipment_info" id="kt-ckeditor-1">{{getSetting('shipment_info')}}
+                             <textarea name="shipment_info" class="form-control summernote">{{getSetting('shipment_info')}}
                              </textarea>
                               <div class="fv-plugins-message-container"></div>
                           </div> 

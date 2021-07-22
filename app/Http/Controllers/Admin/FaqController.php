@@ -16,7 +16,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-         $faqs=Faq::all();
+         $faqs=Faq::get(); 
          return view('admin.faq.index',compact('faqs'));
     }
 
@@ -40,18 +40,25 @@ class FaqController extends Controller
     {
         try {  
           DB::beginTransaction();
-          $validator = Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
              /* 'name' => 'required',*/
-          ]);
-          if ($validator->fails()) {
+            ]);
+            if ($validator->fails()) {
               return back()
                   ->withErrors($validator)
                   ->withInput();
-          }
-            $faq      = new Faq ();    
-            $faq->faq_question           = json_encode($request->input('faq_question'));
-            $faq->faq_answer           = json_encode($request->input('faq_answer'));
-            $faq->save();          
+            }
+
+            foreach($request->input('faq_question') as $key=>$faqQuestion){
+                if(isset($request->input('faq_id')[$key])){
+                    $faq      = Faq::findOrFail($request->input('faq_id')[$key]);
+                }else{
+                    $faq      = new Faq();
+                }
+                $faq->faq_question           = $faqQuestion;
+                $faq->faq_answer           = $request->input('faq_answer')[$key];
+                $faq->save();          
+            }
 
           DB::commit();
           return redirect()->route('faq.index')->with('success',' Faq create successfully!');

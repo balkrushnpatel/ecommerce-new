@@ -15,22 +15,22 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('order_id')->nullable();
-            $table->string('fname')->nullable();
-            $table->string('lname')->nullable();
-            $table->string('email')->nullable();
-            $table->longText('address')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('zip')->nullable();
-            $table->string('country')->nullable();
-            $table->string('mobile_no')->nullable();
-            $table->string('shipping_type')->nullable();
-            $table->tinyInteger('user_id')->nullable();
-            $table->string('status')->nullable();
+            $table->longText('shipping_info')->nullable();
             $table->longText('order_detail')->nullable();
-            $table->string('grandtotal')->nullabe();
+            $table->string('total_amount')->nullabe();
+            $table->string('discount')->nullabe();
+            $table->string('discount_type')->nullabe();
+            $table->string('shipping_charge')->nullabe();
+            $table->string('grand_total')->nullabe();
+            $table->tinyInteger('payment_type')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('user_id')
+             ->references('id')->on('users')
+             ->onDelete('cascade');
         });
     }
 

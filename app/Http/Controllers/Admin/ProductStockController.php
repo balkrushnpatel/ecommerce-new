@@ -60,13 +60,12 @@ class ProductStockController extends Controller
                 $stock->qty                 = $request->input('qty');    
             }else{
                 $stock->qty                 = '-'.$request->input('qty');
-            }
-            
+            }            
             $stock->price                   = $request->input('price');
             $totalAmount                    =($stock->qty)*($stock->price);
             $stock->total                   = $totalAmount;
             $stock->note                    = $request->input('note');
-            $stock->status                  = $request->input('status');
+            $stock->status                  ='1';
             $stock->save();
             DB::commit();
             return redirect()->route('productstock.index')->with('success',' Productstock create successfully!');
@@ -162,8 +161,7 @@ class ProductStockController extends Controller
                         str_replace(" ","",tableHeader(6)) => $stock->price,
                         str_replace(" ","",tableHeader(18))=> $stock->total,
                         str_replace(" ","",tableHeader(16)) => $stock->note,
-                        str_replace(" ","",tableHeader(2)) => $stock->created_at->format('d-m-Y h:i A'),
-                        str_replace(" ","",tableHeader(3)) => $status,
+                        str_replace(" ","",tableHeader(2)) => $stock->created_at->format('d-m-Y h:i A'), 
                         str_replace(" ","",tableHeader(4)) =>  $action,
                     ];
                 }

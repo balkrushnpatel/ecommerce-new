@@ -416,7 +416,7 @@ class ProductController extends Controller
   }
   public function getSubcategories(Request $request){
     if($request->ajax()){
-      try {  
+      try {   
         DB::beginTransaction();
         $catId = $request->cat_id;
         $subcategories = SubCategory::where('cat_id',$catId)->get()->pluck('name','id'); 

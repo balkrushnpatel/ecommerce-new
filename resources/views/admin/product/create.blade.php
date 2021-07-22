@@ -108,7 +108,7 @@
 										<div class="col-sm-12 col-lg-12">
 											<div class="form-group">
 												<label for="product-description" class="col-form-label">  Description </label>
-										        <textarea name="description" id="kt-ckeditor-1">{{ (isset($product)) ? $product->description : '' }}
+										        <textarea name="description" class="form-control summernote">{{ (isset($product)) ? $product->description : '' }}
 										        </textarea>
 											</div>
 										</div>
@@ -173,7 +173,7 @@
 										<div class="col-sm-12 col-lg-12">
 											<div class="form-group">
 												<label for="product-specification" class="col-form-label">Specification </label>
-										        <textarea name="specification" id="kt-ckeditor-2">{{ (isset($product)) ? $product->specification : '' }}
+										        <textarea name="specification" class="form-control summernote">{{ (isset($product)) ? $product->specification : '' }}
 										        </textarea>
 											</div>
 										</div>

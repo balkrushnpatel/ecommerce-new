@@ -35,15 +35,13 @@
 				<div class="card-body"> 
 					<div class="row"> 
 					    <div class="col-sm-12 col-md-12"> 
-					    	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="blog-name" class="col-form-label">Title<span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="title" value="{{ (isset($blog)) ? $blog->title : '' }}" name="title">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-					    	<div class="form-group row">
-								<div class="col-lg-12">
+					    	<div class="row">
+					        	<div class="col-lg-4 form-group ">
+							    	<label for="blog-name" class="col-form-label">Title<span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="title" value="{{ (isset($blog)) ? $blog->title : '' }}" name="title">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+								<div class="col-lg-4 form-group ">
 									<label for="blog_cat_id" class="col-form-label">  Category <span class="required">*</span></label>
 									<select class="form-control select2" name="blog_cat_id" id="blog_cat_id"> 
 										<option value=""> Select  Category</option> 
@@ -56,40 +54,36 @@
 										@endforeach  
 									</select>
 									<div class="fv-plugins-message-container"></div>
-								</div>
-							</div>
-							<div class="form-group row">
-					            <div class="col-lg-12">
+								</div> 
+					            <div class="col-lg-4 form-group ">
 							    	<label for="blog-image" class="col-form-label">Image </label> 
 									 <input type="file" class="form-control" id="blog-image"value="{{ (isset($blog)) ? $blog->image : '' }}" name="image">
 						      	    <div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div> 
-						  	<div class="form-group row">
-					            <div class="col-lg-12">
+						  	<div class="row">
+					            <div class="col-lg-12 form-group ">
 							    	<label for="blog-summary" class="col-form-label">Summary</label> 
-							      	<textarea name="summary" id="kt-ckeditor-1">{{ (isset($blog)) ? $blog->summary : '' }}
+							      	<textarea name="summary" class="form-control">{{ (isset($blog)) ? $blog->summary : '' }}
 									</textarea>
 						      	    <div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
-                            <div class="form-group row">
-					            <div class="col-lg-12">
+                            <div class="row">
+					            <div class="col-lg-12 form-group ">
 							    	<label for="blog-description" class="col-form-label">Description </label> 
-							      	<textarea name="description" id="kt-ckeditor-2">{{ (isset($blog)) ? $blog->description : '' }}
+							      	<textarea name="description" class="form-control summernote">{{ (isset($blog)) ? $blog->description : '' }}
 									</textarea>
 						      	    <div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="blog-author" class="col-form-label">Author<span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="author" value="{{ (isset($blog)) ? $blog->author : '' }}" name="author">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>  
-						  	<div class="form-group row">
-						  	 	<div class="col-lg-12">
+						  	<div class="row">
+					        	<div class="col-lg-6 form-group ">
+							    	<label for="blog-author" class="col-form-label">Author<span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="author" value="{{ (isset($blog)) ? $blog->author : '' }}" name="author">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+						  	 	<div class="col-lg-6 form-group mt-15">
 	  	 							<div class="radio-inline">
 	  	 								<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">

@@ -32,7 +32,7 @@
             </div> 
             <div class="col-lg-12">
               <label for="foot-text" class="col-form-label">Footer Text<span class="required">*</span></label>
-              <textarea name="foot_text" id="kt-ckeditor-1">{{getSetting('vendor_title')}}</textarea>
+              <textarea name="foot_text" class="form-control summernote">{{getSetting('vendor_title')}}</textarea>
               <div class="fv-plugins-message-container"></div>
             </div> 
           </div>

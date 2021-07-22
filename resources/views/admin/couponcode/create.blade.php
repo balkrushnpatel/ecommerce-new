@@ -35,75 +35,54 @@
 				<div class="card-body"> 
 					<div class="row"> 
 					    <div class="col-sm-12 col-md-12"> 
-					    	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="couponcode-code" class="col-form-label"> Code <span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="code" value="{{ (isset($code)) ? $code->code : '' }}" name="code">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="couponcode-description" class="col-form-label">  Description </label> 
-						      	<input type="text" class="form-control" id="couponcode-description" value="{{ (isset($code)) ? $code->description : '' }}" name="description">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-					    	<div class="form-group row">
-								<div class="col-lg-12">
+					    	<div class="row">
+					        	<div class="col-lg-4 form-group">
+							    	<label for="couponcode-code" class="col-form-label"> Code <span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="code" value="{{ (isset($code)) ? $code->code : '' }}" name="code">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+					        	<div class="col-lg-4 form-group">
+							    	<label for="couponcode-description" class="col-form-label">  Description </label> 
+							      	<input type="text" class="form-control" id="couponcode-description" value="{{ (isset($code)) ? $code->description : '' }}" name="description">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+								<div class="col-lg-4 form-group">
 									<label for="codetype" class="col-form-label"> Discount Type <span class="required">*</span></label>
 									<select class="form-control select2" name="type" id="type"> 
-										        <option value="">Select</option> 
-										
-												<option value="1" @if((isset($code->type) && $code->type == '1')) selected="selected" @endif>Amount</option>
-											
-												<option value="2" @if((isset($code->type) && $code->type == '2')) selected="selected" @endif>Percentage</option>
-										 
+								        <option value="">Select</option> 								
+										<option value="1" @if((isset($code->type) && $code->type == '1')) selected="selected" @endif>Amount</option>	
+										<option value="2" @if((isset($code->type) && $code->type == '2')) selected="selected" @endif>Percentage</option>
 									</select>
 									<div class="fv-plugins-message-container"></div>
-								</div>
-							</div>
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="couponcode-discount" class="col-form-label">Discount</label> 
-						      	<input type="text" class="form-control" id="couponcode-discount" value="{{ (isset($code)) ? $code->discount : '' }}" name="discount">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group">
+								</div> 
+					        	<div class="col-lg-4 form-group">
+							    	<label for="couponcode-discount">Discount</label> 
+							      	<input type="text" class="form-control" id="couponcode-discount" value="{{ (isset($code)) ? $code->discount : '' }}" name="discount">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+							  	<div class="col-lg-4 form-group">
 									<label>Valid Date <span class="text-danger">*</span></label>
 									<input class="form-control datepicker" id="valid_date" placeholder="Choose Date" value="{{ (isset($code)) ? $code->valid_date : '' }}"autocomplete="off" data-rule-required="true" name="valid_date" type="text">
-							</div>  
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="discount_on" class="col-form-label">Discount On</label> 
-						      <select class="form-control select2" name="discount_on" id="discount_on"> 
-										        <option value="">Select</option> 
-										
-												<option value="1" @if((isset($code->discount_on) && $code->discount_on == '1')) selected="selected" @endif>All Product</option>
-											
-												<option value="2" @if((isset($code->discount_on) && $code->discount_on == '2')) selected="selected" @endif>Category</option>
-
-												<option value="3" @if((isset($code->discount_on) && $code->discount_on == '3')) selected="selected" @endif>SubCategory</option>
-
-												<option value="4" @if((isset($code->discount_on) && $code->discount_on == '4')) selected="selected" @endif>Product</option>
-										 
+								</div>   
+					        	<div class="col-lg-4 form-group">
+							    	<label for="discount_on" class="col-form-label">Discount On</label> 
+							      	<select class="form-control select2" name="discount_on" id="discount_on"> 
+								        <option value="">Select</option> 
+										<option value="1" @if((isset($code->discount_on) && $code->discount_on == '1')) selected="selected" @endif>All Product</option>
+										<option value="2" @if((isset($code->discount_on) && $code->discount_on == '2')) selected="selected" @endif>Category</option>
+										<option value="3" @if((isset($code->discount_on) && $code->discount_on == '3')) selected="selected" @endif>SubCategory</option>
+										<option value="4" @if((isset($code->discount_on) && $code->discount_on == '4')) selected="selected" @endif>Product</option>
 									</select>
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group row" id="discountTypeWrap">
-								<div class="col-lg-12">
+						      		<div class="fv-plugins-message-container"></div>
+						        </div>  
+								<div class="col-lg-4 form-group">
 									<label for="discountType" class="col-form-label" id="discountType">  Category <span class="required">*</span></label>
 									<select class="form-control select2" name="cat_id[]" id="cat_id" multiple="multiple"> 
-										<option value=""> Select Category</option> 
-										
+										<option value=""> Select Category</option>
 									</select>
 									<div class="fv-plugins-message-container"></div>
-								</div>
-							</div>
-						  	 <div class="form-group row">
-						  	 	<div class="col-lg-12">
+								</div> 
+						  	 	<div class="col-lg-4 form-group mt-15">
 	  	 							<div class="radio-inline">
 	  	 								<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">

@@ -18,11 +18,15 @@ class OrderDetails extends Model
         }
         return $newId;
     }
-
+    public static function getOrder($orderId){
+        $order = self::where('id',$orderId)->first();
+        return $order;
+    }
     protected static function boot()
     {
         parent::boot();  
         self::creating(function($query){
+           $query->user_id = auth()->user()->id; 
            $query->order_id = self::getOrderId(); 
         });
 

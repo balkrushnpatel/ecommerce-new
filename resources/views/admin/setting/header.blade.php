@@ -10,13 +10,13 @@
             <div class="card-body"> 
                 <div class="row"> 
                         <div class="form-group col-3">
-                               <label class="col-form-label">HomePage</label>
-                                <span class="switch switch-success">
-		                        <label class="col-3 col-form-label">
-		                        <input type="checkbox" class="header-setting" {{ (getSetting('home_page')  == 1 ? ' checked' : '') }}  value="1" name="home_page"/>
-		                        <span></span>
-		                        </label>
-		                      </span>
+	                       <label class="col-form-label">HomePage</label>
+	                        <span class="switch switch-success">
+	                        <label class="col-3 col-form-label">
+	                        <input type="checkbox" class="header-setting" {{ (getSetting('home_page')  == 1 ? ' checked' : '') }}  value="1" name="home_page"/>
+	                        <span></span>
+	                        </label>
+	                      </span>
 		                </div>
 		                <div class="form-group col-3">
                                <label class="col-form-label">All Categories</label>

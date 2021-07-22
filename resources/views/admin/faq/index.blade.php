@@ -17,46 +17,44 @@
 				<div class="card-body"> 
 					<div class="row"> 
 					    <div class="col-sm-12 col-lg-12">
-											@php $i= '1'; @endphp
-											@if(!empty($faqs))
-												@foreach($faqs as $faq)
-													<div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
-											           <div class="col-lg-5 colorpicker-component">
-											    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="{{ $faq['faq_question']}}">
-											    	   </div> 
-											    	   <div class="col-lg-5">
-											    		   <textarea  name="faq_answer[]" class="editor">{{$faq['faq_answer']}}
-										                  </textarea> 
-											    	   </div>
-											         
-												       		<div class="col-lg-2">
-																<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
-															</div> 
-										
-												       	@php $i++; @endphp
-												    </div>
-												@endforeach
-											@else
-												<div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
-											           <div class="col-lg-5 colorpicker-component">
-											    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="">
-											    	   </div> 
-											    	   <div class="col-lg-5 colorpicker-component">
-											    		   <textarea  name="faq_answer[]" class="editor">
-										                  </textarea> 
-											    	   </div>
-											         	@if($i != '1')
-												       		<div class="col-lg-2">
-																<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
-															</div> 
-												       	@endif
-												       	@php $i++; @endphp
-												    </div>
-										    @endif
-										    <div id="add-faq-input-wrap"></div>
-											<div class="form-group">
-												<button  type="button" id="addFaqInput"class="btn btn-primary">Add More Faqs</button>
-											</div> 
+							@php $i= '1'; @endphp
+							@if(count($faqs) > 0)
+								@foreach($faqs as $faq)
+									<div class="row pb-3 {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
+							           <div class="col-lg-5">
+							    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="{{ $faq->faq_question}}">
+							    		   <input type="hidden" class="form-control" name="faq_id[]" value="{{ $faq->id}}">
+							    	   </div> 
+							    	   <div class="col-lg-5">
+							    		   <textarea  name="faq_answer[]" class="form-control summernote">{{$faq->faq_answer}}
+						                  </textarea> 
+							    	   </div> 
+							       		<div class="col-lg-2">
+											<button type="button" id="{{ $i }}" class=" btn btn-sm btn-danger faq_remove" data-id="{{ $faq->faq_question}}">X</button>
+										</div> 
+								       	@php $i++; @endphp
+								    </div>
+								@endforeach
+							@else
+								<div class="row {{ ($i != 1)?'row-item':'' }}" id="row{{ $i }}">
+						           <div class="col-lg-5 colorpicker-component">
+						    		   <input type="text" placeholder="Add Question" class="form-control" name="faq_question[]" value="">
+						    	   </div> 
+						    	   <div class="col-lg-5 colorpicker-component">
+						    		   <textarea  name="faq_answer[]" class="editor"> </textarea> 
+						    	   </div>
+						         	@if($i != '1')
+							       		<div class="col-lg-2">
+											<button id="{{ $i }}" class=" btn btn-sm btn-danger btn_remove">X</button>
+										</div> 
+							       	@endif
+							       	@php $i++; @endphp
+							    </div>
+						    @endif
+						    <div id="add-faq-input-wrap"></div>
+							<div class="form-group">
+								<button  type="button" id="addFaqInput"class="btn btn-primary">Add More Faqs</button>
+							</div> 
 						</div>
 					</div> 
 				</div>
@@ -73,6 +71,6 @@
     </div> 
 </div> 
 @endsection
-@push('scripts')  
+@push('scripts')
 <script src="{{ asset('wjs/faq.js')}}"></script>
 @endpush

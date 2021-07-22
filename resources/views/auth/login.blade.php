@@ -43,9 +43,12 @@
                                     @enderror
                                 </div>
                                 <div class="form-checkbox d-flex align-items-center justify-content-between">
-                                    <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1" required="" >
+                                    <input type="checkbox" class="custom-checkbox" id="remember1" name="remember1" required>
                                     <label for="remember1">Remember me</label>
                                     <a href="{{ route('password.request') }}" class="text-primary font-size-h6 font-weight-bolder text-hover-primary">{{ __('Forgot Your Password?') }}</a> 
+                                </div>
+                                <div class="form-checkbox d-flex align-items-center justify-content-between">
+                                    <span>Not A Member Yet ? <a href="{{ route('register') }}" class="text-primary font-weight-bolder text-hover-primary">{{ __('Sign Up Now!') }}</a></span> 
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Log In</button>
                             </form>

@@ -1,5 +1,8 @@
 $(document).ready(function() {  
     $('.select2').select2();
+    $('.summernote').summernote({
+        height: 200
+    });
 	$('#confirmDelete').on('show.bs.modal', function (e) {
         $message = $(e.relatedTarget).attr('data-message');
         $(this).find('.modal-body p').text($message);

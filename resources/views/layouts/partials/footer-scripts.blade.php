@@ -22,10 +22,8 @@
 <script src="{{ asset('assets/js/custom.js')}}"></script> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.js"></script>
  <script src="{{ asset('assets/js/pages/custom/wizard/wizard-3.js')}}"></script>
- <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
- <script src="{{ asset('assets/js/pages/crud/forms/editors/ckeditor-classic.js')}}"></script>
  <script src="{{ asset('assets/js/pages/crud/forms/widgets/tagify.js')}}"></script>
  <script src="{{ asset('assets/js/pages/widgets.js')}}"></script>
  <script src="{{ asset('assets/js/pages/custom/profile/profile.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!--end::Global Theme Bundle--> 

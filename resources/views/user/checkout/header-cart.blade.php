@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <figure class="product-media">
-                        <a href="product-default.html">
+                        <a href="{{ $cart['url'] }}">
                             <img src="{{ $cart['image'] }}" alt="{{ $cart['name'] }}" height="84" width="94" />
                         </a>
                     </figure>

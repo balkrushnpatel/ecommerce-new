@@ -49,8 +49,7 @@
 							<th>{{ tableHeader(10) }}</th>
 							<th>{{ tableHeader(6) }}</th>
 							<th>{{ tableHeader(18) }}</th>
-							<th>{{ tableHeader(2) }}</th>
-							<th>{{ tableHeader(3) }}</th>
+							<th>{{ tableHeader(2) }}</th> 
 							<th>{{ tableHeader(4) }}</th>
                         </tr>
 					</thead> 

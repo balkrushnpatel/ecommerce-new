@@ -35,52 +35,38 @@
 				<div class="card-body"> 
 					<div class="row"> 
 					    <div class="col-sm-12 col-md-12"> 
-					    	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="package-name" class="col-form-label"> Package Name <span class="required">*</span></label>
-						      	<input type="text" class="form-control" id="name" value="{{ (isset($package)) ? $package->name : '' }}" name="name">
-						      	<div class="fv-plugins-message-container"></div>
+					    	<div class=" row">
+					        	<div class="col-lg-4 form-group">
+							    	<label for="package-name" class="col-form-label"> Package Name <span class="required">*</span></label>
+							      	<input type="text" class="form-control" id="name" value="{{ (isset($package)) ? $package->name : '' }}" name="name">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+					        	<div class="col-lg-4 form-group">
+							    	<label for="package-description" class="col-form-label">  Description </label> 
+							      	<input type="text" class="form-control" id="package-description" value="{{ (isset($package)) ? $package->description : '' }}" name="description">
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
-						  	</div>
-                             <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="package-description" class="col-form-label">  Description </label> 
-						      	<input type="text" class="form-control" id="package-description" value="{{ (isset($package)) ? $package->description : '' }}" name="description">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div> 
-						  	 <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="package-price" class="col-form-label">Price</label> 
-						      	<input type="text" class="form-control" id="package-price" value="{{ (isset($package)) ? $package->price : '' }}" name="price">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	<div class="form-group row">
-								<div class="col-lg-12">
+					        	<div class="col-lg-4 form-group">
+							    	<label for="package-price" class="col-form-label">Price</label> 
+							      	<input type="text" class="form-control" id="package-price" value="{{ (isset($package)) ? $package->price : '' }}" name="price">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>  
+								<div class="col-lg-4 form-group">
 									<label for="validity" class="col-form-label"> Validity<span class="required">*</span></label>
 									<select class="form-control select2" name="validity" id="validity"> 
-										        <option value="">Select Validity</option> 
-										
-												<option value="1" @if((isset($package->validity) && $package->validity == '1')) selected="selected" @endif>3 Months</option>
-											
-												<option value="2" @if((isset($package->validity) && $package->validity == '2')) selected="selected" @endif>6 Months</option>
-
-												<option value="3" @if((isset($package->validity) && $package->validity == '3')) selected="selected" @endif>12 Months</option>
-										 
+								        <option value="">Select Validity</option> 
+										<option value="1" @if((isset($package->validity) && $package->validity == '1')) selected="selected" @endif>3 Months</option>
+										<option value="2" @if((isset($package->validity) && $package->validity == '2')) selected="selected" @endif>6 Months</option>
+										<option value="3" @if((isset($package->validity) && $package->validity == '3')) selected="selected" @endif>12 Months</option>
 									</select>
 									<div class="fv-plugins-message-container"></div>
-								</div>
-							</div>
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
+								</div> 
+					        	<div class="col-lg-4 form-group">
 						           <label class="col-form-label" for="package-image">Image</label> 
 						      	   <input type="file" class="form-control" id="package-image"value="{{ (isset($package)) ? $package->image : '' }}" name="image">
-						      	<div class="fv-plugins-message-container"></div>
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
-						  	</div>  
-						  	 <div class="form-group row">
-						  	 	<div class="col-lg-12">
+						  	 	<div class="col-lg-4 form-group mt-15">
 	  	 							<div class="radio-inline">
 	  	 								<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">

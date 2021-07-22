@@ -72984,8 +72984,7 @@ code {
   margin-right: 1.25rem;
 }
 
-.datepicker {
-  width: 265px;
+.datepicker { 
   padding: 10px;
   border-radius: 0.42rem;
 }
