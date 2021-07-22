@@ -35,17 +35,16 @@ class CartController extends Controller{
 		    $orderdetails->total_amount = session()->get('total'); 
 		    $orderdetails->discount = session()->get('discount'); 
 		    $orderdetails->discount_type = session()->get('discount_type'); 
-		    $orderdetails->shipping_charge = session()->get('shipping_cost'); 
+		    $orderdetails->shipping_charge = (session()->get('shipping_cost'))?session()->get('shipping_cost'):'0'; 
 		    $orderdetails->grand_total = session()->get('total'); 
 		    $orderdetails->payment_type = $payment_type; 
-		    $orderdetails->save();
-
+		    $orderdetails->save(); 
 		    $ordId = array(
 	    		'order_id'=>$orderdetails->id,
 	    	);
 	    	session()->put($ordId); 
-	    	return redirect()->route('order.detail')->with('success','Your order place successfully!');
-		    DB::commit();
+	    	 DB::commit();
+	    	return redirect()->route('order.detail')->with('success','Your order place successfully!'); 
 	    }catch (\Exception $e) { 
 		    DB::rollback();
             dd($e->getMessage());

@@ -116,7 +116,7 @@
                                 <div class="form-group">
                                     <label>Street address *</label>
                                     <input type="text" placeholder="House number and street name" class="form-control form-control-md ship_diff_address mb-2" name="shipping_info[ship_address]" value="">
-                                    <input type="text" placeholder="Apartment, suite, unit, etc. (optional)" class="form-control form-control-md" name="shipping_info[ship_address_2]" value="">
+                                    <input type="text" placeholder="Apartment, suite, unit, etc. (optional)" class="form-control ship_diff_address2 form-control-md" name="shipping_info[ship_address_2]" value="">
                                 </div>
                                 <div class="row gutter-sm">
                                     <div class="col-md-6">
@@ -129,6 +129,12 @@
                                             <input type="text" class="form-control form-control-md ship_diff_address number" name="shipping_info[ship_zip]">
                                         </div>
                                     </div> 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>State *</label>
+                                            <input type="text" class="form-control form-control-md ship_diff_address" name="shipping_info[ship_state]" value="" required>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
