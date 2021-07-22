@@ -91,7 +91,7 @@ if($('#productstock-form').length){
 } 
 $( document ).delegate( "#cat_id", "change", function() {
 	var catId = $(this).val();
-	
+	console.log(catId);
 	$.ajax({
             url: APP_URL + '/admin/get-sub-category',
             data: { 

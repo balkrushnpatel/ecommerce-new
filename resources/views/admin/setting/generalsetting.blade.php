@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-3 form-group">
                  <label for="cache_time" class="col-form-label">Homepage Cache Time(Minutes)<span class="required">*</span></label>
-                  <input type="number" min="0" step="5"class="form-control" id="cache_time" value="{{getSetting('cache_time')}}" name="cache_time">
+                  <input type="text" min="0" step="5"class="form-control number" id="cache_time" value="{{getSetting('cache_time')}}" name="cache_time">
                 </div>
                 <div class="col-3 form-group">
                   <label for="pro-folder-name" class="col-form-label">Downloadable Product Folder Name <span class="required">*</span></label>

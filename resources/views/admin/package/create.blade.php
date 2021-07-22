@@ -45,13 +45,13 @@
 							    	<label for="package-description" class="col-form-label">  Description </label> 
 							      	<input type="text" class="form-control" id="package-description" value="{{ (isset($package)) ? $package->description : '' }}" name="description">
 							      	<div class="fv-plugins-message-container"></div>
-						        </div> 
+						        </div>  
 					        	<div class="col-lg-4 form-group">
 							    	<label for="package-price" class="col-form-label">Price</label> 
 							      	<input type="text" class="form-control" id="package-price" value="{{ (isset($package)) ? $package->price : '' }}" name="price">
 							      	<div class="fv-plugins-message-container"></div>
 						        </div>  
-								<div class="col-lg-4 form-group">
+								<div class="col-lg-4 form-group">  
 									<label for="validity" class="col-form-label"> Validity<span class="required">*</span></label>
 									<select class="form-control select2" name="validity" id="validity"> 
 								        <option value="">Select Validity</option> 

@@ -37,7 +37,7 @@
 						<input type="hidden" name="stoct" value="{{ $stoct }}">
 					    <div class="col-sm-12 col-md-12"> 
 					    	<div class="form-group row">
-								<div class="col-lg-12">
+								<div class="col-sm-12 col-lg-4">
 									<label for="cat_id" class="col-form-label">  Category <span class="required">*</span></label>
 									<select class="form-control select2" name="cat_id" id="cat_id"> 
 										<option value=""> Select  Category</option> 
@@ -51,19 +51,14 @@
 									</select>
 									<div class="fv-plugins-message-container"></div>
 								</div>
-							</div>
-							<div class="form-group row">
-								<div class="col-lg-12">
+								<div class="col-sm-12 col-lg-4">
 									<label for="subcat_id" class="col-form-label">  Subcategory <span class="required">*</span></label>
 									<select class="form-control select2" name="subcat_id" id="subcat_id"> 
 										<option value=""> Select  Subcategory</option> 
-										
 									</select>
 									<div class="fv-plugins-message-container"></div>
 								</div>
-							</div>
-					    	<div class="form-group row">
-								<div class="col-lg-12">
+								<div class="col-sm-12 col-lg-4">
 									<label for="cat_id" class="col-form-label">Product <span class="required">*</span></label>
 									<select class="form-control select2" name="product_id" id="product_id"> 
 										<option value=""> Select  Product</option> 
@@ -71,26 +66,20 @@
 									</select>
 									<div class="fv-plugins-message-container"></div>
 								</div>
-							</div>
-						  	 <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="product-price" class="col-form-label">Price</label> 
-						      	<input type="text" class="form-control" id="product-price" value="{{ (isset($stock)) ? $stock->price : '' }}" name="price" readonly>
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div>
-						  	 <div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="product-qty" class="col-form-label">Qty</label> 
-						      	<input type="text" class="form-control" id="product-qty" name="qty">
-						      	<div class="fv-plugins-message-container"></div>
-						        </div> 
-						  	</div> 
-						  	<div class="form-group row">
-					        	<div class="col-lg-12">
-						    	<label for="product-note" class="col-form-label"> Note </label> 
-						      	<input type="text" class="form-control" id="product-note" name="note">
-						      	<div class="fv-plugins-message-container"></div>
+								<div class="col-sm-12 col-lg-4">
+							    	<label for="product-price" class="col-form-label">Price</label> 
+							      	<input type="text" class="form-control number" id="product-price" value="{{ (isset($stock)) ? $stock->price : '' }}" name="price" readonly>
+							      	<div class="fv-plugins-message-container"></div>
+							  	</div>
+							  	<div class="col-sm-12 col-lg-4">
+							    	<label for="product-qty" class="col-form-label">Qty</label> 
+							      	<input type="text" class="form-control number" id="product-qty" name="qty">
+							      	<div class="fv-plugins-message-container"></div>
+						        </div>   
+						        <div class="col-sm-12 col-lg-4">
+							    	<label for="product-note" class="col-form-label"> Note </label> 
+							      	<input type="text" class="form-control" id="product-note" name="note">
+							      	<div class="fv-plugins-message-container"></div>
 						        </div> 
 						  	</div>  
 					    </div> 

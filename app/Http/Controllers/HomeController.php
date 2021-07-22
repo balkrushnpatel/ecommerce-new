@@ -13,7 +13,7 @@ use DB;
 use Mail;
 use App\Mail\ContactUsMail;
 
-class HomeController extends Controller{
+class HomeController extends Controller{ 
   public function __construct(){         
   }
   public function index()    { 

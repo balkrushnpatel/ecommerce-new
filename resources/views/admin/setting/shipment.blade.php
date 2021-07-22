@@ -22,7 +22,7 @@
                     <div class="row"> 
                         <div class="form-group col-3">
                                 <label for="shipment-cost" class="col-form-label">Shipment Cost<span class="required">*</span></label>
-                                <input type="text" class="form-control" id="shipment-cost" value="{{getSetting('shipment_cost')}}" name="shipment_cost">
+                                <input type="text" class="form-control number" id="shipment-cost" value="{{getSetting('shipment_cost')}}" name="shipment_cost">
                                 <div class="fv-plugins-message-container"></div>
                         </div>
                     </div>    

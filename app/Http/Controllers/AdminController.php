@@ -125,9 +125,9 @@ class AdminController extends Controller
         if($request->ajax()){
             try {  
                 DB::beginTransaction();
-                $recordSet = User::role('User')->orderBy('name','ASC');
+                $recordSet = User::role('User')->orderBy('id','desc');
                 if ($request->search['value'] != '') {
-                    $recordSet->where('name','LIKE',$request->search['value']."%");
+                    $recordSet->where('id','LIKE',$request->search['value']."%");
                 }
                 $recordsTotal = $recordSet->count();
                 $users = $recordSet->offset($request->start)->limit($request->length)->orderBy('id', 'desc')->get();

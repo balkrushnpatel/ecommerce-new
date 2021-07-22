@@ -53,14 +53,14 @@
 										<option value="1" @if((isset($code->type) && $code->type == '1')) selected="selected" @endif>Amount</option>	
 										<option value="2" @if((isset($code->type) && $code->type == '2')) selected="selected" @endif>Percentage</option>
 									</select>
-									<div class="fv-plugins-message-container"></div>
+									<div class="fv-plugins-message-container"></div> 
 								</div> 
 					        	<div class="col-lg-4 form-group">
 							    	<label for="couponcode-discount">Discount</label> 
 							      	<input type="text" class="form-control" id="couponcode-discount" value="{{ (isset($code)) ? $code->discount : '' }}" name="discount">
 							      	<div class="fv-plugins-message-container"></div>
 						        </div>  
-							  	<div class="col-lg-4 form-group">
+							  	<div class="col-lg-4 form-group"> 
 									<label>Valid Date <span class="text-danger">*</span></label>
 									<input class="form-control datepicker" id="valid_date" placeholder="Choose Date" value="{{ (isset($code)) ? $code->valid_date : '' }}"autocomplete="off" data-rule-required="true" name="valid_date" type="text">
 								</div>   

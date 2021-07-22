@@ -24,7 +24,7 @@
                           <label for="cont-address" class="col-form-label"> Contact Address<span class="required">*</span></label>
                           <input type="text" class="form-control" id="cont-address" value="{{getSetting('contact_address')}}" name="contact_address">
                           <div class="fv-plugins-message-container"></div>
-                        </div>
+                        </div>  
                         <div class="form-group col-3"> 
                           <label for="cont-phone" class="col-form-label"> Contact Phone<span class="required">*</span></label>
                           <input type="number" class="form-control" id="cont-phone" value="{{getSetting('contact_phone')}}" name="contact_phone">
