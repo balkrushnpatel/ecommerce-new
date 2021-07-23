@@ -202,16 +202,19 @@ class CartController extends Controller{
       	try {   
     		 DB::beginTransaction();
 	    	$orderId = session()->get('order_id'); 
-	    	Session::forget('cart');
-	    	Session::forget('shipping_cost');
-	    	Session::forget('final_total');
-	    	Session::forget('discount_type');
-	    	Session::forget('total');
-	    	Session::forget('discount'); 
-	    	$orderId  = '1';
-	    	$order = OrderDetails::getOrder($orderId); 
-	    	return view('user.checkout.order-detail',compact('order'));
-		    DB::commit();
+	    	if($orderId){
+		    	Session::forget('cart');
+		    	Session::forget('shipping_cost');
+		    	Session::forget('final_total');
+		    	Session::forget('discount_type');
+		    	Session::forget('total');
+		    	Session::forget('discount');  
+		    	$order = OrderDetails::getOrder($orderId); 
+		    	return view('user.checkout.order-detail',compact('order'))->with('success','Your order place successfully!');
+		    	DB::commit();
+		    }else{
+		    	return redirect()->route('user.acount'); 
+		    }
 	    }catch (\Exception $e) { 
 		    DB::rollback();
             dd($e->getMessage());
