@@ -85,7 +85,7 @@
                                <label class="col-form-label">Blogs</label>
                                 <span class="switch switch-success">
 		                        <label class="col-3 col-form-label">
-		                        <input type="checkbox" class="header-setting" {{ (getSetting('blog_product')  == 1 ? ' checked' : '') }} value="1" name="blog_product"/>
+		                        <input type="checkbox" class="header-setting" {{ (getSetting('blog_page')  == 1 ? ' checked' : '') }} value="1" name="blog_page"/>
 		                        <span></span>
 		                        </label>
 		                      </span>

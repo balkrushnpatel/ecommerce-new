@@ -31,7 +31,6 @@ class AdminProfileController extends Controller
                         ->withErrors($validator)
                         ->withInput();
             }  
-        
        		$user  = User::findOrFail(auth()->user()->id);
             $user->name     = $request->get('first_name').' '. $request->get('last_name');
             $user->first_name = $request->get('first_name');
@@ -43,10 +42,8 @@ class AdminProfileController extends Controller
         return back()->withStatus(__('Profile successfully updated.'));
     }
 
-    public function password(Request $request)
-    {
+    public function password(Request $request){
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
         return back()->withStatusPassword(__('Password successfully updated.'));
     }
 }

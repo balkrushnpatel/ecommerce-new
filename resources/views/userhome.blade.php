@@ -241,10 +241,10 @@
                                 class="text-secondary font-weight-bolder text-uppercase ls-25">20% Off</span>
                         </h5>
                         <h3 class="banner-title text-uppercase">Sports Outfits<br><span
-                                class="font-weight-normal                       text-capitalize">Collection</span>
+                                class="font-weight-normal text-capitalize">Collection</span>
                         </h3>
                         <div class="banner-price-info font-weight-normal">Starting at <span
-                                class="text-secondary                       font-weight-bolder">$170.00</span>
+                                class="text-secondary  font-weight-bolder">$170.00</span>
                         </div>
                     </div>
                 </div>
@@ -331,40 +331,18 @@
                                             <div class="product-form pt-4">
                                                 <div class="product-qty-form mb-2 mr-2">
                                                     <div class="input-group">
-                                                        <input class="quantity form-control" type="number" min="1"
-                                                            max="10000000">
-                                                        <button class="quantity-plus w-icon-plus"></button>
-                                                        <button class="quantity-minus w-icon-minus"></button>
+                                                        <input class="quantity form-control" type="number" min="1" max="{{ $deal->qty}}" name="qty" id="product_qty_{{$deal->id}}" value="1" readonly>
+                                                        <button class="quantity-plus w-icon-plus" data-id="{{ $deal->id}}" data-btn="+"></button>
+                                                        <button class="quantity-minus w-icon-minus" data-id="{{ $deal->id}}" data-btn="-"></button>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-primary btn-cart">
+                                                <button class="btn btn-primary btn-cart" data-id="{{ $deal->id}}">
                                                     <i class="w-icon-cart"></i>
                                                     <span>Add to Cart</span>
                                                 </button>
-                                            </div>
-
+                                            </div> 
                                             <div class="social-links-wrapper mt-1">
-                                                <div class="social-links">
-                                                    <div class="social-icons social-no-color border-thin">
-                                                        <a href="#"
-                                                            class="social-icon social-facebook w-icon-facebook"></a>
-                                                        <a href="#"
-                                                            class="social-icon social-twitter w-icon-twitter"></a>
-                                                        <a href="#"
-                                                            class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                                                        <a href="#"
-                                                            class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                                                        <a href="#"
-                                                            class="social-icon social-youtube fab fa-linkedin-in"></a>
-                                                    </div>
-                                                </div>
-                                                <span class="divider d-xs-show"></span>
-                                                <div class="product-link-wrapper d-flex">
-                                                    <a href="#"
-                                                        class="btn-product-icon btn-wishlist w-icon-heart"></a>
-                                                    <a href="#"
-                                                        class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
-                                                </div>
+                                                @include('user.product.social-link');
                                             </div>
                                         </div>
                                     </div>

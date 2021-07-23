@@ -44,6 +44,5 @@
     </div>
     <div class="cart-action">
         <a href="{{ route('cart') }}" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
-        <a href="{{ route('checkout') }}" class="btn btn-primary  btn-rounded">Checkout</a>
     </div>
 </div>

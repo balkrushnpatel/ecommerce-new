@@ -138,9 +138,9 @@
 		                                        <div class="product-form container">
 		                                            <div class="product-qty-form">
 		                                                <div class="input-group">
-		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}" name="qty" id="qty">
-		                                                    <button class="quantity-plus w-icon-plus"></button>
-		                                                    <button class="quantity-minus w-icon-minus"></button>
+		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}" name="qty" id="product_qty_{{$item->id}}"  value="1">
+		                                                    <button class="quantity-plus w-icon-plus" data-btn="+" data-id="{{ $item->id}}"></button>
+                                                        	<button class="quantity-minus w-icon-minus" data-btn="-" data-id="{{ $item->id}}"></button>
 		                                                </div>
 		                                            </div>
 		                                            <button class="btn btn-primary btn-cart" data-id="{{ $item->id}}">
@@ -151,24 +151,7 @@
 		                                    </div>
 
 		                                    <div class="social-links-wrapper">
-		                                        <div class="social-links">
-		                                            <div class="social-icons social-no-color border-thin">
-		                                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-		                                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-		                                                <a href="#"
-		                                                    class="social-icon social-pinterest fab fa-pinterest-p"></a>
-		                                                <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
-		                                                <a href="#"
-		                                                    class="social-icon social-youtube fab fa-linkedin-in"></a>
-		                                            </div>
-		                                        </div>
-		                                        <span class="divider d-xs-show"></span>
-		                                        <div class="product-link-wrapper d-flex">
-		                                            <a href="#"
-		                                                class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
-		                                            <a href="#"
-		                                                class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
-		                                        </div>
+		                                        @include('user.product.social-link');
 		                                    </div>
 		                                </div>
 		                            </div>

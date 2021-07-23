@@ -19,10 +19,15 @@ class ProductController extends Controller
     	$products = [];
     	if($type == 'product'){ 
         if(!empty($id)){
-          if($id == 'search')
-          {
+          if($id == 'search'){
             $name=$request->get('name');
             $getProducts = Product::where("name","LIKE","%{$name}%");
+          }else if($id == 'today-deal'){
+            $getProducts = Product::where("today_deal",1);
+          }else if($id == 'featured'){
+            $getProducts = Product::where("is_featured",1);
+          }else if($id == 'classifieds'){
+            $getProducts = Product::where("is_featured",1);
           }else{
             $reletedProduct = [];
             $getProducts = $getProducts->where('id',$id); 
@@ -37,15 +42,19 @@ class ProductController extends Controller
         }
     	}else if($type == 'category'){
         if(!empty($id)){
-          $getProducts = $getProducts->where('cat_id',$id);    
+          $getProducts = $getProducts->where('cat_id',$id);
+        }else{
+          return view('user.product.category');
         }
       }else if($type == 'subcategory'){
         if(!empty($id)){
-          $getProducts = $getProducts->where('subcat_id',$id);    
+          $getProducts = $getProducts->where('subcat_id',$id);
         }
-      }else if($type == 'brand'){
+      }else if($type == 'brand'){ 
         if(!empty($id)){
-          $getProducts = $getProducts->where('brand_id',$id);    
+          $getProducts = $getProducts->where('brand_id',$id);
+        }else{
+          return view('user.product.brand');
         }
       }
       $products = $getProducts->get(); 

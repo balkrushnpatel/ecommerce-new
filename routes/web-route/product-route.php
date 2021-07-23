@@ -16,6 +16,7 @@ Route::group(['prefix' => '/brand'], function () {
 Route::group(['prefix' => '/product'], function () {
 	Route::get('/', 'ProductController@index')->name('product');
 	
+	Route::get('/today-deal', 'ProductController@index')->name('today-deal');
 	Route::get('/featured', 'ProductController@index')->name('product.fecture');
 	Route::get('/classifieds', 'ProductController@index')->name('product.classifieds');
 	Route::get('/search','ProductController@index')->name('product.search');

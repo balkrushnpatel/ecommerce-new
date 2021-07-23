@@ -12,6 +12,7 @@ class CartController extends Controller{
     public function __construct(){
   	}
     public function index(){
+    	
       return view('user.checkout.cart');
     }
     public function checkout(Request $request){
@@ -58,7 +59,7 @@ class CartController extends Controller{
 	          	$id     = $request->get('id');
 	          	$qty    = $request->get('qty');
 	          	$product = Product::getSingleProduct($id); 
-	          	$isCart = true;
+	          	$isCart = true; 
 	          	$cart = session()->get('cart'); 
       			if(!isset($cart[$id])) { 
 					$cart[$id] = [
@@ -67,7 +68,7 @@ class CartController extends Controller{
 						"option" => $option,
 						"color"  => $color,
 						"description" => $product->description,
-						"quantity" => $qty,
+						"quantity" => ($qty)?$qty:'1',
 						"product_qty" => $product->qty,
 						"image"    => $product->image,
 						"price"    => $product->price,
@@ -75,10 +76,11 @@ class CartController extends Controller{
 						"image" => fileView($product,'thumb','no','jpg','src'),
 						"url"   => $product->productSlug(),
 		            ];
-			      	session()->put('cart', $cart);
+			      	session()->put('cart', $cart); 
 			    }
 		      	return response()->json([
 		      		'success' => true, 
+		      		'data' => session()->get('cart'), 
 		      	]); 
 	        }catch (\Exception $e) { 
 		        return response()->json($e->getMessage());

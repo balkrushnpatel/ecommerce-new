@@ -10,13 +10,13 @@ use App\Models\OrderDetails;
 use session;
 use Validator;
 use DB;
-use Mail;
+use Mail; 
 use App\Mail\ContactUsMail;
 
 class HomeController extends Controller{ 
   public function __construct(){         
   }
-  public function index()    { 
+  public function index()    {  
   	$sliders=Slider::all();
     $featuredProduct=Product::feactureProduct();
     $todayDeal=Product::todayDeal();

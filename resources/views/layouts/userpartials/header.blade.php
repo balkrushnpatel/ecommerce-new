@@ -162,35 +162,47 @@
                             $segment = request()->segment(1);
                         @endphp
                         <ul class="menu active-underline">
-                            <li class="@if(Request::is('/')) active @endif">
-                                <a href="{{ url('/') }}">Home</a>
-                            </li> 
-                            <li class="@if($segment == 'category') active @endif" >
-                                <a href="{{ route('category') }}">Category</a>
-                                <ul>
-                                    @foreach(getCategory() as $item)
-                                        <li><a href="{{ route('category.product',array('id' => $item['id'], 'slug' => Str::slug($item['slug'])))}}">{{ $item['name'] }}</a></li> 
-                                    @endforeach
-                                </ul>
-                            </li>
+                            @if(getSetting('home_page') == 1)
+                                <li class="@if(Request::is('/')) active @endif">
+                                    <a href="{{ url('/') }}">Home</a>
+                                </li> 
+                            @endif
+                            @if(getSetting('all_category') == 1)
+                                <li class="@if($segment == 'category') active @endif" >
+                                    <a href="{{ route('category') }}">Category</a>
+                                    <ul>
+                                        @foreach(getCategory() as $item)
+                                            <li><a href="{{ route('category.product',array('id' => $item['id'], 'slug' => Str::slug($item['slug'])))}}">{{ $item['name'] }}</a></li> 
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
                             <li class="@if($segment == 'product') active @endif">
                                 <a href="{{ route('product') }}">Products</a>
                                 <ul> 
-                                    <li><a href="{{ route('product.fecture') }}">Featured Products</a></li>
-                                    <li><a href="{{ route('product.classifieds') }}">Classifieds Products</a></li>
+                                    @if(getSetting('featured_product') == 1)
+                                        <li><a href="{{ route('product.fecture') }}">Featured Products</a></li>
+                                    @endif
+                                    @if(getSetting('classified_product') == 1)
+                                        <li><a href="{{ route('product.classifieds') }}">Classifieds Products</a></li>
+                                    @endif
                                 </ul>
                             </li> 
-                            <li class="@if($segment == 'brand') active @endif" >
-                                <a href="{{ route('all.brand') }}">All Brand</a>
-                            </li>
-                            <li class="@if($segment == 'blog') active @endif">
-                                <a href="{{ route('blogs') }}">Blogs</a>
-                                <ul>
-                                    @foreach(getCategory() as $item)
-                                        <li><a href="{{ route('category.product',array('id' => $item['id'], 'slug' => Str::slug($item['slug'])))}}">{{ $item['name'] }}</a></li> 
-                                    @endforeach
-                                </ul>
-                            </li>
+                            @if(getSetting('all_brand') == 1)
+                                <li class="@if($segment == 'brand') active @endif" >
+                                    <a href="{{ route('all.brand') }}">All Brand</a>
+                                </li>
+                            @endif
+                            @if(getSetting('blog_page') == 1)
+                                <li class="@if($segment == 'blog') active @endif">
+                                    <a href="{{ route('blogs') }}">Blogs</a>
+                                    <ul>
+                                        @foreach(getCategory() as $item)
+                                            <li><a href="{{ route('category.product',array('id' => $item['id'], 'slug' => Str::slug($item['slug'])))}}">{{ $item['name'] }}</a></li> 
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endif
                             <li class="@if(Request::is('contact-us')) active @endif">
                                 <a href="{{ route('contact-us') }}">Contact Us</a>
                             </li>    
@@ -216,7 +228,9 @@
                 </div>
                 <div class="header-right">
                     <a href="#" class="d-xl-show"><i class="w-icon-map-marker mr-1"></i>Track Order</a>
-                    <a href="#"><i class="w-icon-sale"></i>Daily Deals</a>
+                    @if(getSetting('today_deal') == 1)
+                        <a href="{{ route('today-deal') }}"><i class="w-icon-sale"></i>Daily Deals</a>
+                    @endif
                 </div>
             </div>
         </div>
