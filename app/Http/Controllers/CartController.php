@@ -215,6 +215,7 @@ class CartController extends Controller{
 		    	return view('user.checkout.order-detail',compact('order'))->with('success','Your order place successfully!');
 		    	DB::commit();
 		    }else{
+		    	
 		    	return redirect()->route('user.acount'); 
 		    }
 	    }catch (\Exception $e) { 

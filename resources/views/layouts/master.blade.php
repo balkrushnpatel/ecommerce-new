@@ -40,6 +40,7 @@
     @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/jquery-ui.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
+    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 </head> 
 @php
     $class = 'home';

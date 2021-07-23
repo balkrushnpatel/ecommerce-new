@@ -128,10 +128,10 @@
                              <div class="col-md-4">
                                         <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
                                             <label>{{ __('Confirm New Password') }}</label>
-                                            <input class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" id="password_confirmation" type="password" placeholder="{{ __('Confirm Password') }}" aria-required="true"  required="true"/>
-                                            @if ($errors->has('password_confirmation'))
+                                            <input class="form-control{{ $errors->has('conf_password') ? ' is-invalid' : '' }}" name="conf_password" id="password_confirmation" type="password" placeholder="{{ __('Confirm Password') }}" aria-required="true"  required="true"/>
+                                            @if ($errors->has('conf_password'))
                                             <span id="name-error" class="error text-danger"
-                                                for="input-name">{{ $errors->first('password_confirmation') }}</span>
+                                                for="input-name">{{ $errors->first('conf_password') }}</span>
                                             @endif
                                         </div> 
                                     </div>
