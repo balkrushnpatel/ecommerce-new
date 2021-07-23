@@ -21,6 +21,23 @@ $('#addFaqInput').click(function(){
 });  
 $( document ).delegate( ".faq_remove", "click", function() {
 	var button_id = $(this).attr("id"); 
+	var faq_id=$(this).attr("data-id");
+	if(faq_id != 0){
+     $.ajax({
+        url   : APP_URL + '/admin/faqRemove',
+        type  :"GET",
+        data  :{
+                
+        	     'id':faq_id ,   
+        	    },
+        cache :false,
+        success:function(result){ 
+        	
+        }
+      });
+      
+    }
+
     $('#row'+button_id).remove();
 }); 
 

@@ -56,7 +56,7 @@ class FaqController extends Controller
                     $faq      = new Faq();
                 }
                 $faq->faq_question           = $faqQuestion;
-                $faq->faq_answer           = $request->input('faq_answer')[$key];
+                $faq->faq_answer             = $request->input('faq_answer')[$key];
                 $faq->save();          
             }
 
@@ -111,5 +111,12 @@ class FaqController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function faqRemove(Request $request)
+    {
+        $id = $request->id;
+        $id=Faq::where('id',$id)->delete();
+        
     }
 }

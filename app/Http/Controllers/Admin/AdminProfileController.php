@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Hash; 
 use App\User;
+use Auth;
 class AdminProfileController extends Controller
 {
     public function edit()
@@ -45,7 +46,25 @@ class AdminProfileController extends Controller
 
     public function password(Request $request)
     {
-        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+      /*  auth()->user()->update(['password' => Hash::make($request->get('password'))]);*/
+     if(!empty($request->get('old_password'))){
+
+                if (Hash::check($request->get('old_password'), Auth::user()->password)) {
+
+                    if($request->get('password')==$request->get('conf_password')){
+                  
+                          auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+                    }
+                    else{
+                       
+                         return redirect()->route('profile.edit')->with('error','New and Confirm Password Must be Same');
+                    }
+                }
+                else{
+                    
+                    return redirect()->route('profile.edit')->with('error','Old Password doesnt Match');
+                }
+        } 
 
         return back()->withStatusPassword(__('Password successfully updated.'));
     }

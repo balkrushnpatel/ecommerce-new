@@ -30,7 +30,7 @@
 						                  </textarea> 
 							    	   </div> 
 							       		<div class="col-lg-2">
-											<button type="button" id="{{ $i }}" class=" btn btn-sm btn-danger faq_remove" data-id="{{ $faq->faq_question}}">X</button>
+											<button type="button" id="{{ $i }}" class=" btn btn-sm btn-danger faq_remove" data-id="{{ $faq->id}}">X</button>
 										</div> 
 								       	@php $i++; @endphp
 								    </div>
