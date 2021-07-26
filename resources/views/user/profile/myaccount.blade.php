@@ -35,14 +35,18 @@
                         <li class="nav-item">
                             <a href="#account-details" class="nav-link" id="accountDetails">Account details</a>
                         </li>
-                        <li class="link-item">
-                            <a href="wishlist.html">Wishlist</a>
+                        <li class="nav-item">
+                            <a href="#wishlist" class="nav-link">Wishlist</a>
                         </li>
-                        <li class="link-item">
-                            <a href="{{ route('logout') }}">Logout</a>
+                        <li class="nav-item">                        
+                            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Log Out') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
-                    </ul>
-
+                    </ul> 
                     <div class="tab-content mb-6">
                         <div class="tab-pane active in" id="account-dashboard">
                             <p class="greeting">
@@ -237,6 +241,8 @@
                                 </div>
                                 <button type="submit" class="btn btn-dark btn-rounded btn-sm mb-4">Save Changes</button>
                             </form>
+                        </div>
+                        <div class="tab-pane" id="wishlist">
                         </div>
                     </div>
                 </div>

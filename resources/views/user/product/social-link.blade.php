@@ -9,6 +9,6 @@
 </div>
 <span class="divider d-xs-show"></span>
 <div class="product-link-wrapper d-flex">
-    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"></a>
+    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart{{ !empty($product->wishlist->product_id) && ($product->wishlist->product_id == $product->id)?'-full':'' }}" onclick="to_wishlist({{ $product->id}} )"></a>
     <a href="#" class="btn-product-icon btn-compare btn-icon-left w-icon-compare"></a>
 </div>

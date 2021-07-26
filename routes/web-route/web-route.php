@@ -7,6 +7,7 @@ Route::get('about-us', 'HomeController@aboutUs')->name('about-us');
 Route::get('contact-us', 'HomeController@ContactUs')->name('contact-us');
 Route::post('contact-us/send', 'HomeController@contactUsSend')->name('inquiry.send');
 
+Route::get('/user/wishlist/product', 'UserController@wishlistProduct')->name('user.wishlist');
 
 Route::get('headersearch','HomeController@headersearch')->name('search');
 
@@ -18,4 +19,5 @@ Route::group(['prefix' => '/blog'], function () {
 	Route::get('/', 'ProductController@blogs')->name('blogs');
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('blogs.detail');
 });
+
 ?>

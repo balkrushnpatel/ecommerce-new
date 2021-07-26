@@ -67,29 +67,7 @@ class HomeController extends Controller{
       DB::rollback();
       dd($e->getMessage());
     }
-  }   
-  public function orderPlace(Request $request){
-    $orderdetails =new OrderDetails();           
-    //shipping information
-    $orderdetails->user_id = auth()->user()->id;
-    $orderdetails->status  = 'pending'; 
-    $orderdetails->fname =$request->input('fname');
-    $orderdetails->lname =$request->input('lname');
-    $orderdetails->email =$request->input('email');
-    $orderdetails->address =$request->input('address');
-    $orderdetails->city =$request->input('city');
-    $orderdetails->state =$request->input('state');
-    $orderdetails->zip =$request->input('zip');
-    $orderdetails->country=$request->input('country');
-    $orderdetails->mobile_no =$request->input('mobile_no');
-
-    $orderdetails->order_detail =json_encode(session()->get('cart')); 
-
-    $orderdetails->grandtotal = $request->input('finaltotal');
-    $orderdetails->shipping_type =$request->input('shipping_type');
-    $orderdetails->save();
-    return redirect()->route('userhome')->with('success',' Order Place successfully!');
-  }
+  }    
   function headersearch(Request $request){
     if($request->ajax()){
       try {  

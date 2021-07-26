@@ -15,8 +15,7 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand','brand_id');
     }
-    public function createdBy()
-    {
+    public function createdBy() {
         return $this->belongsTo('App\User','created_by');
     }
     public static function newArrival(){
@@ -34,6 +33,14 @@ class Product extends Model
     public function stockPro()
     {
         return $this->hasOne('App\Models\Productstock','product_id');
+    }
+    public function wishlist()
+    {
+        return $this->hasOne('App\Models\Wishlist','product_id');
+    }
+    public function wishlists()
+    {
+        return $this->hasMany('App\Models\Wishlist','product_id');
     }
     public function productPrice(){
         return '<i class="fa fa-inr"></i> '.$this->price;

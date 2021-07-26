@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('content') 
 	@if(count($products) == 1)
-		@foreach($products as $item)
-			@section('title',$item->name) 
+		@foreach($products as $product)
+			@section('title',$product->name) 
 			<main class="main mb-10 pb-1"> 
 		        <nav class="breadcrumb-nav container">
 		            <ul class="breadcrumb bb-no">
 		                <li><a href="{{ url('/') }}">Home</a></li>
 		                <li><a href="{{ route('product') }}">Product</a></li>
-		                <li>{{ $item->name }}</li>
+		                <li>{{ $product->name }}</li>
 		            </ul> 
 		        </nav> 
 		        <div class="page-content">
@@ -20,11 +20,11 @@
 		                                <div class="product-gallery product-gallery-sticky">
 		                                    <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
 		                                    	@php
-	                                                $images = fileView($item,'no','multi','jpg','img');
+	                                                $images = fileView($product,'no','multi','jpg','img');
 	                                            @endphp
 	                                            @foreach($images as $img)
                                                     <figure class="product-image">
-                                                        <img src="{{  $img }}" data-zoom-image="{{  $img }}" alt="{{ $item->name }}" width="800" height="900">
+                                                        <img src="{{  $img }}" data-zoom-image="{{  $img }}" alt="{{ $product->name }}" width="800" height="900">
                                                     </figure>
                                                 @endforeach 
 		                                    </div>
@@ -32,7 +32,7 @@
 		                                        <div class="product-thumbs row cols-4 gutter-sm">
 		                                            @foreach($images as $key=>$img)
                                                         <div class="product-thumb {{ ($key == 0)?'active':'' }}">
-                                                            <img src="{{ $img }}" alt="{{ $item->name }}" width="60" height="68" />
+                                                            <img src="{{ $img }}" alt="{{ $product->name }}" width="60" height="68" />
                                                         </div>
                                                     @endforeach
 		                                        </div>
@@ -43,12 +43,12 @@
 		                            </div>
 		                            <div class="col-md-6 mb-4 mb-md-6">
 		                                <div class="product-details" data-sticky-options="{'minWidth': 767}">
-		                                    <h2 class="product-title">{{ $item->name }}</h2>
+		                                    <h2 class="product-title">{{ $product->name }}</h2>
 		                                    <div class="product-bm-wrapper">
-		                                    	@if(!empty($item->brand))
+		                                    	@if(!empty($product->brand))
 			                                        <figure class="brand">
 			                                        	@php 
-			                                        		$brand = $item->brand;
+			                                        		$brand = $product->brand;
 			                                        	@endphp
 			                                            <img src="{{ asset('uploads/brand/'.$brand->image) }} " alt="{{ $brand->name }}" width="102" height="48" />
 			                                        </figure>
@@ -56,7 +56,7 @@
 		                                        <div class="product-meta">
 		                                            <div class="product-categories">
 		                                                Category: <span class="product-category">
-		                                                	<a href="{{ route('category.product',array('id' => $item->categories->id, 'slug' => Str::slug($item->categories->slug)))}}">{{ $item->categories->name }}</a>
+		                                                	<a href="{{ route('category.product',array('id' => $product->categories->id, 'slug' => Str::slug($product->categories->slug)))}}">{{ $product->categories->name }}</a>
 		                                                </span>
 		                                            </div>
 		                                            <div class="product-sku">
@@ -66,7 +66,7 @@
 		                                    </div>
 		                                    <hr class="product-divider">
 		                                    <div class="product-price">
-		                                    	<ins class="new-price">{!! $item->productPrice() !!} / {{ $item->unit }} </ins> 
+		                                    	<ins class="new-price">{!! $product->productPrice() !!} / {{ $product->unit }} </ins> 
 		                                    </div>
 		                                    <div class="ratings-container">
 		                                        <div class="ratings-full">
@@ -76,19 +76,19 @@
 		                                        <a href="#product-tab-reviews" class="rating-reviews scroll-to">(3 Reviews)</a>
 		                                    </div> 
 		                                    <hr class="product-divider"> 
-		                                    @if(!empty($item->color))
+		                                    @if(!empty($product->color))
 			                                    <div class="product-form product-variation-form product-color-swatch">
 			                                        <label>Color:</label>
 			                                        <div class="d-flex align-items-center product-variations">
-			                                        	@foreach(json_decode($item->color) as $clr)
+			                                        	@foreach(json_decode($product->color) as $clr)
 			                                            	<a href="javascript:void(0)" class="color cust-color" data-color="{{ $clr }}" style="background-color: {{ $clr }}"></a>
 			                                            @endforeach
 			                                        </div>
 			                                    </div>
 			                                @endif
-			                                @if(!empty($item->option))
+			                                @if(!empty($product->option))
 			                                	@php
-			                                		$option = json_decode($item->option); 
+			                                		$option = json_decode($product->option); 
 			                                	@endphp
 			                                	@foreach($option as $opt) 
 				                                    <div class="product-form product-variation-form product-size-swatch">
@@ -138,12 +138,12 @@
 		                                        <div class="product-form container">
 		                                            <div class="product-qty-form">
 		                                                <div class="input-group">
-		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $item->qty}}" name="qty" id="product_qty_{{$item->id}}"  value="1">
-		                                                    <button class="quantity-plus w-icon-plus" data-btn="+" data-id="{{ $item->id}}"></button>
-                                                        	<button class="quantity-minus w-icon-minus" data-btn="-" data-id="{{ $item->id}}"></button>
+		                                                    <input class="quantity form-control" type="number" min="1" max="{{ $product->qty}}" name="qty" id="product_qty_{{$product->id}}"  value="1">
+		                                                    <button class="quantity-plus w-icon-plus" data-btn="+" data-id="{{ $product->id}}"></button>
+                                                        	<button class="quantity-minus w-icon-minus" data-btn="-" data-id="{{ $product->id}}"></button>
 		                                                </div>
 		                                            </div>
-		                                            <button class="btn btn-primary btn-cart" data-id="{{ $item->id}}">
+		                                            <button class="btn btn-primary btn-cart" data-id="{{ $product->id}}">
 		                                                <i class="w-icon-cart"></i>
 		                                                <span>Add to Cart</span>
 		                                            </button>
@@ -151,7 +151,7 @@
 		                                    </div>
 
 		                                    <div class="social-links-wrapper">
-		                                        @include('user.product.social-link');
+		                                        @include('user.product.social-link',$product);
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -175,7 +175,7 @@
 		                                <div class="tab-pane active" id="product-tab-description">
 		                                    <div class="row mb-4">
 		                                        <div class="col-md-12 mb-5">
-		                                            {!! $item->description !!}
+		                                            {!! $product->description !!}
 		                                        </div> 
 		                                    </div>
 		                                    <div class="row cols-md-3">
@@ -394,7 +394,7 @@
 		                        <section class="related-product-section">
 		                            <div class="title-link-wrapper mb-4">
 		                                <h4 class="title">Related Products</h4>
-		                                <a href="{{ route('category.product',array('id' => $item->categories->id, 'slug' => Str::slug($item->categories->slug)))}}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More Products<i class="w-icon-long-arrow-right"></i></a>
+		                                <a href="{{ route('category.product',array('id' => $product->categories->id, 'slug' => Str::slug($product->categories->slug)))}}" class="btn btn-dark btn-link btn-slide-right btn-icon-right">More Products<i class="w-icon-long-arrow-right"></i></a>
 		                            </div>
 		                            <div class="owl-carousel owl-theme row cols-lg-3 cols-md-4 cols-sm-3 cols-2" data-owl-options="{
 		                                'nav': false,

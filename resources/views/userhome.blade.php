@@ -278,18 +278,18 @@
                             'margin': 20,
                             'items': 1
                         }">
-                            @foreach($todayDeal as $deal)
+                            @foreach($todayDeal as $product)
                                 <div class="product product-single row">
                                     <div class="col-md-6">
                                         <div class="product-gallery product-gallery-vertical mb-0">
                                             @php
-                                                $images = fileView($deal,'no','multi','jpg','img');
+                                                $images = fileView($product,'no','multi','jpg','img');
                                             @endphp
                                             <div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1 gutter-no">
                                                 @foreach($images as $img)
                                                     <figure class="product-image">
                                                         <img src="{{  $img }}" data-zoom-image="{{  $img }}"
-                                                            alt="{{ $deal->name }}" width="800" height="900">
+                                                            alt="{{ $product->name }}" width="800" height="900">
                                                     </figure>
                                                 @endforeach
                                             </div>
@@ -297,7 +297,7 @@
                                                 <div class="product-thumbs">
                                                     @foreach($images as $key=>$img)
                                                         <div class="product-thumb {{ ($key == 0)?'active':'' }}">
-                                                            <img src="{{ $img }}" alt="{{ $deal->name }}" width="60" height="68" />
+                                                            <img src="{{ $img }}" alt="{{ $product->name }}" width="60" height="68" />
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -310,11 +310,11 @@
                                     <div class="col-md-6">
                                         <div class="product-details scrollable">
                                             <h2 class="product-title mb-1">
-                                                <a href="{{ $deal->productSlug() }}">{{ $deal->name }}</a>
+                                                <a href="{{ $product->productSlug() }}">{{ $product->name }}</a>
                                             </h2>
                                             <hr class="product-divider">
                                             <div class="product-price">
-                                                <ins class="new-price ls-50">{!! $deal->productPrice() !!} -
+                                                <ins class="new-price ls-50">{!! $product->productPrice() !!} -
                                                     $180.00
                                                 </ins>
                                             </div>
@@ -331,18 +331,18 @@
                                             <div class="product-form pt-4">
                                                 <div class="product-qty-form mb-2 mr-2">
                                                     <div class="input-group">
-                                                        <input class="quantity form-control" type="number" min="1" max="{{ $deal->qty}}" name="qty" id="product_qty_{{$deal->id}}" value="1" readonly>
-                                                        <button class="quantity-plus w-icon-plus" data-id="{{ $deal->id}}" data-btn="+"></button>
-                                                        <button class="quantity-minus w-icon-minus" data-id="{{ $deal->id}}" data-btn="-"></button>
+                                                        <input class="quantity form-control" type="number" min="1" max="{{ $product->qty}}" name="qty" id="product_qty_{{$product->id}}" value="1" readonly>
+                                                        <button class="quantity-plus w-icon-plus" data-id="{{ $product->id}}" data-btn="+"></button>
+                                                        <button class="quantity-minus w-icon-minus" data-id="{{ $product->id}}" data-btn="-"></button>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-primary btn-cart" data-id="{{ $deal->id}}">
+                                                <button class="btn btn-primary btn-cart" data-id="{{ $product->id}}">
                                                     <i class="w-icon-cart"></i>
                                                     <span>Add to Cart</span>
                                                 </button>
                                             </div> 
                                             <div class="social-links-wrapper mt-1">
-                                                @include('user.product.social-link');
+                                                @include('user.product.social-link',$product);
                                             </div>
                                         </div>
                                     </div>
