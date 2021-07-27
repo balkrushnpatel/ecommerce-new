@@ -41,11 +41,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/jquery-ui.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+    @stack('stylesheets')
 </head> 
 @php
     $class = 'home';
     if(Request::is('about-us')){
         $class = 'about-us';
+    }
+    if(Request::is('user/my-account')){
+        $class = 'my-account';
     }
 @endphp
 <body class="{{ $class }}">
