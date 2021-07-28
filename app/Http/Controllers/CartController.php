@@ -80,7 +80,6 @@ class CartController extends Controller{
 			    }
 		      	return response()->json([
 		      		'success' => true, 
-		      		'data' => session()->get('cart'), 
 		      	]); 
 	        }catch (\Exception $e) { 
 		        return response()->json($e->getMessage());

@@ -329,11 +329,23 @@
 					if(Request::is('admin/faq')){
 						$faqActive = 'menu-item-open';
 					}
-				@endphp
+				    @endphp
 				<li class="menu-item menu-item-submenu {{ $faqActive }}">
 					<a href="{{ url('admin/faq') }}" class="menu-link">
 						<i class="menu-icon fas fa-question"></i>
 						<span class="menu-text">@lang('ecommerce.Faq')</span> 
+					</a> 
+				</li>
+				@php
+					$orderDetailActive = '';
+					if(Request::is('admin/orderDetail')){
+						$orderDetailActive = 'menu-item-open';
+					}
+				    @endphp
+				<li class="menu-item menu-item-submenu {{ $orderDetailActive }}">
+					<a href="{{ url('admin/orderDetail') }}" class="menu-link">
+						<i class="menu-icon fas fa-info"></i>
+						<span class="menu-text">@lang('ecommerce.OrderDetail')</span> 
 					</a> 
 				</li>
 			</ul>

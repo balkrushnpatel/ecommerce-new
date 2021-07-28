@@ -34,7 +34,11 @@ return [
         '29'   => 'last Name',
         '30'   => 'Email',
         '31'   => 'Mobile No',
-        '32'   => 'link',
-        '33'   => 'text',
+        '32'   => 'Link',
+        '33'   => 'Text',
+        '34'   => 'OrderId',
+        '35'   => 'Total Amount',
+        '36'   => 'Order Date',
+        '37'   => 'Order Status',
     ), 
 ];

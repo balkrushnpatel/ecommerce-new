@@ -25,7 +25,7 @@ Route::group(['prefix' => '/product'], function () {
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('product.detail');
 	Route::get('/today/deal', 'ProductController@index')->name('product.today_deal');
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('product.detail');
-	Route::get('/compare', 'UserHomeController@ContactUs')->name('compare');
+	Route::get('/compare', 'ProductController@Compare')->name('compare');
 	Route::get('/get-list', 'ProductController@productFilter')->name('product.filter');	
 
 });

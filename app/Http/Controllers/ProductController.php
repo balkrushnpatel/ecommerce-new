@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use DB;
+use Session;
 class ProductController extends Controller
 {
   public function __construct(){
@@ -125,7 +126,54 @@ class ProductController extends Controller
       DB::rollback(); 
       return response()->json($e->getMessage());
     } 
-  }  
+  } 
 
+  public function compare()
+  {
+    $compare = session()->get('compare'); 
+    $products=[];
+    if(!empty($compare)){
+      $products=Product::whereIn('id',$compare)->get();
+    }  
+    return view('user.product.compare',compact('products'));
+  } 
+
+  public function addToCompare(Request $request)
+  {
+    try{ 
+        $id=$request->id; 
+        //Session::forget('compare');
+        $compare = session()->get('compare'); 
+         $compare[$id] = $id;
+        session()->put('compare',$compare); 
+        return response()->json([
+          'success' => true, 
+          'compare' => session()->get('compare'), 
+        ]); 
+    }catch (\Exception $e) { 
+      return response()->json($e->getMessage());
+    }
+   
+  }
+
+  public  function removeProductCompare(Request $request)
+  {
+     if($request->ajax()){
+        try {    
+          $id   = $request->get('id');
+          if($id==0){
+                Session::forget('compare');
+          }else{
+            $compare = session()->get('compare');
+            unset( $compare[$id]); 
+            session()->put('compare',$compare);
+            $products=Product::whereIn('id',$compare)->get();
+            return view('user.product.compare-detail',compact('products'));
+          }
+        }catch (\Exception $e) {
+          return response()->json($e->getMessage());
+      }
+    } 
+  }
   
 }

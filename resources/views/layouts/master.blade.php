@@ -51,6 +51,9 @@
     if(Request::is('user/my-account')){
         $class = 'my-account';
     }
+     if(Request::is('product/compare')){
+        $class = 'compare-page';
+    }
 @endphp
 <body class="{{ $class }}">
     <div class="page-wrapper">

@@ -13,7 +13,10 @@ Route::get('headersearch','HomeController@headersearch')->name('search');
 
 Route::get('cart/header-box', 'CartController@headerCart')->name('cart.headerBox'); 
 Route::get('cart/product', 'CartController@addToCart')->name('product.addcart'); 
-Route::get('cart/remove-product', 'CartController@removeProductCart')->name('remove.productcart'); 
+Route::get('compare', 'ProductController@addToCompare')->name('product.addToCompare'); 
+Route::get('cart/remove-product', 'CartController@removeProductCart')->name('remove.productcart');
+Route::get('removeComparePro', 'ProductController@removeProductCompare')->name('remove.productcart'); 
+
 
 Route::group(['prefix' => '/blog'], function () { 
 	Route::get('/', 'ProductController@blogs')->name('blogs');

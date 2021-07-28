@@ -6,7 +6,7 @@
         <div class="product-action-vertical">
             <a href="#" class="btn-product-icon btn-cart w-icon-cart" onclick="to_cart({{ $product->id}})" title="Add to cart"></a>
             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart{{ !empty($product->wishlist->product_id) && ($product->wishlist->product_id == $product->id)?'-full':'' }}" onclick="to_wishlist({{ $product->id}})" title="Add to wishlist"></a> 
-            <a href="#" class="btn-product-icon btn-compare w-icon-compare" onclick="to_compare({{ $product->id}})" title="Add to Compare"></a>
+            <a href="#" class="btn-product-icon btn-compare w-icon-compare" onclick="to_compare({{ $product->id}})" title="Add to Compare" data-product={{ $product->id}}></a>
         </div>
         <div class="product-action">
             <a href="javascript:void(0);" class="btn-product btn-quickview" title="Quick View">Quick

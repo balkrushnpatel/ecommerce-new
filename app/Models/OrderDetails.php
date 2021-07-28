@@ -22,6 +22,10 @@ class OrderDetails extends Model
         $order = self::where('id',$orderId)->first();
         return $order;
     }
+
+    public function getUser() {
+        return $this->belongsTo('App\User','user_id');
+    }
     protected static function boot()
     {
         parent::boot();  

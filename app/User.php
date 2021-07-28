@@ -45,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isUser() {
        return $this->role === 'user';
     }
+
+    public function getUser() {
+        return $this->hasOne('App\Models\OrderDetails','user_id');
+    }
     public function createdBy()
     {
         return $this->hasOne('App\Models\Product','created_by');

@@ -87,7 +87,7 @@
                     <i class="w-icon-heart"></i>
                     <span class="wishlist-label d-lg-show">Wishlist</span>
                 </a>
-                <a class="compare label-down link d-xs-show" href="compare.html">
+                <a class="compare label-down link d-xs-show" href="{{route('compare')}}">
                     <i class="w-icon-compare"></i>
                     <span class="compare-label d-lg-show">Compare</span>
                 </a>

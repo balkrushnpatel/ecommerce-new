@@ -39,5 +39,6 @@ return [
     'Header'=>'Header',
     'Shipment'=>'Shipment',
     'Faq'=>'Faq',
+    'OrderDetail'=>'OrderDetail',
     
 ];
