@@ -100,70 +100,18 @@
                     <div class="col-lg-6 mb-8">
                         <h4 class="title mb-3">People usually ask these</h4>
                         <div class="accordion accordion-bg accordion-gutter-md accordion-border">
+                            @foreach($faqs as $faq)
                             <div class="card">
                                 <div class="card-header">
-                                    <a href="#collapse1" class="collapse">How can I cancel my order?</a>
+                                    <a href="#collapse1" class="collapse">{{$faq->faq_question}}</a>
                                 </div>
                                 <div id="collapse1" class="card-body expanded">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp orincid 
-                                        idunt ut labore et dolore magna aliqua. Venenatis tellus in metus vulp utate eu sceler 
-                                        isque felis. Vel pretium.
+                                        {{$faq->faq_answer}}
                                     </p>
                                 </div>
                             </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="#collapse2" class="expand">Why is my registration delayed?</a>
-                                </div>
-                                <div id="collapse2" class="card-body collapsed">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp orincid 
-                                        idunt ut labore et dolore magna aliqua. Venenatis tellus in metus vulp utate eu sceler 
-                                        isque felis. Vel pretium.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="#collapse3" class="expand">What do I need to buy products?</a>
-                                </div>
-                                <div id="collapse3" class="card-body collapsed">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp orincid 
-                                        idunt ut labore et dolore magna aliqua. Venenatis tellus in metus vulp utate eu sceler 
-                                        isque felis. Vel pretium.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="#collapse4" class="expand">How can I track an order?</a>
-                                </div>
-                                <div id="collapse4" class="card-body collapsed">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp orincid 
-                                        idunt ut labore et dolore magna aliqua. Venenatis tellus in metus vulp utate eu sceler 
-                                        isque felis. Vel pretium.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a href="#collapse5" class="expand">How can I get money back?</a>
-                                </div>
-                                <div id="collapse5" class="card-body collapsed">
-                                    <p class="mb-0">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        temp orincid idunt ut labore et dolore magna aliqua. Venenatis tellus in
-                                        metus vulp utate eu sceler isque felis. Vel pretium.
-                                    </p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-6 mb-8">

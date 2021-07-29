@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Slider;
 use App\Models\Product;
 use App\Models\OrderDetails;
+use App\Models\Faq;
 use session;
 use Validator;
 use DB;
@@ -38,7 +39,8 @@ class HomeController extends Controller{
     return view('user.category',compact('products'));
   }
   public function contactUs(){
-    return view('user.contact');
+    $faqs=Faq::get();
+    return view('user.contact',compact('faqs'));
   }
   public function contactUsSend(Request $request){
     try {  

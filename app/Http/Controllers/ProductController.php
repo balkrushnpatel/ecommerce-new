@@ -156,6 +156,18 @@ class ProductController extends Controller
    
   }
 
+  public function quickView(Request $request){
+   if($request->ajax()){
+        try {    
+          $id   = $request->get('id');
+          $product=Product::where('id',$id)->first();
+          return view('layouts.userpartials.product-quickview',compact('product'));
+          
+        }catch (\Exception $e) {
+          return response()->json($e->getMessage());
+        }
+      } 
+  }
   public  function removeProductCompare(Request $request)
   {
      if($request->ajax()){
@@ -172,8 +184,8 @@ class ProductController extends Controller
           }
         }catch (\Exception $e) {
           return response()->json($e->getMessage());
-      }
-    } 
+        }
+      } 
   }
   
 }

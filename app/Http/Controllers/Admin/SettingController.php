@@ -263,6 +263,7 @@ class SettingController extends Controller
             $setting=$this->set('logo_image');
             $setting->type      = 'logo_image'; 
             if ($request->hasFile('image')) { 
+                $image = $request->file('image');
                 $name = 'logo.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/logo/');
                 $image->move($destinationPath, $name);

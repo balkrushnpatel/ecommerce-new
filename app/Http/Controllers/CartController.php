@@ -8,6 +8,7 @@ use App\Models\Couponcode;
 use App\Models\OrderDetails;
 use DB;
 use Session;
+use Auth;
 class CartController extends Controller{
     public function __construct(){
   	}
@@ -199,6 +200,38 @@ class CartController extends Controller{
     		}
     	}
   	}
+
+
+    public function trackOrder(){
+            return view('user.product.track-order');
+    }
+
+    public function orderTrack(Request $request){
+        if($request->ajax()){
+	      	try {    
+	          	$id   = $request->get('id');
+	          	$details=OrderDetails::where('order_id',$id)->where('user_id',auth()->user()->id)->first();
+	          	$html = '';
+	          	if($details){
+	          		$html .= '<span style="width:100%;display:block">Delivery Status :'.deliveryStatus()[$details->status].'</span>';
+	          		$html .= '<span>Delivery Note :'.$details->delivery_details.'</span>';
+			      	return response()->json([
+	                  'success'=>true,
+	                  'html'=>$html,
+	                ]); 
+	            }else{
+                   
+                   $html .= '<span style="width:100%;display:block">No Order Id Found</span>';
+                   	return response()->json([
+	                  'success'=>false,
+	                  'html'=>$html,
+	                ]); 
+	            }    
+	        }catch (\Exception $e) {
+		        return response()->json($e->getMessage());
+    		}
+    	}
+    }
     public function orderDetail(){
       	try {   
     		 DB::beginTransaction();

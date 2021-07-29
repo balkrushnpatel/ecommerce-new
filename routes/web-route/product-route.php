@@ -20,6 +20,7 @@ Route::group(['prefix' => '/product'], function () {
 	Route::get('/featured', 'ProductController@index')->name('product.fecture');
 	Route::get('/classifieds', 'ProductController@index')->name('product.classifieds');
 	Route::get('/search','ProductController@index')->name('product.search');
+	Route::get('/quickview','ProductController@quickView')->name('product.quickview');
 
 	
 	Route::get('/{id}/{slug}', 'ProductController@index')->name('product.detail');

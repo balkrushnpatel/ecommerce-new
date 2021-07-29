@@ -1,7 +1,7 @@
 	<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 		<div class="brand flex-column-auto" id="kt_brand">
 			<a href="{{ url('/admin') }}" class="brand-logo">
-         <img alt="{{ config('app.name') }}" src="{{ asset('assets/media/logos/logo-dark.png')}} "/>
+         <img alt="{{ config('app.name') }}" src="{{ asset('uploads/logo/'.getSetting('logo_image')) }} " width='100px'/>
            </a>
 			<!--end::Logo-->
 			<!--begin::Toggle-->

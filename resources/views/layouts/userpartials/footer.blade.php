@@ -35,7 +35,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="widget widget-about">
                         <a href="{{ url('/') }}" class="logo-footer">
-                            <img src="{{ asset('user/images/logo_footer.png') }}" alt="logo-footer" width="144"
+                            <img  src="{{ asset('uploads/logo/'.getSetting('logo_image')) }} " alt="logo-footer" width="144"
                                 height="45" />
                         </a>
                         <div class="widget-body">

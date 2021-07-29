@@ -97,6 +97,28 @@ class OrderDetailController extends Controller
         }
     }
 
+    public function deliveryDetail(Request $request){
+
+     try {
+            DB::beginTransaction();
+            $orderId=$request->input('order_id');
+            $deliveryDetail = OrderDetails::where('id',$orderId)->first();
+            $deliveryDetail->payment_status  = $request->input('payment_status');
+            $deliveryDetail->payment_details = $request->input('payment_details');
+            $deliveryDetail->status          = $request->input('status');
+            $deliveryDetail->delivery_details = $request->input('delivery_details'); 
+            $deliveryDetail->save();
+            DB::commit();
+           return redirect()->route('orderDetail.index')->with('success',' Delivery  Detail Update successfully!');
+        }catch (\Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+        }
+    
+     
+    }
+
+
     public function orderDetailAjaxList(\App\Http\Requests\DataTableRequest $request){
         if($request->ajax()){
             try {  
@@ -113,6 +135,7 @@ class OrderDetailController extends Controller
                     $action = '';
 
                     $action .='<a href="'.route('orders.view',$encryptDetailId).'" class="btn btn-sm btn-icon  mr-2"><i class="fas fa-eye"></i></a>';
+                  $action .='<a href="javascript:void(0);" id="'.$detail->id.'" class="btn btn-primary order-delivery " title="Delivery">Delivery</a>';
                    
                     $data[] = [
                         str_replace(" ","",tableHeader(0))  => $key + 1,

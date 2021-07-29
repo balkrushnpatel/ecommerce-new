@@ -13,7 +13,7 @@
     <meta name="author" content="D-THEMES">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('user/images/icons/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon/'.getSetting('favicon_image')) }}">
 
  	<link rel="preload" href="{{ asset('user/vendor/fontawesome-free/webfonts/fa-regular-400.woff2') }}" as="font" type="font/woff2"
         crossorigin="anonymous">

@@ -10,8 +10,8 @@
                         <div class="product-action-horizontal">
                             <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart" onclick="to_cart({{ $product->id}} )"></a>
                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart" title="Wishlist" onclick="to_wishlist({{ $product->id}} )"></a>
-                            <a href="#" class="btn-product-icon btn-compare w-icon-compare" title="Compare"></a>
-                            <a href="#" class="btn-product-icon btn-quickview w-icon-search" title="Quick View" onclick="to_compare({{ $product->id}} )"></a>
+                            <a href="#" class="btn-product-icon btn-compare w-icon-compare" title="Compare" onclick="to_compare({{ $product->id}})"></a>
+                            <a href="#" class="btn-product-icon btn-quickview w-icon-search" title="Quick View" onclick="to_quickview({{$product->id}})"></a>
                         </div>
                     </figure>
                     <div class="product-details">

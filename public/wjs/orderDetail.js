@@ -42,4 +42,11 @@ if($('#orderDetail-datatable').length){
 	});
 }
 
+$( document ).delegate( ".order-delivery", "click", function() {
+	var detailId = $(this).attr( "id" ); 
+	console.log(detailId);
+	$('#order_id').val(detailId);
+ 	$('#delivery-modal').modal('show'); 
+}); 
+
 

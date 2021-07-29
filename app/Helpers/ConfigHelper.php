@@ -138,3 +138,24 @@ if (! function_exists('isAdmin')) {
     }
   }
 }
+
+if (! function_exists('paymentStatus')) {
+    function paymentStatus() {
+        $status = array(
+            '1'    => 'Due',
+            '2'    => 'Paid',
+        );
+        return  $status;
+    }
+} 
+
+if (! function_exists('deliveryStatus')) {
+    function deliveryStatus() {
+        $status = array(
+            '1'    => 'Pending',
+            '2'    => 'On Delivery',
+            '3'    => 'Delivered',
+        );
+        return  $status;
+    }
+} 

@@ -8,3 +8,7 @@ Route::group(['prefix' => '/cart'], function () {
 	Route::get('/qty-add-minus', 'CartController@qtyAddMinus')->name('qty.add.minus'); 
 	Route::get('/apply-coupon', 'CartController@applyCoupon')->name('cart.applycoupon'); 
 });
+Route::group(['prefix' => '/order'], function () {
+	Route::get('track','CartController@trackOrder')->name('orders.track');
+	Route::get('ordertrack','CartController@orderTrack')->name('track.order');
+});

@@ -59,7 +59,7 @@
                 <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
                 </a>
                 <a href="{{ url('/') }}" class="logo ml-lg-0">
-                    <img src="{{ asset('user/images/logo.png') }}" alt="logo" width="144" height="45" />
+                    <img  src="{{ asset('uploads/logo/'.getSetting('logo_image')) }} " alt="logo" width="144" height="45" />
                 </a>
                 <form method="get" action="{{route('product.search')}}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
                     <div class="select-box">
@@ -227,12 +227,13 @@
                     </nav>
                 </div>
                 <div class="header-right">
-                    <a href="#" class="d-xl-show"><i class="w-icon-map-marker mr-1"></i>Track Order</a>
+                    <a href="{{route('orders.track')}}" class="track-order"><i class="w-icon-map-marker mr-1"></i>Track Order</a>
                     @if(getSetting('today_deal') == 1)
                         <a href="{{ route('today-deal') }}"><i class="w-icon-sale"></i>Daily Deals</a>
                     @endif
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
+
 </header>

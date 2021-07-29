@@ -15,6 +15,8 @@
 						<div>{{$orderView->order_id}}</div><br>
 						<h6 class="font-weight-bolder mb-3">Order Date</h6>
 						<div>{{$orderView->created_at}}</div><br>
+						<h6 class="font-weight-bolder mb-3">Delivery Status</h6>
+						<div>{{deliveryStatus()[$orderView->status]}}</div><br>
 						<h6 class="font-weight-bolder mb-3">Delivery Address:</h6>
 						<div class="text-dark-50 line-height-lg">
 							@php

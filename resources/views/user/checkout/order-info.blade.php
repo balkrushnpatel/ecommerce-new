@@ -5,7 +5,7 @@
 	                </li>
 	                <li>
 	                    <label>Status</label>
-	                    <strong>Pending</strong>
+	                    <strong>{{deliveryStatus()[$order->status]}}</strong>
 	                </li>
 	                <li>
 	                    <label>Date</label>
