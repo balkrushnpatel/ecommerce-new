@@ -75,7 +75,7 @@ class SettingController extends Controller
             $setting->save();
           
             DB::commit();
-             return view('admin.setting.index');
+            return redirect()->route('setting')->with('success',' Setting save successfully!');
 
         }catch (\Exception $e) {
             DB::rollback();
@@ -135,7 +135,7 @@ class SettingController extends Controller
             $setting->value      =$request->input('contact_about');
             $setting->save();
             DB::commit();
-             return view('admin.setting.contact');
+             return redirect()->route('admin.contact')->with('success',' Contact detail save successfully!');
 
         }catch (\Exception $e) {
             DB::rollback();
@@ -206,7 +206,7 @@ class SettingController extends Controller
             $setting->save();
            
             DB::commit();
-            return view('admin.setting.footer');
+            return redirect()->route('admin.footer')->with('success',' Footer detail save successfully!');
         }catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
@@ -240,7 +240,7 @@ class SettingController extends Controller
                 $setting->save();
             } 
             DB::commit();
-            return view('admin.setting.favicon');
+            return redirect()->route('admin.favicon')->with('success',' Favicon save successfully!');
         }catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
@@ -271,7 +271,7 @@ class SettingController extends Controller
                 $setting->save();
             } 
             DB::commit();
-            return view('admin.setting.logo');
+            return redirect()->route('admin.logo')->with('success',' Logo save successfully!');
         }catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
@@ -388,7 +388,7 @@ class SettingController extends Controller
             $setting->save();
 
             DB::commit();
-            return view('admin.setting.generalsetting');
+           return redirect()->route('admin.general')->with('success',' General setting save successfully!');
         }catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
@@ -421,7 +421,7 @@ class SettingController extends Controller
             $setting->value      =$request->input('shipment_info');
             $setting->save();
             DB::commit();
-             return view('admin.setting.shipment');
+            return redirect()->route('admin.shipment')->with('success','Shipment detail save successfully!');
 
         }catch (\Exception $e) {
             DB::rollback();
