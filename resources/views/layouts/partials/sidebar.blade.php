@@ -348,6 +348,18 @@
 						<span class="menu-text">@lang('ecommerce.OrderDetail')</span> 
 					</a> 
 				</li>
+				@php
+					$bannerActive = '';
+					if(Request::is('admin/banner')){
+						$bannerActive = 'menu-item-open';
+					}
+				    @endphp
+				<li class="menu-item menu-item-submenu {{ $bannerActive }}">
+					<a href="{{ url('admin/banner') }}" class="menu-link">
+						<i class="menu-icon fas fa-bold"></i>
+						<span class="menu-text">@lang('ecommerce.Banner')</span> 
+					</a> 
+				</li>
 			</ul>
 		</div>
 	</div>

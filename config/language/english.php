@@ -40,5 +40,6 @@ return [
         '35'   => 'Total Amount',
         '36'   => 'Order Date',
         '37'   => 'Order Status',
+        '38'   => 'Btn Name',
     ), 
 ];

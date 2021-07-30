@@ -8,6 +8,8 @@ use App\Models\Slider;
 use App\Models\Product;
 use App\Models\OrderDetails;
 use App\Models\Faq;
+use App\Models\Brand;
+use App\Models\Blog;
 use session;
 use Validator;
 use DB;
@@ -21,9 +23,12 @@ class HomeController extends Controller{
   	$sliders=Slider::all();
     $featuredProduct=Product::feactureProduct();
     $todayDeal=Product::todayDeal();
-    
+    $categories =Category::where('status','1')->limit(6)
+    ->inRandomOrder()->get();
+    $brands = Brand::where('status','1')->limit(12) ->inRandomOrder()->get();
+    $blogs = Blog::where('status','1')->limit(3) ->inRandomOrder()->get();
     $newArrival=Product::newArrival();
-    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal'));
+    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal','categories','brands','blogs'));
   }  
   public function aboutUs(){
     return view('user.about');

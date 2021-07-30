@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\BlogCat;
+use App\Models\Blog;
 use DB;
 use Session;
 class ProductController extends Controller
@@ -108,20 +110,30 @@ class ProductController extends Controller
     }
   }
   public function blogs(Request $request){
-    try{
+    try{ 
       DB::beginTransaction();
       $type = request()->segment(1);
       $id = request()->segment(2); 
-      $getProducts = Product::where('status',1);
+      $slug = request()->segment(3); 
+      $categry = '';
+      $getBlogs = Blog::where('status',1);
       $blog = [];
-      if(!empty($id)){
-        $getProducts = $getProducts->where('id',$id); 
-        $blog = $getProducts->get(); 
-        return view('user.blog.detail',compact('blog'));   
+      if(!empty($slug)){
+        $getBlogs = $getBlogs->where('id',$id);
+        $blog = $getBlogs->first();
+        $posts = [];
+        if($blog){
+          $posts = Blog::where('id','!=',$blog->id)->where('blog_cat_id',$blog->blog_cat_id)->get();  
+          return view('user.blog.detail',compact('blog','posts'));   
+        }
       }
-      $blogs = $getProducts->get(); 
+      if(!empty($id)){
+        $categry = $id;   
+      }
+      $blogs = $getBlogs->get(); 
+      $blogCategory=BlogCat::where('status',1)->get();
       DB::commit();
-      return view('user.blog.list',compact('blogs'));
+      return view('user.blog.list',compact('blogs','blogCategory','categry'));
     }catch (\Exception $e) {
       DB::rollback(); 
       return response()->json($e->getMessage());

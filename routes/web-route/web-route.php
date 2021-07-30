@@ -20,7 +20,8 @@ Route::get('removeComparePro', 'ProductController@removeProductCompare')->name('
 
 Route::group(['prefix' => '/blog'], function () { 
 	Route::get('/', 'ProductController@blogs')->name('blogs');
-	Route::get('/{id}/{slug}', 'ProductController@index')->name('blogs.detail');
+	Route::get('/{id}', 'ProductController@blogs')->name('blog.category');
+	Route::get('/{id}/{slug}', 'ProductController@blogs')->name('blogs.detail');
 });
 
 ?>
