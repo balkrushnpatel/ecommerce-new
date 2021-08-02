@@ -360,6 +360,18 @@
 						<span class="menu-text">@lang('ecommerce.Banner')</span> 
 					</a> 
 				</li>
+				@php
+					$homecategoryActive = '';
+					if(Request::is('admin/home-category')){
+						$homecategoryActive = 'menu-item-open';
+					}
+				    @endphp
+				<li class="menu-item menu-item-submenu {{ $homecategoryActive }}">
+					<a href="{{ url('admin/home-category') }}" class="menu-link">
+						<i class="menu-icon fas fa-bold"></i>
+						<span class="menu-text">@lang('ecommerce.HomeCategory')</span> 
+					</a> 
+				</li>
 			</ul>
 		</div>
 	</div>

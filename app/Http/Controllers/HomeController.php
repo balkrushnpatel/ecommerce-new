@@ -10,6 +10,8 @@ use App\Models\OrderDetails;
 use App\Models\Faq;
 use App\Models\Brand;
 use App\Models\Blog;
+use App\Models\HomeCategory;
+use App\Models\Banner;
 use session;
 use Validator;
 use DB;
@@ -27,8 +29,32 @@ class HomeController extends Controller{
     ->inRandomOrder()->get();
     $brands = Brand::where('status','1')->limit(12) ->inRandomOrder()->get();
     $blogs = Blog::where('status','1')->limit(3) ->inRandomOrder()->get();
+    $homeCat=HomeCategory::get()->pluck('cat_id');
+    $home_category = [];
+    if(count($homeCat)){
+        $categories = Category::where('status', 1)->whereIn('id',$homeCat)->get();
+        $products = [];
+        foreach ($categories as $key => $item) {
+          $products = Product::where('cat_id', $item->id)->where('status', 1)->get(); 
+
+          $image =  asset('uploads/noimage.jpg');
+          $categoryImage = public_path('uploads/category/') . $item->image;
+          if(file_exists($categoryImage)){
+            $image = asset('uploads/category/'.$item->image);
+          }
+          $banner = HomeCategory::where('cat_id',$item->id)->first();
+          $home_category[] = array(
+            'id'=>$item->id,
+            'name'=>$item->name,
+            'slug'=>$item->slug,
+            'image'=>$image,
+            'banner'=>$banner->banner,
+            'product'=>$products,
+          );
+        }
+     }
     $newArrival=Product::newArrival();
-    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal','categories','brands','blogs'));
+    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal','categories','brands','blogs','products','home_category'));
   }  
   public function aboutUs(){
     return view('user.about');

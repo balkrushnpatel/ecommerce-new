@@ -6,6 +6,7 @@ use App\Models\SubCategory;
 use App\Models\Language;
 use App\Models\Settings;
 use App\Models\BlogCat;
+use App\Models\Banner;
 
 if (! function_exists('getCategory')) {
   function getCategory() {
@@ -61,7 +62,7 @@ if (! function_exists('getCategory')) {
 } 
 
 if (! function_exists('fileView')) {
-  function fileView($thiss,$thumb = '',$multi = 'no',$ext = 'jpg',$src='') { 
+  function fileView($thiss,$thumb = '',$multi = 'no',$ext = 'jpg',$src='') {
     $srcl = asset('uploads/no-image.jpg');
     if($thiss){  
       if($multi == 'no'){
@@ -103,6 +104,13 @@ if (! function_exists('getBlogCategory')) {
     function getBlogCategory() {
       $blogcat = BlogCat::where('status', 1)->pluck('name','id');
       return $blogcat;
+    }
+}
+
+if (! function_exists('getBanner')) {
+    function getBanner() {
+      $banner = Banner::where('status', 1)->pluck('banner_name','id');
+      return $banner;
     }
 }
 if (! function_exists('getLanguage')) {

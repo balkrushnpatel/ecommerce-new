@@ -41,5 +41,6 @@ return [
     'Faq'=>'Faq',
     'OrderDetail'=>'OrderDetail',
     'Banner'=>'Banner',
+    'HomeCategory'=>'HomeCategory',
     
 ];
