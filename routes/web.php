@@ -45,6 +45,8 @@ Route::group(['prefix' => '/admin','middleware' => ['auth','role:Admin']], funct
 	include_once($admin_real_path . 'user.php');
 	include_once($admin_real_path . 'faq.php');
 	include_once($admin_real_path . 'orderDetail.php');
+	include_once($admin_real_path . 'banner.php');
+	include_once($admin_real_path . 'homecategory.php');
 	Route::PUT('profile/password', 'Admin\AdminProfileController@password')->name('profile.password');
 });
 

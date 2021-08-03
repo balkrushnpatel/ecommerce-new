@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Str;
 class Product extends Model
 {
-     public function categories()
-    {
+    public function categories(){
         return $this->belongsTo('App\Models\Category','cat_id');
     }
 
-    public function brand()
-    {
+    public function brand(){
         return $this->belongsTo('App\Models\Brand','brand_id');
     }
     public function createdBy() {

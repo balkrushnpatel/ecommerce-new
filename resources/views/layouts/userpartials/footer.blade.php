@@ -40,7 +40,7 @@
                         </a>
                         <div class="widget-body">
                             <p class="widget-about-title">Got Question? Call us 24/7</p>
-                            <a href="tel:18005707777" class="widget-about-call">1-800-570-7777</a>
+                            <a href="#" class="widget-about-call">{{ getSetting('contact_phone') }}</a>
                             <p class="widget-about-desc">Register now to get updates on pronot get up icons
                                 & coupons ster now toon.
                             </p>

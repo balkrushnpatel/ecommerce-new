@@ -98,7 +98,7 @@
             <section class="contact-section">
                 <div class="row gutter-lg pb-3">
                     <div class="col-lg-6 mb-8">
-                        <h4 class="title mb-3">People usually ask these</h4>
+                        <h4 class="title mb-3">Faq</h4>
                         <div class="accordion accordion-bg accordion-gutter-md accordion-border">
                             @foreach($faqs as $faq)
                             <div class="card">
@@ -107,7 +107,7 @@
                                 </div>
                                 <div id="collapse1" class="card-body expanded">
                                     <p class="mb-0">
-                                        {{$faq->faq_answer}}
+                                        {!! $faq->faq_answer !!}
                                     </p>
                                 </div>
                             </div>
