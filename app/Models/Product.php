@@ -25,6 +25,10 @@ class Product extends Model
     public static function feactureProduct(){
         return self::where('is_featured',1)->where('status',1)->get();
     }
+
+    public static function mostPopular(){
+        return self::orderBy('no_of_view','DESC')->limit(10)->where('status',1)->get();
+    }
     public static function getSingleProduct($id){
         return self::where('id',$id)->where('status',1)->first();
     }

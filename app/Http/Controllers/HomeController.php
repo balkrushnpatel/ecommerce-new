@@ -25,16 +25,19 @@ class HomeController extends Controller{
   	$sliders=Slider::all();
     $featuredProduct=Product::feactureProduct();
     $todayDeal=Product::todayDeal();
+    $mostPopular=Product::mostPopular();
+    $banners=Banner::where('is_home','1')->limit(3)->get();
     $categories =Category::where('status','1')->limit(6)
     ->inRandomOrder()->get();
     $brands = Brand::where('status','1')->limit(12) ->inRandomOrder()->get();
     $blogs = Blog::where('status','1')->limit(3) ->inRandomOrder()->get();
+    $views=Product::orderBy('last_viewed','DESC')->limit(8)->get();
     $homeCat=HomeCategory::get()->pluck('cat_id');
     $home_category = [];
     if(count($homeCat)){
-        $categories = Category::where('status', 1)->whereIn('id',$homeCat)->get();
+        $categoriess = Category::where('status', 1)->whereIn('id',$homeCat)->get();
         $products = [];
-        foreach ($categories as $key => $item) {
+        foreach ($categoriess as $key => $item) {
           $products = Product::where('cat_id', $item->id)->where('status', 1)->get(); 
 
           $image =  asset('uploads/noimage.jpg');
@@ -53,8 +56,9 @@ class HomeController extends Controller{
           );
         }
      }
+     //dd($home_category);
     $newArrival=Product::newArrival();
-    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal','categories','brands','blogs','products','home_category'));
+    return view('userhome',compact('sliders','featuredProduct','newArrival','todayDeal','categories','brands','blogs','products','home_category','views','mostPopular','banners'));
   }  
   public function aboutUs(){
     return view('user.about');

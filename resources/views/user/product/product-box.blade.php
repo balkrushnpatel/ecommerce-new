@@ -9,7 +9,7 @@
             <a href="#" class="btn-product-icon btn-compare w-icon-compare" onclick="to_compare({{ $product->id}})" title="Add to Compare" data-product={{ $product->id}}></a>
         </div>
         <div class="product-action">
-            <a href="javascript:void(0);" class="btn-product btn-quickview" title="Quick View">Quick
+            <a href="javascript:void(0);" class="btn-product btn-quickview" onclick="to_quickview({{$product->id}})" title="Quick View">Quick
                 View</a>
         </div>
     </figure>

@@ -60,13 +60,22 @@
 							    	<label for="banner-image" class="col-form-label">Image </label> 
 									 <input type="file" class="form-control" id="banner-image"value="{{ (isset($banner)) ? $banner->image : '' }}" name="image">
 						      	    <div class="fv-plugins-message-container"></div>
+						        </div>
+						        <div class="col-lg-4 form-group ">
+							    	<label for="is_home" class="col-form-label"> Is Home ? <span class="required">*</span></label>
+									<select class="form-control select2" name="is_home" id="is_home"> 
+										<option value=""> Select</option> 
+										<option value="1"{{ (isset($banner) && ($banner->is_home == 1) ) ? 'selected': ''}}>Yes</option>
+										<option value="0"{{ (isset($banner) && ($banner->is_home == 0) ) ? 'selected': ''}}>No</option>  
+									</select>
+									<div class="fv-plugins-message-container"></div>
 						        </div> 
-						         <div class="col-lg-4 form-group ">
+						         <div class="col-lg-6 form-group ">
 							    	<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">
 											<input type="radio" name="status" value="1" {{ (isset($banner) && ($banner->status == 1) ) ? 'checked': ''}} >
 											<span></span>Active
-										</label>
+										</label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">
 										<input type="radio" name="status" value="0" {{ (isset($banner) && ($banner->status == 0) ) ? 'checked': ''}}>
 										<span></span>Deactive</label>
