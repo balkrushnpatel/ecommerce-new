@@ -70,7 +70,7 @@
 									</select>
 									<div class="fv-plugins-message-container"></div>
 						        </div> 
-						         <div class="col-lg-6 form-group ">
+						         <div class="col-lg-12 form-group row">
 							    	<label>Status <span class="required">*</span></label>&nbsp&nbsp&nbsp
 										<label class="radio radio-success">
 											<input type="radio" name="status" value="1" {{ (isset($banner) && ($banner->status == 1) ) ? 'checked': ''}} >
