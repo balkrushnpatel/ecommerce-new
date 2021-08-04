@@ -435,7 +435,7 @@ class SettingController extends Controller
 
     public function paymentsetting(Request $request){
        try {  
-        dd('123');
+       
             DB::beginTransaction();
             $validator = Validator::make($request->all(),[
                
@@ -446,13 +446,33 @@ class SettingController extends Controller
                     ->withInput();
             }
 
-           /* $setting=$this->set('shipment_cost');
-            $setting->type       = 'shipment_cost';
-            $setting->value      =$request->input('shipment_cost');
-            $setting->save();*/
+            $setting=$this->set('paypal_email');
+            $setting->type       = 'paypal_email';
+            $setting->value      =$request->input('paypal_email');
+            $setting->save();
 
+            $setting=$this->set('paypal_type');
+            $setting->type       = 'paypal_type';
+            $setting->value      =$request->input('paypal_type');
+            $setting->save();
+
+            $setting=$this->set('secret_key');
+            $setting->type       = 'secret_key';
+            $setting->value      =$request->input('secret_key');
+            $setting->save();
+
+            $setting=$this->set('publishable_key');
+            $setting->type       = 'publishable_key';
+            $setting->value      =$request->input('publishable_key');
+            $setting->save();
+
+            $setting=$this->set('stripe_type');
+            $setting->type       = 'stripe_type';
+            $setting->value      =$request->input('stripe_type');
+            $setting->save();
+            
             DB::commit();
-            /* return view('admin.setting.shipment');*/
+           return redirect()->route('admin.paymentmethod')->with('success','Payment detail save successfully!');
 
         }catch (\Exception $e) {
             DB::rollback();

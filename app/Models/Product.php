@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Str;
 class Product extends Model
 {
-    public function categories(){
-        return $this->belongsTo('App\Models\Category','cat_id');
+   public function categories(){
+    return $this->belongsTo('App\Models\Category','cat_id');
     }
 
     public function brand(){
