@@ -429,4 +429,34 @@ class SettingController extends Controller
         } 
     }
 
+     public function payment(){
+        return view('admin.setting.payment');
+    }
+
+    public function paymentsetting(Request $request){
+       try {  
+        dd('123');
+            DB::beginTransaction();
+            $validator = Validator::make($request->all(),[
+               
+            ]);
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+           /* $setting=$this->set('shipment_cost');
+            $setting->type       = 'shipment_cost';
+            $setting->value      =$request->input('shipment_cost');
+            $setting->save();*/
+
+            DB::commit();
+            /* return view('admin.setting.shipment');*/
+
+        }catch (\Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+        } 
+    }
 }
