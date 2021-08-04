@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Language;
 use Validator;
 use DB;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 class LanguageController extends Controller
 {
     /**
@@ -52,6 +54,13 @@ class LanguageController extends Controller
             $language->name                 = $request->input('name');
             $language->status               = $request->input('status'); 
             $language->save();
+
+
+            $newColumnType = 'string';
+            $newColumnName = strtolower($request->input('name'));
+            Schema::table('language_transaltes', function (Blueprint $table) use ($newColumnType, $newColumnName) {
+                $table->$newColumnType($newColumnName);
+            });
             DB::commit();
             return redirect()->route('language.index')->with('success',' Language create successfully!');
 

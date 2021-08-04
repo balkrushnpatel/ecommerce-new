@@ -6,13 +6,13 @@
                 <p class="welcome-msg">Welcome to Wolmart Store message or remove it!</p>
             </div>
             <div class="header-right">
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <a href="#currency">USD</a>
                     <div class="dropdown-box">
                         <a href="#USD">USD</a>
                         <a href="#EUR">EUR</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- End of DropDown Menu -->
 
                 <div class="dropdown">

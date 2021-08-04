@@ -31,6 +31,7 @@ class HomeController extends Controller{
     $blogs = Blog::where('status','1')->limit(3) ->inRandomOrder()->get();
     $homeCat=HomeCategory::get()->pluck('cat_id');
     $home_category = [];
+    $products = [];
     if(count($homeCat)){
         $categories = Category::where('status', 1)->whereIn('id',$homeCat)->get();
         $products = [];
