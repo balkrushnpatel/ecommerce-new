@@ -38,6 +38,12 @@ class ProductController extends Controller
             if(count($products)){
               $catid = $products[0]->cat_id;
                $reletedProduct = Product::where('cat_id',$catid)->inRandomOrder()->get(); 
+
+              $noOfView = ($products[0]->no_of_view + 1);
+              $pproduct = Product::findOrFail($id);  
+              $pproduct->no_of_view = $noOfView;
+              $pproduct->last_viewed = time();
+              $pproduct->save();
             }
             DB::commit();
             return view('user.product.detail',compact('products','reletedProduct')); 

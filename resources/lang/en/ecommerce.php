@@ -42,5 +42,6 @@ return [
     'OrderDetail'=>'OrderDetail',
     'Banner'=>'Banner',
     'HomeCategory'=>'HomeCategory',
+    'PaymentMethod'=>'PaymentMethod',
     
 ];

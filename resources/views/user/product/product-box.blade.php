@@ -1,4 +1,4 @@
-<div class="product">
+ <div class="product">
     <figure class="product-media product-img">
         <a href="{{ $product->productSlug() }}">
             {!! fileView($product,'thumb','no','jpg','img') !!}  
@@ -9,12 +9,12 @@
             <a href="#" class="btn-product-icon btn-compare w-icon-compare" onclick="to_compare({{ $product->id}})" title="Add to Compare" data-product={{ $product->id}}></a>
         </div>
         <div class="product-action">
-            <a href="javascript:void(0);" class="btn-product btn-quickview" title="Quick View">Quick
+            <a href="javascript:void(0);" class="btn-product btn-quickview" onclick="to_quickview({{$product->id}})" title="Quick View">Quick
                 View</a>
         </div>
     </figure>
     <div class="product-details">
-        <div class="product-cat"><a href="javascript:void(0);">{{ $product->categories->name }}</a>
+        <div class="product-cat"><a href="javascript:void(0);">{{ $product->name }}</a>
         </div>
         <h4 class="product-name"><a href="{{ $product->productSlug() }}">{{ $product->name }}</a></h4>
         <div class="ratings-container">
@@ -30,4 +30,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

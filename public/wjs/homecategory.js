@@ -89,6 +89,18 @@ if($('#homecategory-form').length){
 		KTDatatablesDataSourceAjaxServer.init();
 	});
 }
+
+$( document ).delegate( ".select1", "change", function() {
+    //alert($(this).val());
+    if($('.select1').find(' option[value='+$(this).val()+']:selected').length>1){
+                             
+            alert('option is already selected');
+            $(this).val($(this).find("option:first").val()); 
+            $(this).select2();
+        }
+
+});
+
  var expenditureRow = $('#expenditure-fields .row-item').length;  
 	$( "table" ).delegate( "td", "click", function() {
 	  $( this ).toggleClass( "chosen" );

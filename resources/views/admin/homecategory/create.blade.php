@@ -30,7 +30,7 @@
 				                	<div class="row row-item" id="home-category-row-{{ $rowkey }}">
 					                	<div class="col-lg-4 col-sm-12" >
 											<label for="cat_id-[{{ $rowkey }}]" class="col-form-label">  Category <span class="required">*</span></label>
-											<select class="form-control select2"  name="home_cat[{{ $rowkey }}][cat_id]" id="cat_id-[{{ $rowkey }}]"> 
+											<select class="form-control select2 select1"  name="home_cat[{{ $rowkey }}][cat_id]" id="cat_id-[{{ $rowkey }}]"> 
 												<option value=""> Select  Category</option> 
 												@foreach(getCategory() as $key => $category)
 													@if(isset($item->cat_id) && ($item->cat_id ==$category['id']))

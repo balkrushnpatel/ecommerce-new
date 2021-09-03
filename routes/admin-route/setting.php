@@ -23,4 +23,7 @@
 
 	Route::get('shipment', 'Admin\SettingController@shipment')->name('admin.shipment');
 	Route::post('shipmentsetting', 'Admin\SettingController@shipmentsetting')->name('shipment.setting');
+
+	Route::get('payment-method', 'Admin\SettingController@payment')->name('admin.paymentmethod');
+	Route::post('paymentsetting', 'Admin\SettingController@paymentsetting')->name('payment.setting');
 });

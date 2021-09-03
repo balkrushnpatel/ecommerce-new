@@ -57,38 +57,38 @@ class ProductController extends Controller
                 'option'=>$request->input('option')[$key],
               ); 
             }
-            $product   = new Product();             
-            $product->cat_id          = $request->input('cat_id');
-            $product->subcat_id       = $request->input('subcat_id');
-            $product->brand_id        = $request->input('brand_id');
-            $product->name            = $request->input('name'); 
-            $product->option          = json_encode($option);
-            $product->color           = json_encode($request->input('input_color'));
-            $product->description     = $request->input('description');
-            $product->price           = $request->input('price');
-            $product->qty             = $request->input('qty');
-            $product->discount        = $request->input('discount');
-            $product->discount_type    =$request->input('discount_type');
-            $product->status          = '0'; 
-            $product->unit            = $request->input('unit');
-            $product->tags            = $request->input('tags');
-            $product->purchase_price  = $request->input('purchase_price');
-            $product->shipping_cost   = $request->input('shipping_cost');
-            $product->tax             = $request->input('tax');
-            $product->tax_type        =$request->input('tax_type');
-            $product->specification   =$request->input('specification');
-            $i = '0';
-            if ($request->hasFile('image')) {
-              $image = $request->file('image');
-              $i = '1';
-              foreach($image as $img){
-                $name = $i.'.'.$img->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/product/'.$product->id);
-                $img->move($destinationPath, $name);
-                $i++;
-              } 
-            } 
           }  
+          $product   = new Product();             
+          $product->cat_id          = $request->input('cat_id');
+          $product->subcat_id       = $request->input('subcat_id');
+          $product->brand_id        = $request->input('brand_id');
+          $product->name            = $request->input('name'); 
+          $product->option          = json_encode($option);
+          $product->color           = json_encode($request->input('input_color'));
+          $product->description     = $request->input('description');
+          $product->price           = $request->input('price');
+          $product->qty             = $request->input('qty');
+          $product->discount        = $request->input('discount');
+          $product->discount_type    =$request->input('discount_type');
+          $product->status          = '0'; 
+          $product->unit            = $request->input('unit');
+          $product->tags            = $request->input('tags');
+          $product->purchase_price  = $request->input('purchase_price');
+          $product->shipping_cost   = $request->input('shipping_cost');
+          $product->tax             = $request->input('tax');
+          $product->tax_type        =$request->input('tax_type');
+          $product->specification   =$request->input('specification');
+          $i = '0';
+          if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $i = '1';
+            foreach($image as $img){
+              $name = $i.'.'.$img->getClientOriginalExtension();
+              $destinationPath = public_path('/uploads/product/'.$product->id);
+              $img->move($destinationPath, $name);
+              $i++;
+            } 
+          }
           $product->image= $i;
           $product->save();
           DB::commit();

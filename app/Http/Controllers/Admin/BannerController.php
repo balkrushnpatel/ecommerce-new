@@ -54,6 +54,7 @@ class BannerController extends Controller
             $banner->text             = $request->input('text');
             $banner->btn_name         = $request->input('btn_name');
             $banner->link             = $request->input('link');
+            $banner->is_home          = $request->input('is_home');
             $banner->status           = $request->input('status'); 
             $banner->save();
             if ($request->hasFile('image')) {
@@ -121,6 +122,7 @@ class BannerController extends Controller
             $banner->text             = $request->input('text');
             $banner->btn_name         = $request->input('btn_name');
             $banner->link             = $request->input('link');
+            $banner->is_home          = $request->input('is_home');
             $banner->status           = $request->input('status'); 
             $banner->save();
              if ($request->hasFile('image')) {

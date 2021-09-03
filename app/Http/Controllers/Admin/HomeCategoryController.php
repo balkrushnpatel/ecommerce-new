@@ -41,7 +41,7 @@ class HomeCategoryController extends Controller
         try {  
             DB::beginTransaction();
             $validator = Validator::make($request->all(),[
-                
+                'cat_id'=> 'distinct',
             ]);
             if ($validator->fails()) {
                 return back()
@@ -62,7 +62,7 @@ class HomeCategoryController extends Controller
            }
            
             DB::commit();
-            return redirect()->route('homecategory.index')->with('success',' Homecategory create successfully!');
+            return redirect()->route('home-category.index')->with('success',' Homecategory create successfully!');
 
         }catch (\Exception $e) {
             DB::rollback();
