@@ -1,4 +1,4 @@
-<div class="product">
+ <div class="product">
     <figure class="product-media product-img">
         <a href="{{ $product->productSlug() }}">
             {!! fileView($product,'thumb','no','jpg','img') !!}  
@@ -14,7 +14,7 @@
         </div>
     </figure>
     <div class="product-details">
-        <div class="product-cat"><a href="javascript:void(0);">{{ $product->categories->name }}</a>
+        <div class="product-cat"><a href="javascript:void(0);">{{ $product->name }}</a>
         </div>
         <h4 class="product-name"><a href="{{ $product->productSlug() }}">{{ $product->name }}</a></h4>
         <div class="ratings-container">
@@ -30,4 +30,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

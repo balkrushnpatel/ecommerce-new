@@ -21,8 +21,8 @@ use App\Mail\ContactUsMail;
 class HomeController extends Controller{ 
   public function __construct(){         
   }
-  public function index()    {  
-  	$sliders=Slider::all();
+  public function index()    { 
+  	$sliders=Slider::get();
     $featuredProduct=Product::feactureProduct();
     $todayDeal=Product::todayDeal();
     $mostPopular=Product::mostPopular();
